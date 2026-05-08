@@ -1,0 +1,45 @@
+{
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "~/../css"
+    },
+    {
+      "format": "compressed",
+      "extensionName": ".min.css",
+      "savePath": "~/../css"
+    }
+  ],
+  "liveSassCompile.settings.generateMap": false,
+  "liveSassCompile.settings.excludeList": [
+    "/.vscode/**",
+    "/**/vendors/**",
+    "/**/libs/**"
+  ],
+  "liveSassCompile.settings.autoprefix": ["> 1%", "last 2 versions"],
+  "workbench.colorCustomizations": {
+      "activityBar.background": "#3c3c3c",
+      "activityBar.activeBackground": "#3c3c3c",
+      "activityBar.activeBorder": "#787828",
+      "activityBar.foreground": "#e7e7e7",
+      "activityBar.inactiveForeground": "#e7e7e799",
+      "activityBarBadge.background": "#787828",
+      "activityBarBadge.foreground": "#e7e7e7",
+      "titleBar.activeBackground": "#232323",
+      "titleBar.inactiveBackground": "#23232399",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveForeground": "#e7e7e799",
+      "statusBar.background": "#232323",
+      "statusBarItem.hoverBackground": "#3c3c3c",
+      "statusBar.foreground": "#e7e7e7",
+      "sash.hoverBorder": "#3c3c3c",
+      "statusBarItem.remoteBackground": "#232323",
+      "statusBarItem.remoteForeground": "#e7e7e7",
+      "commandCenter.border": "#e7e7e799"
+  },
+  "peacock.color": "#2d3784",
+  "editor.formatOnSave": false,
+  "workbench.editor.highlightModifiedTabs": true,
+   "files.autoSave": "off"
+}
