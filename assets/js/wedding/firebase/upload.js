@@ -16,48 +16,74 @@ async function getImagesFromSupabase() {
 
 function uploadImageOnChangeSupabase() {
   $('#formFile').on('change', async function () {
-    const files = this.files;
+    const files = Array.from(this.files);
     const imageCount = files.length;
 
     $('#imageCount').text(imageCount);
 
-    $('#imageContainer').empty(); // container where images will go
+    const $container = $('.wi-upload-images');
 
-    for (let i = 0; i < imageCount; i++) {
-      const file = files[i];
-
-      const filePath = `wedding/${Date.now()}_${file.name}`;
-
-      const { data, error } = await supabase
-        .storage
-        .from('wedding images')
-        .upload(filePath, file, {
-          cacheControl: '3600',
-          upsert: false
-        });
-
-      if (error) {
-        console.error('Upload error:', error.message);
-        continue;
-      }
-
-      // Get public URL
-      const { data: publicUrlData } = supabase
-        .storage
-        .from('wedding images')
-        .getPublicUrl(data.path);
-
-      const imageUrl = publicUrlData.publicUrl;
-
-      console.log('Public URL:', imageUrl);
-
-      // Append to UI
-      $('#imageContainer').append(`
-        <div class="col-3 fade-in show">
-          <img src="${imageUrl}" alt="" class="w-100">
+    const uploadPromises = files.map((file, i) => {
+      // Create skeleton placeholder
+      const $col = $(`
+        <div class="col-3 fade-in" data-index="${i}">
+          <p class="placeholder-wave">
+            <span class="placeholder bg-primary col-12"></span>
+          </p>
         </div>
       `);
-    }
+
+      $container.append($col);
+
+      // small staggered animation
+      setTimeout(() => {
+        $col.addClass('show');
+      }, i * 100);
+
+      return (async () => {
+        const filePath = `wedding/${Date.now()}_${file.name}`;
+
+        const { data, error } = await supabase
+          .storage
+          .from('wedding images')
+          .upload(filePath, file, {
+            cacheControl: '3600',
+            upsert: false
+          });
+
+        if (error) {
+          console.error('Upload error:', error.message);
+          $col.remove();
+          return;
+        }
+
+        const { data: publicUrlData } = supabase
+          .storage
+          .from('wedding images')
+          .getPublicUrl(data.path);
+
+        const imageUrl = publicUrlData.publicUrl;
+
+        const $img = $('<img>', {
+            src: imageUrl,
+            class: 'w-100',
+            alt: ''
+        });
+        $col.removeClass('show');
+
+        $img.on('load', function () {
+        $col.html($img);
+
+            setTimeout(() => {
+                $col.addClass('show');
+            }, 500);
+        });
+
+      })();
+    });
+
+    // optional: wait for all uploads
+    await Promise.all(uploadPromises);
   });
 }
 

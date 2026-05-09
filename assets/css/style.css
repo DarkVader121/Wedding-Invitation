@@ -53,10 +53,10 @@
   opacity: 0;
   -webkit-transform: translateY(8px);
           transform: translateY(8px);
-  -webkit-transition: opacity 200ms ease, -webkit-transform 200ms ease;
-  transition: opacity 200ms ease, -webkit-transform 200ms ease;
-  transition: opacity 200ms ease, transform 200ms ease;
-  transition: opacity 200ms ease, transform 200ms ease, -webkit-transform 200ms ease;
+  -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+  transition: opacity 1s ease, -webkit-transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease, -webkit-transform 1s ease;
 }
 
 .fade-in.show {
