@@ -18,6 +18,7 @@ function uploadImageOnChangeSupabase() {
   $('#formFile').on('change', async function () {
     const files = Array.from(this.files);
     const imageCount = files.length;
+    const imageIds = [];
 
     $('#imageCount').text(imageCount);
 
@@ -63,16 +64,17 @@ function uploadImageOnChangeSupabase() {
           .getPublicUrl(data.path);
 
         const imageUrl = publicUrlData.publicUrl;
+        const imageId = publicUrlData.id;
 
         const $img = $('<img>', {
             src: imageUrl,
-            class: 'w-100',
-            alt: ''
         });
         $col.removeClass('show');
 
         $img.on('load', function () {
-        $col.html($img);
+           $col.html(`<a class="btn wi-remove-img"><span class="fas fa-trash"></span></a> 
+             <img src="${imageUrl}" id="${imageId}" class="w-100">
+            `);
 
             setTimeout(() => {
                 $col.addClass('show');
@@ -87,39 +89,33 @@ function uploadImageOnChangeSupabase() {
   });
 }
 
-function uploadImageOnChange() {
-   $('#formFile').on('change', function () {
-        const files = this.files;
-        const imageCount = files.length;
-
-        $('#imageCount').text(imageCount);
-
-        const $container = $(".wi-upload-images");
-        $container.empty();
-
-        for (let i = 0; i < imageCount; i++) {
-
-            const $col = $(`
-                <div class="col-3 fade-in">
-                    <p class="placeholder-wave">
-                        <span class="placeholder bg-primary col-12"></span>
-                    </p>
-                </div>
-            `);
-
-            $container.append($col);
-
-            setTimeout(() => {
-                $col.addClass('show');
-            }, i * 100);
-        }
-
-        console.log('Selected images:', imageCount);
+function displayTheUploadedImagesInGalleryPage() {
+  $("#uploadToGallery").on("click", function () {
+    let imageIds = [];
+    $(".wi-upload-images .col-3 img").each(function () {
+      let id = $(this).attr("id");
+      if (id) {
+        imageIds.push(id);
+      }
     });
+
+    console.log("imageIds", imageIds);
+
+
+  });
 }
 
 $(document).ready(function () {
-    // uploadImageOnChange();
-    uploadImageOnChangeSupabase();
     // getImagesFromSupabase();
+    uploadImageOnChangeSupabase();
+    displayTheUploadedImagesInGalleryPage()
+});
+
+// remove Uploaded image remove functionality
+$(document).on("click", ".wi-remove-img", function () {
+    const $col = $(this).closest('.col-3');
+    $col.removeClass("show");
+    setTimeout(function () {
+        $col.remove();
+    }, 1000);
 });

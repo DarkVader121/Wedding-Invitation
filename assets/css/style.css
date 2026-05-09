@@ -35,6 +35,20 @@
 .wi-modal .modal-dialog .modal-content .modal-body .row {
   --hideaway-gutter-x: 1rem;
 }
+.wi-modal .modal-dialog .modal-content .modal-body .row .col-3 {
+  position: relative;
+}
+.wi-modal .modal-dialog .modal-content .modal-body .row .col-3 a {
+  position: absolute;
+  padding: 1px 6px;
+  background-color: rgba(191, 19, 19, 0.831372549);
+  border-radius: 7px;
+  color: white;
+  margin-top: -12px;
+}
+.wi-modal .modal-dialog .modal-content .modal-body .row .col-3 a .svg-inline--fa {
+  font-size: 12px;
+}
 .wi-modal .modal-dialog .modal-content .modal-body .row .col-3 img {
   height: 100px;
   -o-object-fit: cover;
