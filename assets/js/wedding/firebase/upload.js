@@ -58,6 +58,8 @@ function uploadImageOnChangeSupabase() {
           return;
         }
 
+        
+        // load the new uploaded image
         const { data: publicUrlData } = supabase
           .storage
           .from('wedding images')
@@ -80,7 +82,8 @@ function uploadImageOnChangeSupabase() {
                 $col.addClass('show');
             }, 500);
         });
-
+        
+        // load the new uploaded image
       })();
     });
 
@@ -98,9 +101,6 @@ function displayTheUploadedImagesInGalleryPage() {
         imageIds.push(id);
       }
     });
-
-    console.log("imageIds", imageIds);
-
 
   });
 }
