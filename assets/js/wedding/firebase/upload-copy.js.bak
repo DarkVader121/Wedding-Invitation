@@ -21,12 +21,13 @@ function uploadImageOnChangeSupabase() {
 
     $('#imageCount').text(imageCount);
 
-    $('#imageContainer').empty(); // container where images will go
-
     for (let i = 0; i < imageCount; i++) {
       const file = files[i];
 
-      const filePath = `wedding/${Date.now()}_${file.name}`;
+      // Create unique filename
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Date.now()}_${i}.${fileExt}`;
+      const filePath = `uploads/${fileName}`;
 
       const { data, error } = await supabase
         .storage
@@ -38,26 +39,21 @@ function uploadImageOnChangeSupabase() {
 
       if (error) {
         console.error('Upload error:', error.message);
-        continue;
+      } else {
+        console.log('Uploaded:', data.path);
+
+        // If bucket is public, get URL
+        const { data: publicUrlData } = supabase
+          .storage
+          .from('wedding images')
+          .getPublicUrl(data.path);
+
+        console.log('Public URL:', publicUrlData.publicUrl);
       }
-
-      // Get public URL
-      const { data: publicUrlData } = supabase
-        .storage
-        .from('wedding images')
-        .getPublicUrl(data.path);
-
-      const imageUrl = publicUrlData.publicUrl;
-
-      console.log('Public URL:', imageUrl);
-
-      // Append to UI
-      $('#imageContainer').append(`
-        <div class="col-3 fade-in show">
-          <img src="${imageUrl}" alt="" class="w-100">
-        </div>
-      `);
     }
+
+    // Optional: reset input
+    $('#formFile').val('');
   });
 }
 
