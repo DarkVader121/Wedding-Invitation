@@ -14,6 +14,27 @@ async function getImagesFromSupabase() {
   }
 }
 
+async function createImageDataInSupabase(imageUrl) {
+  const now = new Date().toISOString();
+
+  const { data, error } = await supabase
+    .from("images")
+    .insert([
+      {
+        imageUrl: imageUrl,
+        name: now,
+      },
+    ])
+    .select();
+
+  if (error) {
+    console.error("Insert error:", error);
+    return null;
+  }
+
+  console.log("data", data);
+}
+
 function uploadImageOnChangeSupabase() {
   $('#formFile').on('change', async function () {
     const files = Array.from(this.files);
@@ -58,7 +79,6 @@ function uploadImageOnChangeSupabase() {
           return;
         }
 
-        
         // load the new uploaded image
         const { data: publicUrlData } = supabase
           .storage
@@ -82,8 +102,11 @@ function uploadImageOnChangeSupabase() {
                 $col.addClass('show');
             }, 500);
         });
-        
         // load the new uploaded image
+
+        // create data in images table
+        createImageDataInSupabase(imageUrl);
+        // create data in images table
       })();
     });
 
