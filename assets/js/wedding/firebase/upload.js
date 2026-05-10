@@ -23,7 +23,6 @@ async function createImageDataInSupabase(imageUrl) {
 }
 
 async function removeImageDataInSupabase(imageId) {
-  console.log("imageId", imageId);
   const { data, error } = await supabase
     .from('images')
     .delete()
@@ -119,23 +118,23 @@ function uploadImageOnChangeSupabase() {
   });
 }
 
-function displayTheUploadedImagesInGalleryPage() {
-  $("#uploadToGallery").on("click", function () {
-    let imageIds = [];
-    $(".wi-upload-images .col-3 img").each(function () {
-      let id = $(this).attr("id");
-      if (id) {
-        imageIds.push(id);
-      }
-    });
+// function displayTheUploadedImagesInGalleryPage() {
+//   $("#uploadToGallery").on("click", function () {
+//     let imageIds = [];
+//     $(".wi-upload-images .col-3 img").each(function () {
+//       let id = $(this).attr("id");
+//       if (id) {
+//         imageIds.push(id);
+//       }
+//     });
 
-  // console.log("data", data);
-  });
-}
+//   // console.log("data", data);
+//   });
+// }
 
 $(document).ready(function () {
     uploadImageOnChangeSupabase();
-    displayTheUploadedImagesInGalleryPage()
+    // displayTheUploadedImagesInGalleryPage()
 });
 
 // remove Uploaded image remove functionality

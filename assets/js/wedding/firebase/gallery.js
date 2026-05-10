@@ -14,6 +14,14 @@ async function getImagesFromSupabase() {
   }
 }
 
+function initializeFlexmason() {
+  FlexMasonry.init('.grid', {
+      responsive: false,
+      numCols: 2
+  });
+}
+
 $(document).ready(function () {
     getImagesFromSupabase();
+    initializeFlexmason();
 });
