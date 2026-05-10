@@ -1,19 +1,6 @@
 // upload.js
 import { supabase } from "./initialization.js";
 
-async function getImagesFromSupabase() {
-  const { data, error } = await supabase
-    .from("images")
-    .select("*")
-    .eq("isDisplay", true);
-
-  if (error) {
-    console.error("Supabase error:", error);
-  } else {
-    console.log("Images:", data);
-  }
-}
-
 async function createImageDataInSupabase(imageUrl) {
   const now = new Date().toISOString();
 
@@ -32,7 +19,22 @@ async function createImageDataInSupabase(imageUrl) {
     return null;
   }
 
-  console.log("data", data);
+  return data[0].id;  
+}
+
+async function removeImageDataInSupabase(imageId) {
+  console.log("imageId", imageId);
+  const { data, error } = await supabase
+    .from('images')
+    .delete()
+    .eq('id', imageId)
+    .select() // 👈 important
+
+  if (error) {
+    console.error('Error deleting image:', error)
+  } else {
+    console.log('Image deleted:', data)
+  }
 }
 
 function uploadImageOnChangeSupabase() {
@@ -86,14 +88,18 @@ function uploadImageOnChangeSupabase() {
           .getPublicUrl(data.path);
 
         const imageUrl = publicUrlData.publicUrl;
-        const imageId = publicUrlData.id;
+
+        // create data in images table
+        const imageId = await createImageDataInSupabase(imageUrl);
+        // create data in images table
+      
 
         const $img = $('<img>', {
             src: imageUrl,
         });
         $col.removeClass('show');
 
-        $img.on('load', function () {
+        $img.on('load', async function () {
            $col.html(`<a class="btn wi-remove-img"><span class="fas fa-trash"></span></a> 
              <img src="${imageUrl}" id="${imageId}" class="w-100">
             `);
@@ -104,9 +110,7 @@ function uploadImageOnChangeSupabase() {
         });
         // load the new uploaded image
 
-        // create data in images table
-        createImageDataInSupabase(imageUrl);
-        // create data in images table
+        
       })();
     });
 
@@ -125,18 +129,25 @@ function displayTheUploadedImagesInGalleryPage() {
       }
     });
 
+  // console.log("data", data);
   });
 }
 
 $(document).ready(function () {
-    // getImagesFromSupabase();
     uploadImageOnChangeSupabase();
     displayTheUploadedImagesInGalleryPage()
 });
 
 // remove Uploaded image remove functionality
 $(document).on("click", ".wi-remove-img", function () {
-    const $col = $(this).closest('.col-3');
+    const imageId = $(this)
+      .closest('.col-3')   // parent wrapper
+      .find('img')
+      .attr('id');
+
+    removeImageDataInSupabase(imageId);
+
+   const $col = $(this).closest('.col-3');
     $col.removeClass("show");
     setTimeout(function () {
         $col.remove();
