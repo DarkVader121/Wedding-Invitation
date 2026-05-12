@@ -1,0 +1,32 @@
+.wiGallerySection {
+    .row {
+        --hideaway-gutter-x: 0;
+        .col-lg-8 {
+            img {
+                height: 1190px;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .col-lg-4 {
+            .row {
+                .col-lg-12 {
+                    img {
+                        height: 580px;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+
+        .col-lg-6 {
+            img {
+                height: 885px;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
