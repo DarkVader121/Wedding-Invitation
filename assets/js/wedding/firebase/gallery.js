@@ -9,9 +9,27 @@ async function getImagesFromSupabase() {
 
   if (error) {
     console.error("Supabase error:", error);
-  } else {
-    console.log("Images:", data);
+    return;
   }
+
+  console.log("Images:", data);
+
+  const galleryDiv = document.getElementById("galleryImageSrc");
+
+  // Clear existing content
+  galleryDiv.innerHTML = "";
+
+  // Append each imageUrl as a <p>
+  data.forEach(img => {
+    if (img.imageUrl) {
+      const p = document.createElement("p");
+      p.textContent = img.imageUrl;
+      galleryDiv.appendChild(p);
+    }
+  });
+
+  initializeGalleryPage();
+  reinitializeBigPicture();
 }
 
 function initializeGalleryPage() {
@@ -135,6 +153,4 @@ function reinitializeBigPicture() {
 
 $(document).ready(function () {
     getImagesFromSupabase();
-    initializeGalleryPage();
-    reinitializeBigPicture();
 });
