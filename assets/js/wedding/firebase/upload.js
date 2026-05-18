@@ -118,23 +118,8 @@ function uploadImageOnChangeSupabase() {
   });
 }
 
-// function displayTheUploadedImagesInGalleryPage() {
-//   $("#uploadToGallery").on("click", function () {
-//     let imageIds = [];
-//     $(".wi-upload-images .col-3 img").each(function () {
-//       let id = $(this).attr("id");
-//       if (id) {
-//         imageIds.push(id);
-//       }
-//     });
-
-//   // console.log("data", data);
-//   });
-// }
-
 $(document).ready(function () {
     uploadImageOnChangeSupabase();
-    // displayTheUploadedImagesInGalleryPage()
 });
 
 // remove Uploaded image remove functionality
