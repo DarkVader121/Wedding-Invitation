@@ -22,7 +22,7 @@ export async function redirectIfLoggedIn() {
 
     if (session?.user && !redirecting) {
         redirecting = true;
-        window.location.href = "/pages/manage-images.html";
+        window.location.href = "/pages/manage-uploaded-images.html";
     }
 }
 

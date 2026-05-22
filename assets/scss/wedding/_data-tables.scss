@@ -1,0 +1,41 @@
+div.dt-container {
+    padding-top: 1rem;
+    .row{
+        .dt-layout-start{
+            display: none;
+        }
+
+        .dt-layout-end{
+            .dt-search{
+                text-align: start;
+            }
+        }
+
+        .dt-layout-full{
+            table{
+                tbody{
+                    tr{
+                        td{
+                            img{
+                                width: 100%;
+                                height: 200px;
+                                object-fit: cover;
+                            }
+
+                            input {
+                                height: 22px;
+                                width: 22px;
+                                margin-top: 3px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+div.dt-container div.dt-search input {
+    display: flex;
+    border-color: black;
+}

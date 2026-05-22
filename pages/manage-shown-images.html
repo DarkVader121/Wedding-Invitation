@@ -37,53 +37,62 @@
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
-      <div data-layout="container">
-        <div class="content p-1">
-            <div class="w-100 d-flex justify-content-between">
-                <h1>Welcome</h1>
-                <button class="btn btn-primary" id="logoutButton">Logout</button>
+      <div class="" data-layout="container">
+
+        <div class="content ">
+            <div class="w-100 d-flex justify-content-between p-3" style="background-color: blanchedalmond;">
+                <div class="d-flex flex-column">
+                    <h3>Hidden Images</h3>
+                    <p class="mb-3">Please check the images you want to show to the website.</p>
+                    <a href="" class="btn btn-secondary btn-xs">Manage shown images instead</a>
+                </div>
+               
+                <button class="btn btn-danger btn-xs" style="height: fit-content;" id="logoutButton">Logout</button>
             </div>
+
+            <div class="p-3">
             <table id="example" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Upload</th>
-                        <th>Name</th>
+                        <th>Show to Gallery</th>
                         <th>Image Thumbnail</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="checkbox" class="" id="btncheck2" autocomplete="off"></td>
-                        <td>System Architect</td>
-                        <td><img src="https://ffcledhrgpppintgsfsv.supabase.co/storage/v1/object/public/wedding%20images/wedding/1778592575507_AlexShan15.jpg" alt=""></td>
+                        <td class="text-start">
+                            <input type="checkbox" class="" id="btncheck2" autocomplete="off">
+                        </td>
+                        <td>
+                            <img src="https://ffcledhrgpppintgsfsv.supabase.co/storage/v1/object/public/wedding%20images/wedding/1778592575507_AlexShan15.jpg" alt="">
+                            <div class="d-flex align-items-center gap-2 mt-3">
+                                <p class="mb-0">System Architect</p> 
+                                <a href="#" class="bg-secondary px-2 pt-0 pb-1 rounded-2 copy-icon">
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
+                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
                     </tr>
-                    <tr>
-                        <td><input type="checkbox" class="" id="btncheck2" autocomplete="off"></td>
-                        <td>Accountant</td>
-                        <td><img src="https://ffcledhrgpppintgsfsv.supabase.co/storage/v1/object/public/wedding%20images/wedding/1778592575507_AlexShan15.jpg" alt=""></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="" id="btncheck2" autocomplete="off"></td>
-                        <td>Junior Technical Author</td>
-                        <td><img src="https://ffcledhrgpppintgsfsv.supabase.co/storage/v1/object/public/wedding%20images/wedding/1778592575507_AlexShan15.jpg" alt=""></td>
+               
 
-                    
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="" id="btncheck2" autocomplete="off"></td>
-                        <td>Senior JavaScript Developer</td>
-                        <td><img src="https://ffcledhrgpppintgsfsv.supabase.co/storage/v1/object/public/wedding%20images/wedding/1778592575507_AlexShan15.jpg" alt=""></td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="" id="btncheck2" autocomplete="off"></td>
-                        <td>Accountant</td>
-                        <td><img src="https://ffcledhrgpppintgsfsv.supabase.co/storage/v1/object/public/wedding%20images/wedding/1778592575507_AlexShan15.jpg" alt=""></td>
-                    </tr>
                 </tbody>
             </table>
 
             <div class="text-center">
-                <a href="#" class="pb-5 btn-primary">Show images into gallery</a>
+                <a href="#" class="mb-5 mt-3 btn btn-primary">Save</a>
+            </div>
+
+            <div class="toast-container">
+                <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body d-flex justify-content-between">
+                        Text successfully copied
+                    </div>
+                </div>
+
+            </div>
             </div>
         </div>
       </div>
@@ -119,7 +128,9 @@
 
     <script>
         $(document).ready(function () {
-        $('#example').DataTable();
+            new DataTable('#example', {
+                pageLength: 50
+            });
         });
     </script>
   </body>

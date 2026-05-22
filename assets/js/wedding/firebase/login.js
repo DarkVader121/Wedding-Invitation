@@ -14,7 +14,7 @@ function loginFunctionality() {
             return;
         }
 
-        window.location.href = "/pages/manage-images.html";
+        window.location.href = "/pages/manage-uploaded-images.html";
     });
 }
 
@@ -22,6 +22,7 @@ function loginFunctionality() {
 
 $(document).ready(async function () {
   await redirectIfLoggedIn();
+
 
   loginFunctionality();
 });

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css">
+
+    <!-- DataTables Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.bootstrap5.css">
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Manage Images</title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicons/favicon.ico">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="../vendors/swiper/swiper-bundle.min.css">
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/style.min.css">
+
+  </head>
+
+
+  <body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <div class="" data-layout="container">
+
+        <div class="content ">
+            <div class="w-100 d-flex justify-content-between p-3" style="background-color: blanchedalmond;">
+                <div class="d-flex flex-column">
+                    <h3>Hidden Images</h3>
+                    <p class="mb-3">Please check the images you want to show to the website.</p>
+                    <a href="" class="btn btn-secondary btn-xs">Manage shown images instead</a>
+                </div>
+               
+                <button class="btn btn-danger btn-xs" style="height: fit-content;" id="logoutButton">Logout</button>
+            </div>
+
+            <div class="p-3">
+            <table id="example" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Show to Gallery</th>
+                        <th>Image Thumbnail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-start">
+                            <input type="checkbox" class="" id="btncheck2" autocomplete="off">
+                        </td>
+                        <td>
+                            <img src="https://ffcledhrgpppintgsfsv.supabase.co/storage/v1/object/public/wedding%20images/wedding/1778592575507_AlexShan15.jpg" alt="">
+                            <div class="d-flex align-items-center gap-2 mt-3">
+                                <p class="mb-0">System Architect</p> 
+                                <a href="#" class="bg-secondary px-2 pt-0 pb-1 rounded-2 copy-icon">
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
+                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+               
+
+                </tbody>
+            </table>
+
+            <div class="text-center">
+                <a href="#" class="mb-5 mt-3 btn btn-primary">Save</a>
+            </div>
+
+            <div class="toast-container">
+                <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body d-flex justify-content-between">
+                        Text successfully copied
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+      </div>
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+     
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>    <script src="../vendors/popper/popper.min.js"></script>
+    <script src="../vendors/popper/popper.min.js"></script>
+    <script src="../vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="../vendors/is/is.min.js"></script>
+    <script src="../vendors/swiper/swiper-bundle.min.js"> </script>
+    <script src="../vendors/rellax/rellax.js"></script>
+    <script src="../vendors/fontawesome/all.min.js"></script>
+    <script src="../vendors/lodash/lodash.min.js"></script>
+    <script src="../vendors/imagesloaded/imagesloaded.pkgd.js"></script>
+    <script src="../vendors/gsap/gsap.js"></script>
+    <script src="../vendors/gsap/customEase.js"></script>
+    <script src="../vendors/gsap/drawSVGPlugin.js"></script>
+    <script src="../vendors/gsap/TweenMax.min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <script type="module" src="../assets/js/wedding/firebase/manage-images.js"></script>
+    <script src="../vendors/bigpicture/BigPicture.js"> </script>
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script>
+
+    <!-- DataTables Bootstrap 5 integration -->
+    <script src="https://cdn.datatables.net/2.3.8/js/dataTables.bootstrap5.js"></script>
+
+    <script>
+        function setupDataTables() {
+            new DataTable('#example', {
+                pageLength: 50
+            });
+        }
+
+        $(document).ready(async function () {
+
+            setupDataTables();
+        });
+    </script>
+  </body>
+
+</html>
