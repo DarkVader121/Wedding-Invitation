@@ -119,9 +119,7 @@ $('.row[class*="layout-"] .col-lg-4, .row[class*="layout-"] .col-lg-8, .row[clas
     var $img = $(this).find('img');
 
     if (!$img.attr('src')) {
-        $(this).addClass('d-none');
-    } else {
-        $(this).removeClass('d-none');
+        $(this).remove();
     }
 });
 
