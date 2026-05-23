@@ -14,7 +14,7 @@ function loginFunctionality() {
             return;
         }
 
-        window.location.href = "/pages/manage-uploaded-images";
+        window.location.href = "/uploaded-images";
     });
 }
 

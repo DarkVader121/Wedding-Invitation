@@ -10,7 +10,7 @@ export async function requireAuth() {
 
     if (!session?.user && !redirecting) {
         redirecting = true;
-        window.location.href = "/pages/login";
+        window.location.href = "/login";
     }
 }
 
@@ -22,7 +22,7 @@ export async function redirectIfLoggedIn() {
 
     if (session?.user && !redirecting) {
         redirecting = true;
-        window.location.href = "/pages/manage-uploaded-images";
+        window.location.href = "/uploaded-images";
     }
 }
 

@@ -32,6 +32,7 @@ function displayImagesIntoDom(imageData) {
                     <input id="${item.id}" type="checkbox" class="" ${isChecked} autocomplete="off">
                 </td>
                 <td>
+                
                     <img src="${item.imageUrl}" alt="${item.name}">
                     <div class="d-flex align-items-center gap-2 mt-3">
                         <p class="mb-0">${item.name}</p> 
@@ -50,8 +51,6 @@ function displayImagesIntoDom(imageData) {
     });
 }
 
-
-
 function setupDataTables() {
     new DataTable('#imageGallery', {
         pageLength: 20
@@ -61,7 +60,7 @@ function setupDataTables() {
 async function manageFetchImagesBasedOnUrl(){
     const path = window.location.pathname;
 
-    if (path.endsWith("/pages/manage-uploaded-images")) {
+    if (path.endsWith("/uploaded-images")) {
         fetchNotDisplayedImages()
             .then(async (data) => {
                 await displayImagesIntoDom(data);
@@ -72,7 +71,7 @@ async function manageFetchImagesBasedOnUrl(){
         });
     }
 
-    if (path.endsWith("/pages/manage-shown-images")) {
+    if (path.endsWith("/displayed-images")) {
         fetchDisplayedImages()
             .then(async (data) => {
                 await displayImagesIntoDom(data);
@@ -103,7 +102,7 @@ function updateDateTables(selectedIds) {
 
     setTimeout(function () {
         $(".toast-notification-container .copy-toast").removeClass("show");
-    }, 1500);
+    }, 2000);
 }
 
 function showImagesToGallery() {
@@ -115,6 +114,7 @@ function showImagesToGallery() {
         });
 
         if (selectedIds.length === 0) {
+            alert("No actions were performed.");
             return;
         }
        
@@ -176,5 +176,5 @@ $(document).on("click", ".copy-icon", function () {
 
     setTimeout(function () {
         $(".toast-notification-container .table-updated-toast").removeClass("show");
-    }, 1000);
+    }, 2000);
 })
