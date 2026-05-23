@@ -19,7 +19,7 @@ export async function fetchNotDisplayedImages() {
 
 /**
  * Fetch function Display
- */
+*/
 export async function fetchDisplayedImages() {
     const { data, error } = await supabase
         .from("images")
@@ -32,4 +32,22 @@ export async function fetchDisplayedImages() {
     }
 
     return data;
+}
+
+/**
+ * Update isDisplay to TRUE
+*/
+
+export async function showImagesInGalleryPage(ImagesIds) {
+  const { data, error } = await supabase
+    .from("images")
+    .update({ isDisplay: true })
+    .in("id", ImagesIds)
+    .select("*");
+
+  if (error) {
+    return error;
+  }
+
+  return data;
 }

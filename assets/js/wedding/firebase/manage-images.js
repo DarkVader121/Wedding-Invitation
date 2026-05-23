@@ -1,5 +1,5 @@
 import { requireAuth, logout } from "../auth/auth.js";
-import { fetchNotDisplayedImages, fetchDisplayedImages } from "../image-uploads/images.js";
+import { fetchNotDisplayedImages, fetchDisplayedImages, showImagesInGalleryPage } from "../image-uploads/images.js";
 
 
 function logoutFunctionality(){
@@ -16,7 +16,6 @@ function logoutFunctionality(){
 }
 
 function displayImagesIntoDom(imageData) {
-    console.log("data", imageData);
 
     const $tbody = $(".image-gallery-table tbody");
 
@@ -25,8 +24,6 @@ function displayImagesIntoDom(imageData) {
 
     // loop through images
     imageData.forEach((item, index) => {
-        console.log("1");
-
         const row = `
               <tr>
                 <td class="text-start">
@@ -50,6 +47,8 @@ function displayImagesIntoDom(imageData) {
         $tbody.append(row);
     });
 }
+
+
 
 function setupDataTables() {
     new DataTable('#imageGallery', {
@@ -83,10 +82,52 @@ async function manageFetchImagesBasedOnUrl(){
     }
 }
 
+function updateDateTables(selectedIds) {
+    console.log("selectedIds", selectedIds);
+
+    selectedIds.forEach((id) => {
+        const input = $(`#imageGallery tbody tr td input#${id}`);
+
+        if (!input.length) return;
+
+        // find nearest <tr>
+        const tr = input.closest("tr");
+
+        if (!tr.length) return;
+
+        // clear its content
+        tr.html("");
+    });
+}
+
+function showOrHideImagesToGallery() {
+    $("#ShowToGalleryImages").on("click", function () {
+
+        const selectedIds = [];
+
+        $("#imageGallery tbody tr td input[type='checkbox']:checked").each(function () {
+            selectedIds.push(this.id);
+        });
+
+       showImagesInGalleryPage(selectedIds)
+        .then((result) => {
+            if (result && selectedIds.length > 0) {
+                updateDateTables(selectedIds);
+                console.log("selectedIds", selectedIds);
+            } else {
+                alert("There are no selected images");
+            }
+        })
+        .catch((err) => {
+            console.error("Error updating images:", err);
+        });
+    });
+}
 
 $(document).ready(async function () {
     await requireAuth();
     await manageFetchImagesBasedOnUrl();
+    await showOrHideImagesToGallery();
 
     logoutFunctionality();
 });
