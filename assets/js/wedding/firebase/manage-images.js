@@ -16,7 +16,6 @@ function logoutFunctionality(){
 }
 
 function displayImagesIntoDom(imageData) {
-    console.log("imageData", imageData);
     const $tbody = $(".image-gallery-table tbody");
 
     // clear existing rows
@@ -161,8 +160,6 @@ $(document).ready(async function () {
 });
 
 $(document).on("click", ".copy-icon", function () {
-    console.log("click");
-
     // Find nearest parent that contains the <p>
     const text = $(this)
         .closest("div")   // adjust this selector to your actual wrapper
