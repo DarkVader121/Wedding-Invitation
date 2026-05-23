@@ -1,5 +1,5 @@
 import { requireAuth, logout } from "../auth/auth.js";
-import { fetchNotDisplayedImages } from "../image-uploads/images.js";
+import { fetchNotDisplayedImages, fetchDisplayedImages } from "../image-uploads/images.js";
 
 
 function logoutFunctionality(){
@@ -15,33 +15,97 @@ function logoutFunctionality(){
     });
 }
 
-function copyIconFunctionality() {
-    $(".copy-icon").on("click", async function () {
-      
+function displayImagesIntoDom(imageData) {
+    console.log("data", imageData);
 
-        // Find nearest parent that contains the <p>
-        const text = $(this)
-            .closest("div")   // adjust this selector to your actual wrapper
-            .find("p")
-            .text()
-            .trim();
+    const $tbody = $(".image-gallery-table tbody");
 
-        navigator.clipboard.writeText(text);
+    // clear existing rows
+    $tbody.empty();
 
-        $(".toast-container").addClass("show");
+    // loop through images
+    imageData.forEach((item, index) => {
+        console.log("1");
 
-        setTimeout(function () {
-            $(".toast-container").removeClass("show");
-        }, 1000);
+        const row = `
+              <tr>
+                <td class="text-start">
+                    <input id="${item.id}" type="checkbox" class="" id="btncheck2" autocomplete="off">
+                </td>
+                <td>
+                    <img src="${item.imageUrl}" alt="${item.name}">
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                        <p class="mb-0">${item.name}</p> 
+                        <a href="#" class="bg-secondary px-2 pt-0 pb-1 rounded-2 copy-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        $tbody.append(row);
     });
 }
 
+function setupDataTables() {
+    new DataTable('#imageGallery', {
+        pageLength: 20
+    });
+}
+
+async function manageFetchImagesBasedOnUrl(){
+    const path = window.location.pathname;
+
+    if (path.endsWith("/pages/manage-uploaded-images.html")) {
+        fetchNotDisplayedImages()
+            .then(async (data) => {
+                await displayImagesIntoDom(data);
+                await setupDataTables();
+            })
+            .catch((err) => {
+                console.error("Error fetching images:", err);
+        });
+    }
+
+    if (path.endsWith("/pages/manage-shown-images.html")) {
+        fetchDisplayedImages()
+            .then(async (data) => {
+                await displayImagesIntoDom(data);
+                await setupDataTables();
+            })
+            .catch((err) => {
+                console.error("Error fetching images:", err);
+            });
+    }
+}
 
 
 $(document).ready(async function () {
     await requireAuth();
-    await fetchNotDisplayedImages();
+    await manageFetchImagesBasedOnUrl();
 
     logoutFunctionality();
-    copyIconFunctionality();
 });
+
+$(document).on("click", ".copy-icon", function () {
+    console.log("click");
+
+    // Find nearest parent that contains the <p>
+    const text = $(this)
+        .closest("div")   // adjust this selector to your actual wrapper
+        .find("p")
+        .text()
+        .trim();
+
+    navigator.clipboard.writeText(text);
+
+    $(".toast-container").addClass("show");
+
+    setTimeout(function () {
+        $(".toast-container").removeClass("show");
+    }, 1000);
+})

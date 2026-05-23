@@ -101,9 +101,6 @@
      object-fit: cover;
 }
 
-div.dt-container {
-  padding-top: 1rem;
-}
 div.dt-container .row .dt-layout-start {
   display: none;
 }
@@ -127,4 +124,9 @@ div.dt-container div.dt-search input {
   display: -ms-flexbox;
   display: flex;
   border-color: black;
+  width: 100%;
+}
+
+.hide-search div.dt-container div.dt-search {
+  display: none;
 }

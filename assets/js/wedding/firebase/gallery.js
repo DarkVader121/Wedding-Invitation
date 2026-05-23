@@ -149,6 +149,8 @@ function reinitializeBigPicture() {
     });
 }
 
+
+
 $(document).ready(function () {
     getImagesFromSupabase();
 });

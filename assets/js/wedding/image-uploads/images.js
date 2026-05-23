@@ -3,7 +3,7 @@ import { supabase } from "../firebase/initialization.js";
 /**
  * Fetch function Not Display
  */
-export async function fetchNotDisplayedImages(imageData) {
+export async function fetchNotDisplayedImages() {
     const { data, error } = await supabase
         .from("images")
         .select("*")
@@ -14,6 +14,22 @@ export async function fetchNotDisplayedImages(imageData) {
         return;
     }
 
-    imageData = data;
-    console.log("data", data);
+    return data;
+}
+
+/**
+ * Fetch function Display
+ */
+export async function fetchDisplayedImages() {
+    const { data, error } = await supabase
+        .from("images")
+        .select("*")
+        .eq("isDisplay", true);
+
+    if (error) {
+        console.error("Supabase error:", error);
+        return;
+    }
+
+    return data;
 }
