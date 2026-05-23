@@ -11,7 +11,7 @@ function logoutFunctionality(){
             return;
         }
 
-        window.location.href = "/pages/login.html";
+        window.location.href = "/pages/login";
     });
 }
 
@@ -61,7 +61,7 @@ function setupDataTables() {
 async function manageFetchImagesBasedOnUrl(){
     const path = window.location.pathname;
 
-    if (path.endsWith("/pages/manage-uploaded-images.html")) {
+    if (path.endsWith("/pages/manage-uploaded-images")) {
         fetchNotDisplayedImages()
             .then(async (data) => {
                 await displayImagesIntoDom(data);
@@ -72,7 +72,7 @@ async function manageFetchImagesBasedOnUrl(){
         });
     }
 
-    if (path.endsWith("/pages/manage-shown-images.html")) {
+    if (path.endsWith("/pages/manage-shown-images")) {
         fetchDisplayedImages()
             .then(async (data) => {
                 await displayImagesIntoDom(data);
