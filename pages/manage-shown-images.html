@@ -40,17 +40,17 @@
       <div class="" data-layout="container">
 
         <div class="content ">
-            <div class="w-100 d-flex justify-content-between p-3" style="background-color: blanchedalmond;">
+            <div class="w-100 d-flex justify-content-between p-3" style="background-color: darkblue;">
                 <div class="d-flex flex-column">
-                    <h3>Hidden Images</h3>
-                    <p class="mb-3">Please check the images you want to show to the website.</p>
+                    <h3 class="text-white">Shown in Gallery Images</h3>
+                    <p class="mb-3 text-white">Please UNCHECK the images you want to show to the website.</p>
                     <a href="/pages/manage-uploaded-images.html" class="btn btn-secondary btn-xs">Manage uploaded images</a>
                 </div>
                
                 <button class="btn btn-danger btn-xs" style="height: fit-content;" id="logoutButton">Logout</button>
             </div>
 
-            <div class="p-3 ">
+            <div class="p-3 wi-manage-shown-images-section">
             <table id="imageGallery" class="table table-striped image-gallery-table">
                 <thead>
                     <tr>
@@ -82,7 +82,7 @@
             </table>
 
             <div class="text-center">
-                <a href="#" class="mb-5 mt-3 btn btn-primary">Save</a>
+                <a href="#" id="HideToGalleryImages" class="mb-5 mt-3 btn btn-primary">Hide Images</a>
             </div>
 
             <div class="toast-container sticky-bottom">
@@ -91,7 +91,13 @@
                         Text successfully copied
                     </div>
                 </div>
-
+            </div>
+            <div class="toast-container table-update sticky-bottom">
+                <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body bg-primary text-white d-flex justify-content-between">
+                        Table Updated
+                    </div>
+                </div>
             </div>
             </div>
         </div>

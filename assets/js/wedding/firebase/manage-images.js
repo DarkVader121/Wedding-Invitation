@@ -1,5 +1,5 @@
 import { requireAuth, logout } from "../auth/auth.js";
-import { fetchNotDisplayedImages, fetchDisplayedImages, showImagesInGalleryPage } from "../image-uploads/images.js";
+import { fetchNotDisplayedImages, fetchDisplayedImages, showImagesInGalleryPage, hideImagesInGalleryPage } from "../image-uploads/images.js";
 
 
 function logoutFunctionality(){
@@ -16,7 +16,7 @@ function logoutFunctionality(){
 }
 
 function displayImagesIntoDom(imageData) {
-
+    console.log("imageData", imageData);
     const $tbody = $(".image-gallery-table tbody");
 
     // clear existing rows
@@ -24,10 +24,12 @@ function displayImagesIntoDom(imageData) {
 
     // loop through images
     imageData.forEach((item, index) => {
+        const isChecked = item.isDisplay === true ? "checked" : "";
+
         const row = `
               <tr>
                 <td class="text-start">
-                    <input id="${item.id}" type="checkbox" class="" id="btncheck2" autocomplete="off">
+                    <input id="${item.id}" type="checkbox" class="" ${isChecked} autocomplete="off">
                 </td>
                 <td>
                     <img src="${item.imageUrl}" alt="${item.name}">
@@ -83,8 +85,6 @@ async function manageFetchImagesBasedOnUrl(){
 }
 
 function updateDateTables(selectedIds) {
-    console.log("selectedIds", selectedIds);
-
     selectedIds.forEach((id) => {
         const input = $(`#imageGallery tbody tr td input#${id}`);
 
@@ -98,36 +98,64 @@ function updateDateTables(selectedIds) {
         // clear its content
         tr.html("");
     });
+
+    $(".toast-container.table-update").addClass("show")
+
+    setTimeout(function () {
+        $(".toast-container").removeClass("show");
+    }, 1000);
 }
 
-function showOrHideImagesToGallery() {
+function showImagesToGallery() {
     $("#ShowToGalleryImages").on("click", function () {
-
         const selectedIds = [];
 
         $("#imageGallery tbody tr td input[type='checkbox']:checked").each(function () {
             selectedIds.push(this.id);
         });
 
+        if (selectedIds.length === 0) {
+            return;
+        }
+       
        showImagesInGalleryPage(selectedIds)
-        .then((result) => {
-            if (result && selectedIds.length > 0) {
+            .then((result) => {
                 updateDateTables(selectedIds);
-                console.log("selectedIds", selectedIds);
-            } else {
-                alert("There are no selected images");
-            }
-        })
-        .catch((err) => {
-            console.error("Error updating images:", err);
+            })
+            .catch((err) => {
+                console.error("Error updating images:", err);
+            });
+    });
+}
+
+function hideImagesToGallery() {
+    $("#HideToGalleryImages").on("click", function () {
+        const selectedIds = [];
+
+        $("#imageGallery tbody tr td input[type='checkbox']:not(:checked)").each(function () {
+            selectedIds.push(this.id);
         });
+
+        if (selectedIds.length === 0) {
+            alert("No actions were performed.");
+            return;
+        }
+       
+       hideImagesInGalleryPage(selectedIds)
+            .then((result) => {
+                updateDateTables(selectedIds);
+            })
+            .catch((err) => {
+                console.error("Error updating images:", err);
+            });
     });
 }
 
 $(document).ready(async function () {
     await requireAuth();
     await manageFetchImagesBasedOnUrl();
-    await showOrHideImagesToGallery();
+    await showImagesToGallery();
+    await hideImagesToGallery();
 
     logoutFunctionality();
 });

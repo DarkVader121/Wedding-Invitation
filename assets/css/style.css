@@ -130,3 +130,7 @@ div.dt-container div.dt-search input {
 .hide-search div.dt-container div.dt-search {
   display: none;
 }
+
+.wi-manage-shown-images-section .dt-layout-full table tbody tr td img {
+  height: 50px !important;
+}

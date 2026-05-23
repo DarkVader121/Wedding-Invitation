@@ -37,11 +37,27 @@ export async function fetchDisplayedImages() {
 /**
  * Update isDisplay to TRUE
 */
-
 export async function showImagesInGalleryPage(ImagesIds) {
   const { data, error } = await supabase
     .from("images")
     .update({ isDisplay: true })
+    .in("id", ImagesIds)
+    .select("*");
+
+  if (error) {
+    return error;
+  }
+
+  return data;
+}
+
+/**
+ * Update isDisplay to FALSE
+*/
+export async function hideImagesInGalleryPage(ImagesIds) {
+  const { data, error } = await supabase
+    .from("images")
+    .update({ isDisplay: false })
     .in("id", ImagesIds)
     .select("*");
 

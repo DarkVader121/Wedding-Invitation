@@ -48,3 +48,21 @@ div.dt-container div.dt-search input {
         display: none;
     }
 }
+
+.wi-manage-shown-images-section{
+    .dt-layout-full{
+        table{
+            tbody{
+                tr{
+                    td{
+                        img{
+                         
+                            height: 50px !important;
+                          
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
