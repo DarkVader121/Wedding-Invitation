@@ -2,3 +2,8 @@
     margin: 0;
 }
 
+.toast-notification-container{
+    .copy-toast, .table-updated-toast {
+        padding: 1rem;
+    }
+}

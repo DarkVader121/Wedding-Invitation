@@ -99,11 +99,11 @@ function updateDateTables(selectedIds) {
         tr.html("");
     });
 
-    $(".toast-container.table-update").addClass("show")
+    $(".toast-notification-container .copy-toast").addClass("show");
 
     setTimeout(function () {
-        $(".toast-container").removeClass("show");
-    }, 1000);
+        $(".toast-notification-container .copy-toast").removeClass("show");
+    }, 1500);
 }
 
 function showImagesToGallery() {
@@ -172,9 +172,9 @@ $(document).on("click", ".copy-icon", function () {
 
     navigator.clipboard.writeText(text);
 
-    $(".toast-container").addClass("show");
+    $(".toast-notification-container .table-updated-toast").addClass("show");
 
     setTimeout(function () {
-        $(".toast-container").removeClass("show");
+        $(".toast-notification-container .table-updated-toast").removeClass("show");
     }, 1000);
 })

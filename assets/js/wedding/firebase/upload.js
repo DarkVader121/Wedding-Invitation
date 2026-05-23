@@ -90,9 +90,7 @@ function uploadImageOnChangeSupabase() {
 
         // create data in images table
         const imageId = await createImageDataInSupabase(imageUrl);
-        // create data in images table
       
-
         const $img = $('<img>', {
             src: imageUrl,
         });
