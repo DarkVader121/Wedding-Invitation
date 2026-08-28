@@ -5,7 +5,6 @@ const Hero = () => {
     return (
         <>
             <section className="hero" style={{ backgroundImage: `url(${viteLogo})` }}>
-               <img src={viteLogo} alt="" />
             </section>
       </>
     );
