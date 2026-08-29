@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: fit-content;
     transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
@@ -19,7 +20,7 @@
 
 .btn-primary {
     background-color: var(--color-primary);
-    color: var(--color-secondary);
+    color: white;
 }
 
 .btn-secondary {

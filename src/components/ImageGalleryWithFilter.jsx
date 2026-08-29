@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 // take all images from prenup folder
 const TakePrenupImages = () => {
@@ -65,15 +67,41 @@ const ImageGalleryWithFilter = () => {
                         >
                             Reception
                         </a>
+                        <a className="btn btn-secondary"
+                            onClick={() => setFilter("no-images")}
+                        >
+                            No Images
+                        </a>
                     </div>
                 </div>
 
                 <div className="wi-gallery-images gap-3 mt-5 grid grid-cols-3 justify-center items-start">
-                    {Object.values(filteredImages).map((image, index) => (
-                        <a key={index} className="fade-in show">
-                            <img src={image.src} alt={`Prenup ${index + 1}`} />
-                        </a>
-                    ))}
+                    <PhotoProvider>
+                        {filteredImages.length > 0 ? (
+                            filteredImages.map((item, index) => (
+                                <PhotoView key={item.path} src={item.src}>
+                                    <a className="fade-in show">
+                                        <img
+                                            src={item.src}
+                                            alt={`Prenup ${index + 1}`}
+                                        />
+                                    </a>
+                                </PhotoView>
+                            ))
+                        ) : (
+                            <div className="col-span-3">
+                                <br />
+                                <span className="mt-7 text-gray-500">
+                                     No images for the meantime.
+                                </span>
+                            </div>
+                        )}
+                    </PhotoProvider>
+                </div>
+                <div className="mt-5 text-center flex justify-center">
+                    <a className="btn btn-primary">
+                        Go to Gallery
+                    </a>
                 </div>
             </div>
         </>

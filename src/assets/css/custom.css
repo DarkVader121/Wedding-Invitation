@@ -34,7 +34,7 @@
 }
 
 .wi-gallery-images{
-  min-height: 300px;
+  min-height: 200px;
   a{
     img {
       height: 100px;
@@ -59,3 +59,8 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+.PhotoView-Slider__Backdrop {
+    background: #000000b5 !important;
+}
+
