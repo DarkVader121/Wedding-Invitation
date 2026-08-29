@@ -1,6 +1,6 @@
 import FullImage from '../assets/images/background/FullImageSection1.png'
 
-const FullImageSection1 = () => {
+const FullImageSection2 = () => {
 
     return (
         <>
@@ -10,4 +10,4 @@ const FullImageSection1 = () => {
     );
 }
 
-export default FullImageSection1;
+export default FullImageSection2;

@@ -1,5 +1,6 @@
 import './App.css'
-import { Hero, Invitation, FullImageSection1, Gallery } from './sections'
+import { Hero, Invitation, FullImageSection1, Gallery, Details, FullImageSection2 } from './sections'
+// import { Cutoffs } from './components'
 
 function App() {
   return (
@@ -8,6 +9,9 @@ function App() {
       <Invitation />
       <FullImageSection1 />
       <Gallery />
+      <Details />
+      <FullImageSection2 />
+      
     </>
   )
 }
