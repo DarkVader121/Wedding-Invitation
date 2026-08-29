@@ -34,6 +34,7 @@
 }
 
 .wi-gallery-images{
+  min-height: 300px;
   a{
     img {
       height: 100px;
