@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Erron John C. Lapac",
+        "type": "groom",
+        "short-description": "radiant"
+    },
+    {
+        "id": 2,
+        "name": "Deakin Jesha L. Cagas",
+        "type": "bride",
+        "short-description": "graceful"
+    },
+    {
+        "id": 3,
+        "name": "Reuel L. Lapac",
+        "type": "Groom’s parents",
+        "short-description": "Loving"
+    },
+    {
+        "id": 4,
+        "name": "Princesa Nicanora C. Lapac",
+        "type": "Groom’s parents",
+        "short-description": "Loving"
+    },
+    {
+        "id": 5,
+        "name": "Esther L. Cagas",
+        "type": "Bride’s parents",
+        "short-description": "Loving"
+    },
+    {
+        "id": 6,
+        "name": "Florencio L. Cagas",
+        "type": "Bride’s parents",
+        "short-description": "Loving"
+    }
+]
