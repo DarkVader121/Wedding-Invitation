@@ -34,5 +34,197 @@
         "name": "Florencio L. Cagas",
         "type": "Bride’s parents",
         "short-description": "Loving"
+    },
+    {
+        "id": 7,
+        "name": "Melchor M. Comia Jr.",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 8,
+        "name": "Melchor M. Comia Jr.",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 9,
+        "name": "Melchor M. Comia Jr.",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+        {
+        "id": 10,
+        "name": "Ricardo D. Santos",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 11,
+        "name": "Antonio R. Garcia",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 12,
+        "name": "Eduardo P. Mendoza",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 13,
+        "name": "Roberto L. Cruz",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 14,
+        "name": "Fernando A. Reyes",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 15,
+        "name": "Jose M. Navarro",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 16,
+        "name": "Ramon T. Villanueva",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 17,
+        "name": "Manuel S. Bautista",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 18,
+        "name": "Carlos E. Flores",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 19,
+        "name": "Danilo G. Aquino",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 20,
+        "name": "Victor N. Castillo",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 21,
+        "name": "Rogelio B. Torres",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 22,
+        "name": "Mariano C. Delgado",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 23,
+        "name": "Enrique F. Ramos",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 24,
+        "name": "Alfredo J. Mercado",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 25,
+        "name": "Gregorio V. Herrera",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 26,
+        "name": "Armando K. Lim",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 27,
+        "name": "Teodoro P. Manalo",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 28,
+        "name": "Benjamin O. Salazar",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 29,
+        "name": "Francisco D. Salonga",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 30,
+        "name": "Leonardo M. Villaflor",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 31,
+        "name": "Cesar R. Padilla",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 32,
+        "name": "Rolando T. Evangelista",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 33,
+        "name": "Nestor A. Valdez",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 34,
+        "name": "Wilfredo C. Mendoza",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 35,
+        "name": "Gilberto P. Santiago",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 36,
+        "name": "Arturo L. Fernandez",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 37,
+        "name": "Rodolfo E. Manansala",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 38,
+        "name": "Edgardo B. Aquino",
+        "type": "Male Principal Sponsors",
+        "short-description": "Honored"
     }
 ]

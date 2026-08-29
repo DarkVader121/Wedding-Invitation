@@ -14,14 +14,14 @@
   font-family: var(--font-body);
 }
 
-.wi-title-container {
+.wi-title-container, .wi-title-container-info {
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: start;
 
     h3, p {
-        font-size: var(--text-4xl);
+        text-transform: capitalize;
     }
 
     h3 {
@@ -31,6 +31,18 @@
     p {
         margin-left: .5rem;
     }
+}
+
+.wi-title-container{
+  h3, p {
+    font-size: var(--text-4xl);
+  }
+}
+
+.wi-title-container-info{
+  h3, p {
+    font-size: var(--text-2xl);
+  }
 }
 
 .wi-gallery-images{
