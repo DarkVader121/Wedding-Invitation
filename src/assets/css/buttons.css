@@ -1,0 +1,28 @@
+.btn {
+    font-family: var(--font-body);
+    font-size: var(--font-btn-size);
+    padding: 7px 12px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    min-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:active {
+    transform: scale(0.85);
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+}

@@ -4,7 +4,7 @@ const Invitation = () => {
 
     return (
         <>
-            <section className="hero">
+            <section>
                 <div className="container">
                     <div className="flex flex-col justify-center items-center">
                         <p className="text-primary text-center">You are cordially invited to the <br /> wedding of</p>

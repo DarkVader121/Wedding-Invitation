@@ -1,4 +1,4 @@
-import FullImage from '../assets/images/FullImageSection1.png'
+import FullImage from '../assets/images/background/FullImageSection1.png'
 
 const FullImageSection1 = () => {
 

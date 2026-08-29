@@ -1,4 +1,4 @@
-import heroImage from '../assets/images/hero-background.png'
+import heroImage from '../assets/images/background/hero-background.png'
 
 const Hero = () => {
 

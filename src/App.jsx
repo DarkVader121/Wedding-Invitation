@@ -1,5 +1,5 @@
 import './App.css'
-import { Hero, Invitation, FullImageSection1 } from './sections'
+import { Hero, Invitation, FullImageSection1, Gallery } from './sections'
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <Hero />  
       <Invitation />
       <FullImageSection1 />
-
+      <Gallery />
     </>
   )
 }

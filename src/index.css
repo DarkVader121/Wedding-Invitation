@@ -2,9 +2,10 @@
 
 @theme {
   --color-primary: #003060;
-  --color-secondary: #f5efe8;
+  --color-secondary: #e1bf83;
   --font-heading: "Alex Brush", cursive;
   --font-body: "Libre Baskerville", serif;
   --text-2xl: 1.5rem;
+  --font-btn-size: 1rem; 
 }
 
