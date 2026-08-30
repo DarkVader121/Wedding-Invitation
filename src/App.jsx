@@ -1,32 +1,15 @@
 import './App.css'
-import { Hero, Invitation, FullImageSection1, Gallery, Details, FullImageSection2, DressCode, GroomBrideParents, FullImageSection3, MalePrincipal, FemalePrincipal, FullImageSection4, EntourageList, EntourageList1, RSVP, GoogleMaps, Footer} from './sections'
-import { Cutoffs } from './components'
+import { Routes, Route } from "react-router";
+import { SweetGallery, Home } from './pages'
 
 function App() {
   return (
     <>
-      <Hero />  
-      <Invitation />
-      <FullImageSection1 />
-      <Gallery />
-      <Details />
-      <FullImageSection2 />
-      <DressCode />
-      <Cutoffs />
-      <GroomBrideParents />
-      <FullImageSection3 />
-      <MalePrincipal />
-      <Cutoffs />
-      <FemalePrincipal />
-      <FullImageSection4 />
-      <EntourageList />
-      <FullImageSection2 />
-      <EntourageList1 />
+      <Routes>
+        <Route path="/sweet-gallery" element={<SweetGallery />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
 
-      <RSVP />
-      <GoogleMaps />
-     
-      <Footer />
     </>
   )
 }

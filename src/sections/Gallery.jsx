@@ -1,6 +1,9 @@
 import {ImageGalleryWithFilter} from "../components"
+import { Link, useLocation  } from "react-router";
+
 
 const Gallery = () => {
+  const location = useLocation();
 
     return (
         <>
@@ -18,8 +21,8 @@ const Gallery = () => {
 
                         <ImageGalleryWithFilter/>
                         <div className="mt-5 text-center flex justify-center">
-                            <a className="btn btn-primary btn-lg">
-                            See Our Gallery
+                            <a href={location.pathname === "/sweet-gallery" ? "/" : "/sweet-gallery"} to={location.pathname === "/sweet-gallery" ? "/" : "/sweet-gallery"} className={`btn btn-primary btn-lg ${ location.pathname === "/sweet-gallery" ? "fixed bottom-0 mb-5" : "" }`} >
+                             {location.pathname === "/sweet-gallery" ? "Home" : "See Our Gallery"} 
                             </a>
                         </div>
                     </div>

@@ -20,6 +20,8 @@
 
 .btn-lg {
     font-size: 1.3rem;
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
 }
 
 .btn:active {
