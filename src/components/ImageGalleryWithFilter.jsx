@@ -15,7 +15,7 @@ const TakePrenupImages = () => {
 
     // return Object.entries(images).map(([path, src]) => ({
     //     src,
-    //     category: "prenup" OR all or wedding or reception, // You can modify this based on your folder structure or naming convention
+    //     category: "prenup", // You can modify this based on your folder structure or naming convention
     //     path,
     // }));
 
@@ -75,7 +75,7 @@ const ImageGalleryWithFilter = () => {
                     </div>
                 </div>
 
-                <div className="wi-gallery-images gap-3 mt-5 grid grid-cols-3 justify-center items-start">
+                <div className="wi-gallery-images limit-9  gap-3 mt-5 grid grid-cols-3 justify-center items-start">
                     <PhotoProvider>
                         {filteredImages.length > 0 ? (
                             filteredImages.map((item, index) => (
