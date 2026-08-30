@@ -5,7 +5,7 @@ const Cutouts = () => {
 
     return (
         <>
-            <div className="container">
+            <div className="container flex justify-center">
                 <img src={cutoffs}  alt="" className="w-100 h-[35px]" />
             </div>
       </>

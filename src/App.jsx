@@ -1,5 +1,5 @@
 import './App.css'
-import { Hero, Invitation, FullImageSection1, Gallery, Details, FullImageSection2, DressCode, GroomBrideParents, FullImageSection3, MalePrincipal } from './sections'
+import { Hero, Invitation, FullImageSection1, Gallery, Details, FullImageSection2, DressCode, GroomBrideParents, FullImageSection3, MalePrincipal, FemalePrincipal, FullImageSection4, EntourageList, EntourageList1, Footer} from './sections'
 import { Cutoffs } from './components'
 
 function App() {
@@ -16,6 +16,13 @@ function App() {
       <GroomBrideParents />
       <FullImageSection3 />
       <MalePrincipal />
+      <Cutoffs />
+      <FemalePrincipal />
+      <FullImageSection4 />
+      <EntourageList />
+      <FullImageSection2 />
+      <EntourageList1 />
+      <Footer />
     </>
   )
 }

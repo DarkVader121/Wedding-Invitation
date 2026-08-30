@@ -226,5 +226,371 @@
         "name": "Edgardo B. Aquino",
         "type": "Male Principal Sponsors",
         "short-description": "Honored"
+    },
+  {
+        "id": 39,
+        "name": "Floro R. Murcia",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 40,
+        "name": "Marissa L. Santos",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 41,
+        "name": "Gloria M. Reyes",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 42,
+        "name": "Carmen D. Garcia",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 43,
+        "name": "Rosario P. Mendoza",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 44,
+        "name": "Lourdes A. Cruz",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 45,
+        "name": "Teresa V. Aquino",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 46,
+        "name": "Elena S. Navarro",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 47,
+        "name": "Maribel T. Castillo",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 48,
+        "name": "Estrella F. Ramos",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 49,
+        "name": "Josephine C. Flores",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 50,
+        "name": "Beatriz N. Villanueva",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 51,
+        "name": "Corazon E. Bautista",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 52,
+        "name": "Lucia G. Fernandez",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 53,
+        "name": "Natividad R. Torres",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 54,
+        "name": "Amelia J. Herrera",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 55,
+        "name": "Evelyn M. Salazar",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 56,
+        "name": "Concepcion L. Mercado",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 57,
+        "name": "Remedios K. Domingo",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 58,
+        "name": "Adela P. Santiago",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 59,
+        "name": "Margarita A. Dela Cruz",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 60,
+        "name": "Angela R. Manalo",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 61,
+        "name": "Patricia M. Gonzales",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 62,
+        "name": "Felisa C. Rivera",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 63,
+        "name": "Teresa B. Lim",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 64,
+        "name": "Monica S. Valdez",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 65,
+        "name": "Araceli P. Soriano",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 66,
+        "name": "Victoria E. Marquez",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 67,
+        "name": "Ma. Cristina F. Aquino",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 68,
+        "name": "Bernadette L. Tan",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 69,
+        "name": "Carolina N. Mercado",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 70,
+        "name": "Isabel G. Navarro",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 71,
+        "name": "Rita V. Mendoza",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 72,
+        "name": "Erlinda J. Castro",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 73,
+        "name": "Sylvia D. Fernandez",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 74,
+        "name": "Diana M. Villareal",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 75,
+        "name": "Glenda T. Ramos",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 76,
+        "name": "Maricel O. Bautista",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 77,
+        "name": "Nora P. Salonga",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 78,
+        "name": "Adriana K. Flores",
+        "type": "Female Principal Sponsors",
+        "short-description": "Honored"
+    },
+    {
+        "id": 79,
+        "name": "Troy R. Besinga",
+        "type": "bestman",
+        "short-description": "Genuine"
+    },
+    {
+        "id": 80,
+        "name": "Dreams Jesther Cagas",
+        "type": "maid of honor",
+        "short-description": "Precious"
+    },
+    {
+        "id": 81,
+        "name": "Maria Clarace S. Rudio",
+        "type": "veil",
+        "short-description": "Chosen"
+    },
+    {
+        "id": 82,
+        "name": "Jhon Wilson T. Taupo",
+        "type": "veil",
+        "short-description": "Chosen"
+    },
+    {
+        "id": 83,
+        "name": "Maria Clarace S. Rudio",
+        "type": "chord",
+        "short-description": "Sincere"
+    },
+    {
+        "id": 84,
+        "name": "Jhon Wilson T. Taupo",
+        "type": "chord",
+        "short-description": "Sincere"
+    },
+    {
+        "id": 85,
+        "name": "Maria Clarace S. Rudio",
+        "type": "candle",
+        "short-description": "Wholehearted"
+    },
+    {
+        "id": 86,
+        "name": "Jhon Wilson T. Taupo",
+        "type": "candle",
+        "short-description": "Wholehearted"
+    },
+    {
+        "id": 87,
+        "name": "Marek Andre Efondol",
+        "type": "groomsmen",
+        "short-description": "Loyal"
+    },
+    {
+        "id": 88,
+        "name": "Adrian Mathew Abellar",
+        "type": "groomsmen",
+        "short-description": "Loyal"
+    },
+    {
+        "id": 89,
+        "name": "John Lester G. Cuento",
+        "type": "groomsmen",
+        "short-description": "Loyal"
+    },
+    {
+        "id": 90,
+        "name": "Jeavon Anthony Rosco",
+        "type": "groomsmen",
+        "short-description": "Loyal"
+    },
+    {
+        "id": 91,
+        "name": "Andy Lapac",
+        "type": "groomsmen",
+        "short-description": "Loyal"
+    },
+    {
+        "id": 92,
+        "name": "Endera T. Peñamante",
+        "type": "bridesmaids",
+        "short-description": "Beloved"
+    },
+    {
+        "id": 93,
+        "name": "Erlie A. Busto",
+        "type": "bridesmaids",
+        "short-description": "Beloved"
+    },
+    {
+        "id": 94,
+        "name": "Elaiza R. Javier",
+        "type": "bridesmaids",
+        "short-description": "Beloved"
+    },
+    {
+        "id": 95,
+        "name": "Baby Ann A. Torres",
+        "type": "bridesmaids",
+        "short-description": "Beloved"
+    },
+    {
+        "id": 96,
+        "name": "Aires Jean B. Mercado",
+        "type": "bridesmaids",
+        "short-description": "Beloved"
+    },
+    {
+        "id": 97,
+        "name": "Brian Mathew S. Felomino",
+        "type": "ring bearer",
+        "short-description": "Adorable"
+    },
+    {
+        "id": 98,
+        "name": "Brylle Paulo Castillo",
+        "type": "arrhae bearer",
+        "short-description": "Charming"
+    },
+    {
+        "id": 99,
+        "name": "Evan Rafael Lucas Gonzales",
+        "type": "bible bearer",
+        "short-description": "Gentle"
     }
 ]
