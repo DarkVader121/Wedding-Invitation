@@ -57,15 +57,6 @@ const EntourageList = () => {
                             </p>
                         ))}
 
-                        <div className="wi-title-container-info mt-7">
-                            <h3>{candleInfo[0]["short-description"]}</h3>
-                            <p>{candleInfo[0].type}</p>
-                        </div>
-                        {candleInfo.map((data) => (
-                            <p key={data.id} className="text-lg mt-[-7px]">
-                                {data.name}
-                            </p>
-                        ))}
 
                         <div className="wi-title-container-info mt-7">
                             <h3>{groomsmen[0]["short-description"]}</h3>

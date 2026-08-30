@@ -43,7 +43,7 @@ const ImageGalleryWithFilter = () => {
 
     return (
         <>
-            <div className="mt-5 self-start">
+            <div className="mt-7 self-start">
                 <div className="flex items-start justify-start gap-3">
                     <p className="whitespace-nowrap mt-2">Filter by:</p>
                     <div className="flex flex-wrap gap-2">
