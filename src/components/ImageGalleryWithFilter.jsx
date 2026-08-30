@@ -60,17 +60,13 @@ const ImageGalleryWithFilter = () => {
                         <a className="btn btn-secondary btn-sm"
                             onClick={() => setFilter("wedding")}
                         >
-                            Wedding
+                            Wedding Church
                         </a>
-                        <a className="btn btn-secondary btn-sm"
+                        <a className="btn btn-secondary btn-sm" 
+                             style={{ backgroundColor: "rgb(110, 132, 156)" }}
                             onClick={() => setFilter("reception")}
                         >
-                            Reception
-                        </a>
-                        <a className="btn btn-secondary btn-sm"
-                            onClick={() => setFilter("no-images")}
-                        >
-                            No Images
+                            Taken by Guest
                         </a>
                     </div>
                 </div>
