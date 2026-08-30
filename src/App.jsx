@@ -22,7 +22,7 @@ function App() {
       <EntourageList />
       <FullImageSection2 />
       <EntourageList1 />
-      <Cutoffs />
+
       <RSVP />
       <GoogleMaps />
      

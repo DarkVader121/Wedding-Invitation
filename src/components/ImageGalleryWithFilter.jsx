@@ -98,11 +98,6 @@ const ImageGalleryWithFilter = () => {
                         )}
                     </PhotoProvider>
                 </div>
-                <div className="mt-5 text-center flex justify-center">
-                    <a className="btn btn-primary">
-                        Go to Gallery
-                    </a>
-                </div>
             </div>
         </>
     );

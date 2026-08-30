@@ -18,6 +18,10 @@
     font-size: 16px;
 }
 
+.btn-lg {
+    font-size: 1.3rem;
+}
+
 .btn:active {
     transform: scale(0.85);
     opacity: 0.9;

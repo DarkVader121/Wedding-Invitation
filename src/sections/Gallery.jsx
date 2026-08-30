@@ -17,6 +17,11 @@ const Gallery = () => {
                         </p>
 
                         <ImageGalleryWithFilter/>
+                        <div className="mt-5 text-center flex justify-center">
+                            <a className="btn btn-primary btn-lg">
+                            See Our Gallery
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
