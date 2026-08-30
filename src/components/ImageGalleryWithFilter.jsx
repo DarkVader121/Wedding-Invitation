@@ -47,27 +47,27 @@ const ImageGalleryWithFilter = () => {
                 <div className="flex items-start justify-start gap-3">
                     <p className="whitespace-nowrap mt-2">Filter by:</p>
                     <div className="flex flex-wrap gap-2">
-                        <a className="btn btn-secondary"
+                        <a className="btn btn-secondary btn-sm"
                             onClick={() => setFilter("all")}
                         >
                             All
                         </a>
-                        <a className="btn btn-secondary"
+                        <a className="btn btn-secondary btn-sm"
                             onClick={() => setFilter("prenup")}
                         >
                             Prenup
                         </a>
-                        <a className="btn btn-secondary"
+                        <a className="btn btn-secondary btn-sm"
                             onClick={() => setFilter("wedding")}
                         >
                             Wedding
                         </a>
-                        <a className="btn btn-secondary"
+                        <a className="btn btn-secondary btn-sm"
                             onClick={() => setFilter("reception")}
                         >
                             Reception
                         </a>
-                        <a className="btn btn-secondary"
+                        <a className="btn btn-secondary btn-sm"
                             onClick={() => setFilter("no-images")}
                         >
                             No Images

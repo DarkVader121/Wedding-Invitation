@@ -13,6 +13,10 @@
     transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
+.btn-sm {
+    font-size: 10px;
+}
+
 .btn:active {
     transform: scale(0.85);
     opacity: 0.9;
@@ -27,3 +31,4 @@
     background-color: var(--color-secondary);
     color: white;
 }
+
