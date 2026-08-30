@@ -89,3 +89,12 @@
   }
 }
 
+.active-state {
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.active-state:active {
+    transform: scale(0.85);
+    opacity: 0.9;
+}
+

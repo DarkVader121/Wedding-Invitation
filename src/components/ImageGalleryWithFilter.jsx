@@ -13,20 +13,9 @@ const TakePrenupImages = () => {
         }
     );
 
-    // return Object.entries(images).map(([path, src]) => ({
-    //     src,
-    //     category: "prenup", // You can modify this based on your folder structure or naming convention
-    //     path,
-    // }));
-
-    return Object.entries(images).map(([path, src], index) => ({
+    return Object.entries(images).map(([path, src]) => ({
         src,
-        category:
-            index % 3 === 0
-                ? "prenup"
-                : index % 3 === 1
-                    ? "wedding"
-                    : "reception",
+        category: "prenup", // You can modify this based on your folder structure or naming convention
         path,
     }));
 }
@@ -43,7 +32,7 @@ const ImageGalleryWithFilter = () => {
 
     return (
         <>
-            <div className="mt-7 self-start">
+            <div className="mt-7">
                <div className="flex w-full max-w-[356px] min-w-0">
                     <div className="flex w-full min-w-0 flex-nowrap gap-2 overflow-x-auto overflow-y-hidden">
                         <a
@@ -100,7 +89,6 @@ const ImageGalleryWithFilter = () => {
                             ))
                         ) : (
                             <div className="col-span-3">
-                                <br />
                                 <span className="mt-7 text-gray-500">
                                      No images for the meantime.
                                 </span>

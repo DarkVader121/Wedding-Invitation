@@ -21,7 +21,7 @@ const Gallery = () => {
 
                         <ImageGalleryWithFilter/>
                         <div className="mt-5 text-center flex justify-center">
-                            <a href={location.pathname === "/sweet-gallery" ? "/" : "/sweet-gallery"} to={location.pathname === "/sweet-gallery" ? "/" : "/sweet-gallery"} className={`btn btn-primary btn-lg ${ location.pathname === "/sweet-gallery" ? "fixed bottom-0 mb-5" : "" }`} >
+                            <a href={location.pathname === "/sweet-gallery" ? "/" : "/sweet-gallery"} to={location.pathname === "/sweet-gallery" ? "/" : "/sweet-gallery"} className={`btn btn-primary  ${ location.pathname === "/sweet-gallery" ? "fixed bottom-0 mb-5" : "" }`} >
                              {location.pathname === "/sweet-gallery" ? "Home" : "See Our Gallery"} 
                             </a>
                         </div>
