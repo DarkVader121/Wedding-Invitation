@@ -10,7 +10,7 @@ const RSVP = () => {
                     <div className="flex flex-col justify-center items-center">
                         <div className="wi-title-container mt-1">
                             <h3>Heartfelt </h3>
-                            <p>Rsvp</p>
+                            <p>RSVP</p>
                         </div>
 
                         <p className="mt-7 mb-3 text-center">

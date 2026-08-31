@@ -67,6 +67,18 @@
   }
 } 
 
+.wi-gallery-images.no-effects {
+  a{
+    img {
+      transition: none;
+    }
+
+    img:active {
+        transform: none;
+    }
+  }
+}
+
 .fade-in {
     opacity: 0;
     transform: translateY(8px);
