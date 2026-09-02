@@ -83,6 +83,7 @@ const Hero = () => {
     };
 
     const uploadImagesInSupabaseStorage = async () => {
+
         // sanitize images array to only include those with a file 
         if (images.length === 0) {
             alert("No images to upload. Please select an image first.");
@@ -113,6 +114,8 @@ const Hero = () => {
 
             if (error) {
                 console.error("Upload error:", error.message);
+                alert("Error uploading image: " + error.message);
+                setIsLoading(false);
                 return;
             }
 

@@ -46,7 +46,7 @@
 }
 
 .wi-gallery-images{
-  min-height: 200px;
+  min-height: 20px;
   a{
     img {
       height: 100px;
