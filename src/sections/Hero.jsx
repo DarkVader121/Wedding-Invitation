@@ -138,6 +138,7 @@ const Hero = () => {
     })
     .finally(() => {
         setIsLoading(false);
+        setShowThankYou(true);
     });
 
     };
