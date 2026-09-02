@@ -106,7 +106,7 @@ const Hero = () => {
 
             const { data, error } = await supabase
                 .storage
-                .from("wedding images")
+                .from("Uploaded by Guests")
                 .upload(filePath, file, {
                     cacheControl: "3600",
                     upsert: false
