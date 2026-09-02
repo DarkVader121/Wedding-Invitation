@@ -12,54 +12,64 @@ const Hero = () => {
         },
         {
             id: "20260831222530002",
-            src: "https://media.istockphoto.com/id/2090025382/photo/the-man-gently-holds-the-brides-hand-with-a-beautiful-golden-wedding-ring-enlarged-image-of.jpg?s=612x612&w=0&k=20&c=MtEDI1zyEWDGyAD6VyrsviEvKiwjhzsSxIRyAs-Luz4=",
+            src: "https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg",
             category: "prenup",
             path: "prenup/image-2.jpg",
         },
         {
             id: "20260831222530003",
-            src: "https://media.istockphoto.com/id/2090025382/photo/the-man-gently-holds-the-brides-hand-with-a-beautiful-golden-wedding-ring-enlarged-image-of.jpg?s=612x612&w=0&k=20&c=MtEDI1zyEWDGyAD6VyrsviEvKiwjhzsSxIRyAs-Luz4=",
+            src: "https://www.brides.com/thmb/fJSfAbT8DxJs4dW79wcWZEQZgJs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/must-take-wedding-photos-bride-groom-walk-clary-prfeiffer-photography-0723-primary-b4221bcb1a2b43e6b0820a8c3e3bce52.jpg",
             category: "wedding",
             path: "wedding/image-3.jpg",
         },
         {
             id: "20260831222530004",
-            src: "https://media.istockphoto.com/id/2090025382/photo/the-man-gently-holds-the-brides-hand-with-a-beautiful-golden-wedding-ring-enlarged-image-of.jpg?s=612x612&w=0&k=20&c=MtEDI1zyEWDGyAD6VyrsviEvKiwjhzsSxIRyAs-Luz4=",
+            src: "https://www.brides.com/thmb/Bh3DGsr-KkrnIcej8dWy3rrP88A=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(1999x0:2001x2)/grace-travis_08-db03e2bf6b0245b2a727dbe0d5119f49.jpg",
             category: "wedding",
             path: "wedding/image-3.jpg",
         },
         {
             id: "20260831222530005",
-            src: "https://media.istockphoto.com/id/2090025382/photo/the-man-gently-holds-the-brides-hand-with-a-beautiful-golden-wedding-ring-enlarged-image-of.jpg?s=612x612&w=0&k=20&c=MtEDI1zyEWDGyAD6VyrsviEvKiwjhzsSxIRyAs-Luz4=",
+            src: "https://www.brides.com/thmb/Hz_1WfDLG_xM3Q3636Od8v9atbk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(1999x0:2001x2)/grace-travis_03-9d5563be3ec547dcbd57b019e7a03e91.jpg",
             category: "wedding",
             path: "wedding/image-3.jpg",
         },
         {
             id: "20260831222530006",
-            src: "https://media.istockphoto.com/id/2090025382/photo/the-man-gently-holds-the-brides-hand-with-a-beautiful-golden-wedding-ring-enlarged-image-of.jpg?s=612x612&w=0&k=20&c=MtEDI1zyEWDGyAD6VyrsviEvKiwjhzsSxIRyAs-Luz4=",
+            src: "https://images.junebugweddings.com/4f/95/4f95af3eef5ca76d.jpg",
             category: "wedding",
             path: "wedding/image-3.jpg",
         },
         {
             id: "20260831222530007",
-            src: "https://media.istockphoto.com/id/2090025382/photo/the-man-gently-holds-the-brides-hand-with-a-beautiful-golden-wedding-ring-enlarged-image-of.jpg?s=612x612&w=0&k=20&c=MtEDI1zyEWDGyAD6VyrsviEvKiwjhzsSxIRyAs-Luz4=",
+            src: "https://images.junebugweddings.com/3c/6f/3c6f98eb514acb24.jpg",
             category: "wedding",
             path: "wedding/image-3.jpg",
         },
     ];
 
-        const [hiddenItems, setHiddenItems] = useState([]);
-        const [removedItems, setRemovedItems] = useState([]);
+    const [hiddenItems, setHiddenItems] = useState([]);
+    const [removedItems, setRemovedItems] = useState([]);
 
-        const removeShow = (id) => {
-            // Remove .show immediately
-            setHiddenItems((prev) => [...prev, id]);
+    const removeShow = (id) => {
+        // Remove .show immediately
+        setHiddenItems((prev) => [...prev, id]);
 
-            // Remove the <a> after 3 seconds
-            setTimeout(() => {
-                setRemovedItems((prev) => [...prev, id]);
-            }, 1000);
-        };
+        // Remove the <a> after 3 seconds
+        setTimeout(() => {
+            setRemovedItems((prev) => [...prev, id]);
+        }, 1000);
+    };
+
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            console.log(file);
+            console.log(file.name);
+        }
+    };
+
     return (
         <>
         <section className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
@@ -149,11 +159,24 @@ const Hero = () => {
                         morning moments to the last dance under the string lights, every memory here was made possible by the people.
                     </p>
 
-                   <a className='active-state mt-5 relative flex flex-col justify-center items-center w-[100%] h-[170px] bg-gray-100 rounded-xl'>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        id="image-upload"
+                        className="hidden"
+                        onChange={handleImageUpload}
+                    />
+
+                   <a onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById("image-upload").click();
+                        }}
+                        className='active-state mt-5 relative flex flex-col justify-center items-center w-[100%] h-[170px] bg-gray-100 rounded-xl'>
                         <span className='absolute top-2 left-2 w-5 h-5 border-t-[3px] border-l-[3px] border-slate-700 rounded-tl-md'></span>
                         <span className='absolute top-2 right-2 w-5 h-5 border-t-[3px] border-r-[3px] border-slate-700 rounded-tr-md'></span>
                         <span className='absolute bottom-2 left-2 w-5 h-5 border-b-[3px] border-l-[3px] border-slate-700 rounded-bl-md'></span>
                         <span className='absolute bottom-2 right-2 w-5 h-5 border-b-[3px] border-r-[3px] border-slate-700 rounded-br-md'></span>
+                     
 
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
