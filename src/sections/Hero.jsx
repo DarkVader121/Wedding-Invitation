@@ -119,10 +119,9 @@ const Hero = () => {
                 return;
             }
 
-            setShowThankYou(true);
-            setImages([]);
         }
         setShowThankYou(true);
+        setImages([]);
         setIsLoading(false);
     };
 
