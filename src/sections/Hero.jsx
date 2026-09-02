@@ -1,55 +1,33 @@
 import heroImage from '../assets/images/background/hero-background.png'
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "../lib/supabase";
 
 const Hero = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const images = [
-        {
-            id: "20260831222530001",
-            src: "https://media.istockphoto.com/id/2090025382/photo/the-man-gently-holds-the-brides-hand-with-a-beautiful-golden-wedding-ring-enlarged-image-of.jpg?s=612x612&w=0&k=20&c=MtEDI1zyEWDGyAD6VyrsviEvKiwjhzsSxIRyAs-Luz4=",
-            category: "prenup",
-            path: "prenup/image-1.jpg",
-        },
-        {
-            id: "20260831222530002",
-            src: "https://www.brides.com/thmb/LMyiMPxRFx82BLiHZC8lySJFnGo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/marriage-pose-photo-recirc-kyle-john-1-29-4f97523aa049471992292e8d6ddc41ee.jpg",
-            category: "prenup",
-            path: "prenup/image-2.jpg",
-        },
-        {
-            id: "20260831222530003",
-            src: "https://www.brides.com/thmb/fJSfAbT8DxJs4dW79wcWZEQZgJs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/must-take-wedding-photos-bride-groom-walk-clary-prfeiffer-photography-0723-primary-b4221bcb1a2b43e6b0820a8c3e3bce52.jpg",
-            category: "wedding",
-            path: "wedding/image-3.jpg",
-        },
-        {
-            id: "20260831222530004",
-            src: "https://www.brides.com/thmb/Bh3DGsr-KkrnIcej8dWy3rrP88A=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(1999x0:2001x2)/grace-travis_08-db03e2bf6b0245b2a727dbe0d5119f49.jpg",
-            category: "wedding",
-            path: "wedding/image-3.jpg",
-        },
-        {
-            id: "20260831222530005",
-            src: "https://www.brides.com/thmb/Hz_1WfDLG_xM3Q3636Od8v9atbk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(1999x0:2001x2)/grace-travis_03-9d5563be3ec547dcbd57b019e7a03e91.jpg",
-            category: "wedding",
-            path: "wedding/image-3.jpg",
-        },
-        {
-            id: "20260831222530006",
-            src: "https://images.junebugweddings.com/4f/95/4f95af3eef5ca76d.jpg",
-            category: "wedding",
-            path: "wedding/image-3.jpg",
-        },
-        {
-            id: "20260831222530007",
-            src: "https://images.junebugweddings.com/3c/6f/3c6f98eb514acb24.jpg",
-            category: "wedding",
-            path: "wedding/image-3.jpg",
-        },
-    ];
+    // Thank you State
+    const [showThankYou, setShowThankYou] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
+    // Modal open close
+    const [isOpen, setIsOpen] = useState(false);
+
+    // Images data states
+    const [images, setImages] = useState([
+        // sameple data 
+        // {
+        //     id: "20260831222530001",
+        //     src: "https://media.istockphoto.com/id/2090025382/photo/the-man-gently-holds-the-brides-hand-with-a-beautiful-golden-wedding-ring-enlarged-image-of.jpg?s=612x612&w=0&k=20&c=MtEDI1zyEWDGyAD6VyrsviEvKiwjhzsSxIRyAs-Luz4=",
+        //     category: "prenup",
+            
+        //     path: "prenup/image-1.jpg",
+        // }
+    ]); 
+
+    useEffect(() => {
+        console.log("images updated:", images);
+    }, [images]);
+
+    // State to manage hidden and removed items
     const [hiddenItems, setHiddenItems] = useState([]);
-    const [removedItems, setRemovedItems] = useState([]);
 
     const removeShow = (id) => {
         // Remove .show immediately
@@ -57,17 +35,92 @@ const Hero = () => {
 
         // Remove the <a> after 3 seconds
         setTimeout(() => {
-            setRemovedItems((prev) => [...prev, id]);
-        }, 1000);
+            setImages((prevImages) => {
+                const updatedImages = prevImages.filter(
+                    (image) => image.id !== id
+                );
+
+                return updatedImages;
+            });
+        }, 800);
     };
 
     const handleImageUpload = (e) => {
-        const file = e.target.files[0];
+        const files = Array.from(e.target.files);
 
-        if (file) {
-            console.log(file);
-            console.log(file.name);
+        if (!files.length) return;
+
+        const newImages = files.map((file) => ({
+            id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+            src: URL.createObjectURL(file),
+            category: "guest",
+            file: file,
+            path: file.name,
+        }));
+
+        // Keep new images hidden initially
+        setHiddenItems((prev) => [
+            ...prev,
+            ...newImages.map((item) => item.id),
+        ]);
+
+        setImages((prevImages) => [
+            ...prevImages,
+            ...newImages,
+        ]);
+
+        // After 3 seconds, show the new images
+        setTimeout(() => {
+            setHiddenItems((prev) =>
+                prev.filter(
+                    (id) => !newImages.some((item) => item.id === id)
+                )
+            );
+        }, 800);
+
+        // Allow selecting the same file again
+        e.target.value = "";
+    };
+
+    const uploadImagesInSupabaseStorage = async () => {
+        // sanitize images array to only include those with a file 
+        if (images.length === 0) {
+            alert("No images to upload. Please select an image first.");
+            return;
         }
+
+        setIsLoading(true);
+
+        for (const image of images) {
+
+            // Make sure this image actually has a File
+            if (!image.file) {
+                alert("No image found, please select an image to upload.");
+                return;
+            }
+
+            const file = image.file;
+
+            const filePath = `wedding/${Date.now()}_${file.name}`;
+
+            const { data, error } = await supabase
+                .storage
+                .from("wedding images")
+                .upload(filePath, file, {
+                    cacheControl: "3600",
+                    upsert: false
+                });
+
+            if (error) {
+                console.error("Upload error:", error.message);
+                return;
+            }
+
+            setShowThankYou(true);
+            setImages([]);
+        }
+        setShowThankYou(true);
+        setIsLoading(false);
     };
 
     return (
@@ -137,7 +190,7 @@ const Hero = () => {
 
 
                     <div className='flex justify-between align-start'>
-                        <p className="mt-7 text-2xl">Upload Memories</p>
+                        <p className="mt-7 text-2xl"> {showThankYou ? "Thank You!" : "Upload Memories"}</p>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -156,86 +209,115 @@ const Hero = () => {
                     </div>
                
                     <p className="mt-3">
-                        morning moments to the last dance under the string lights, every memory here was made possible by the people.
+                        {showThankYou
+                            ? "Thank you for sharing your memories with us!, Every memory here was made possible by the people."
+                            : "Share your morning moments to the last dance under the string lights, every memory here was made possible by the people."}
                     </p>
+                    
+                    { showThankYou ? "" : (
+                            <>
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    id="image-upload"
+                                    className="hidden"
+                                    multiple
+                                    onChange={handleImageUpload}
+                                />
 
-                    <input
-                        type="file"
-                        accept="image/*"
-                        id="image-upload"
-                        className="hidden"
-                        onChange={handleImageUpload}
-                    />
+                                <a onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById("image-upload").click();
+                                    }}
+                                    className='active-state mt-5 relative flex flex-col justify-center items-center w-[100%] h-[170px] bg-gray-100 rounded-xl'>
+                                    <span className='absolute top-2 left-2 w-5 h-5 border-t-[3px] border-l-[3px] border-slate-700 rounded-tl-md'></span>
+                                    <span className='absolute top-2 right-2 w-5 h-5 border-t-[3px] border-r-[3px] border-slate-700 rounded-tr-md'></span>
+                                    <span className='absolute bottom-2 left-2 w-5 h-5 border-b-[3px] border-l-[3px] border-slate-700 rounded-bl-md'></span>
+                                    <span className='absolute bottom-2 right-2 w-5 h-5 border-b-[3px] border-r-[3px] border-slate-700 rounded-br-md'></span>
+                                
 
-                   <a onClick={(e) => {
-                            e.preventDefault();
-                            document.getElementById("image-upload").click();
-                        }}
-                        className='active-state mt-5 relative flex flex-col justify-center items-center w-[100%] h-[170px] bg-gray-100 rounded-xl'>
-                        <span className='absolute top-2 left-2 w-5 h-5 border-t-[3px] border-l-[3px] border-slate-700 rounded-tl-md'></span>
-                        <span className='absolute top-2 right-2 w-5 h-5 border-t-[3px] border-r-[3px] border-slate-700 rounded-tr-md'></span>
-                        <span className='absolute bottom-2 left-2 w-5 h-5 border-b-[3px] border-l-[3px] border-slate-700 rounded-bl-md'></span>
-                        <span className='absolute bottom-2 right-2 w-5 h-5 border-b-[3px] border-r-[3px] border-slate-700 rounded-br-md'></span>
-                     
-
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="size-10 text-primary"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15"
-                            />
-                        </svg>
-                        <p className='mt-3'>Slip your photo into this place</p>
-                        <p className='text-xs !text-secondary'>PNG, JPG, PDF, GIF, SVG</p>
-                    </a>
-
-                    <div className="wi-gallery-images no-effects  gap-3 mt-5 grid grid-cols-3 justify-center items-start">
-
-                     {images
-                        .filter((item) => !removedItems.includes(item.id))
-                        .map((item) => (
-                            <a
-                                key={item.id}
-                                className={`fade-in mt-3 ${
-                                    hiddenItems.includes(item.id) ? "" : "show"
-                                }`}
-                            >
-                                <button
-                                    className="cancel-btn absolute right-0 -mt-[14px] p-1 bg-secondary w-min rounded-full"
-                                    onClick={() => removeShow(item.id)}
-                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         strokeWidth={1.5}
                                         stroke="currentColor"
-                                        className="size-5 text-white"
+                                        className="size-10 text-primary"
                                     >
                                         <path
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
-                                            d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                                            d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15"
                                         />
                                     </svg>
-                                </button>
+                                    <p className='mt-3'>Slip your photo into this place</p>
+                                    <p className='text-xs !text-secondary'>PNG, JPG, PDF, GIF, SVG</p>
+                                </a>
 
-                                <img src={item.src} alt={item.category} />
-                            </a>
-                        ))}
+                                <div className="wi-gallery-images no-effects  gap-3 mt-5 grid grid-cols-3 justify-center items-start">
 
-                     </div>
+                                {images
+                                    .map((item) => (
+                                        <a
+                                            key={item.id}
+                                            className={`fade-in mt-3 ${
+                                                hiddenItems.includes(item.id) ? "" : "show"
+                                            }`}
+                                        >
+                                            <button
+                                                className="cancel-btn absolute right-0 -mt-[14px] p-1 bg-secondary w-min rounded-full"
+                                                onClick={() => removeShow(item.id)}
+                                            >
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    strokeWidth={1.5}
+                                                    stroke="currentColor"
+                                                    className="size-5 text-white"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                                                    />
+                                                </svg>
+                                            </button>
 
-                    <a className='mt-7 mb-[5rem]  btn btn-primary'>
-                        Request to Display in Gallery
-                    </a>
+                                            <img src={item.src} alt={item.category} />
+                                        </a>
+                                    ))}
+                                </div>
+                            </>
+                        ) 
+                    }
+                
+                    {showThankYou ? (
+                        <a
+                            className="mt-7 mb-[5rem] btn btn-primary"
+                            onClick={() => {
+                                setShowThankYou(false);
+                            }}
+                        >
+                            Upload again
+                        </a>
+                    ) : (
+                        <button
+                            className={`mt-7 mb-[5rem] btn btn-primary ${isLoading ? 'opacity-75 pointer-events-none' : ''}`}
+                            disabled={isLoading}
+                            onClick={uploadImagesInSupabaseStorage}
+                        >
+                            Request to Display in Gallery
+                            {isLoading && (
+                                <svg class="ml-3  size-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            )}
+                           
+                        </button>
+                    )}
+                
                 </div>
             </section>
         </div>
