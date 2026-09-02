@@ -126,9 +126,6 @@ const Hero = () => {
 
         // All uploads completed successfully
         setImages([]);
-
-        alert("All images uploaded successfully!");
-
     })
     .catch((error) => {
 
