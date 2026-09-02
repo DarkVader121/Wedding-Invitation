@@ -90,39 +90,56 @@ const Hero = () => {
             return;
         }
 
-        setIsLoading(true);
+    setIsLoading(true);
 
-        for (const image of images) {
+    Promise.all(
+        images.map((image) => {
 
-            // Make sure this image actually has a File
             if (!image.file) {
-                alert("No image found, please select an image to upload.");
-                return;
+                return Promise.reject(
+                    new Error("No image found, please select an image to upload.")
+                );
             }
 
             const file = image.file;
-
             const filePath = `wedding/${Date.now()}_${file.name}`;
 
-            const { data, error } = await supabase
+            return supabase
                 .storage
                 .from("Uploaded by Guests")
                 .upload(filePath, file, {
                     cacheControl: "3600",
                     upsert: false
                 });
+        })
+    )
+    .then((results) => {
 
-            if (error) {
-                console.error("Upload error:", error.message);
-                alert("Error uploading image: " + error.message);
-                setIsLoading(false);
-                return;
-            }
+        // Check if any upload returned an error
+        const failed = results.find(result => result.error);
 
+        if (failed) {
+            console.error("Upload error:", failed.error.message);
+            alert("Error uploading image: " + failed.error.message);
+            return;
         }
-        setShowThankYou(true);
+
+        // All uploads completed successfully
         setImages([]);
+
+        alert("All images uploaded successfully!");
+
+    })
+    .catch((error) => {
+
+        console.error("Upload error:", error);
+        alert("Something went wrong while uploading.");
+
+    })
+    .finally(() => {
         setIsLoading(false);
+    });
+
     };
 
     return (
