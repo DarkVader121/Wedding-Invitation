@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 
 const Hero = () => {
+    const [isUploading, setIsUploading] = useState(0);
     // Thank you State
     const [showThankYou, setShowThankYou] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -83,60 +84,77 @@ const Hero = () => {
     };
 
     const uploadImagesInSupabaseStorage = async () => {
-
+        setIsLoading(true);
+        setIsUploading(0);
         // sanitize images array to only include those with a file 
         if (images.length === 0) {
             alert("No images to upload. Please select an image first.");
             return;
         }
 
-    setIsLoading(true);
+        const totalImages = images.length;
+        let completedImages = 0;
 
-    Promise.all(
-        images.map((image) => {
+        Promise.all(
+            images.map(async (image) => {
+                setIsUploading(7); // Start with 10% to indicate the process has begun
+                if (!image.file) {
+                    return Promise.reject(
+                        new Error("No image found, please select an image to upload.")
+                    );
+                }
 
-            if (!image.file) {
-                return Promise.reject(
-                    new Error("No image found, please select an image to upload.")
-                );
-            }
+                const file = image.file;
+                const filePath = `wedding/${Date.now()}_${file.name}`;
 
-            const file = image.file;
-            const filePath = `wedding/${Date.now()}_${file.name}`;
-
-            return supabase
+                const result = await supabase
                 .storage
                 .from("Uploaded by Guests")
                 .upload(filePath, file, {
                     cacheControl: "3600",
                     upsert: false
                 });
+                            // Only increment after the upload finishes
+                completedImages++;
+
+                const progress = Math.round(
+                    (completedImages / totalImages) * 100
+                );
+
+                setIsUploading(progress);
+
+                return result;
+            })
+        )
+        .then((results) => {
+
+            // Check if any upload returned an error
+            const failed = results.find(result => result.error);
+
+            if (failed) {
+                console.error("Upload error:", failed.error.message);
+                alert("Error uploading image: " + failed.error.message);
+                return;
+            }
+
+            // All uploads completed successfully
+            setImages([]);
         })
-    )
-    .then((results) => {
+        .catch((error) => {
 
-        // Check if any upload returned an error
-        const failed = results.find(result => result.error);
+            console.error("Upload error:", error);
+            alert("Something went wrong while uploading.");
 
-        if (failed) {
-            console.error("Upload error:", failed.error.message);
-            alert("Error uploading image: " + failed.error.message);
-            return;
-        }
-
-        // All uploads completed successfully
-        setImages([]);
-    })
-    .catch((error) => {
-
-        console.error("Upload error:", error);
-        alert("Something went wrong while uploading.");
-
-    })
-    .finally(() => {
-        setIsLoading(false);
-        setShowThankYou(true);
-    });
+        })
+        .finally(() => {
+            
+            setTimeout(() => {
+                setIsLoading(false);
+                setIsUploading(0);
+                setShowThankYou(true);
+            }, 800);
+            
+        });
 
     };
 
@@ -310,29 +328,49 @@ const Hero = () => {
                     }
                 
                     {showThankYou ? (
-                        <a
-                            className="mt-7 mb-[5rem] btn btn-primary"
-                            onClick={() => {
-                                setShowThankYou(false);
-                            }}
-                        >
-                            Upload again
-                        </a>
+                        <>
+                        
+                            <div className="flex gap-1">
+                                <a
+                                    className="mt-7 mb-[5rem] btn btn-primary"
+                                    href="/sweet-gallery"
+                                >
+                                    View Gallery
+                                </a>
+                                <a
+                                    className="mt-7 mb-[5rem] btn btn-secondary"
+                                    onClick={() => {
+                                        setShowThankYou(false);
+                                    }}
+                                >
+                                    Upload again, Please 
+                                </a>
+
+                              
+                            </div>
+                
+                        </>
                     ) : (
-                        <button
-                            className={`mt-7 mb-[5rem] btn btn-primary ${isLoading ? 'opacity-75 pointer-events-none' : ''}`}
-                            disabled={isLoading}
-                            onClick={uploadImagesInSupabaseStorage}
-                        >
-                            Request to Display in Gallery
-                            {isLoading && (
-                                <svg class="ml-3  size-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                </svg>
-                            )}
-                           
-                        </button>
+                        <>
+                    <a
+                        className="mt-7 mb-[5rem] btn btn-primary relative overflow-hidden"
+                        onClick={isUploading > 0 ? undefined : uploadImagesInSupabaseStorage}
+                    >
+                        {isUploading > 0 && (
+                            <span
+                                className="absolute left-0 top-0 h-full bg-secondary transition-all duration-300"
+                                style={{ width: `${isUploading}%` }}
+                            />
+                        )}
+
+                        <span className="relative z-10">
+                            {isUploading > 0
+                                ? `Uploading ${isUploading}%`
+                                : "Request to Display in Gallery"}
+                        </span>
+                    </a>
+                                
+                    </>
                     )}
                 
                 </div>
