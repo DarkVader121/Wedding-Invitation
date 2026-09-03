@@ -6,7 +6,7 @@ const Hero = () => {
     const [isUploading, setIsUploading] = useState(0);
     // Thank you State
     const [showThankYou, setShowThankYou] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+  
 
     // Modal open close
     const [isOpen, setIsOpen] = useState(false);
@@ -84,7 +84,7 @@ const Hero = () => {
     };
 
     const uploadImagesInSupabaseStorage = async () => {
-        setIsLoading(true);
+       
         setIsUploading(0);
         // sanitize images array to only include those with a file 
         if (images.length === 0) {
@@ -149,7 +149,7 @@ const Hero = () => {
         .finally(() => {
             
             setTimeout(() => {
-                setIsLoading(false);
+               
                 setIsUploading(0);
                 setShowThankYou(true);
             }, 800);

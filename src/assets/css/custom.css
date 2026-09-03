@@ -49,7 +49,7 @@
   min-height: 20px;
   a{
     img {
-      height: 100px;
+      height: 157px;
       width: 100%;
       object-fit: cover;
       transition: transform 0.15s ease, opacity 0.15s ease;
