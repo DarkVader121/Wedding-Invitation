@@ -43,7 +43,7 @@ const Hero = () => {
 
                 return updatedImages;
             });
-        }, 800);
+        }, 500);
     };
 
     const handleImageUpload = (e) => {
@@ -128,17 +128,6 @@ const Hero = () => {
         )
         .then((results) => {
 
-            // Check if any upload returned an error
-            const failed = results.find(result => result.error);
-
-            if (failed) {
-                console.error("Upload error:", failed.error.message);
-                alert("Error uploading image: " + failed.error.message);
-                return;
-            }
-
-            // All uploads completed successfully
-            setImages([]);
         })
         .catch((error) => {
 
@@ -147,9 +136,9 @@ const Hero = () => {
 
         })
         .finally(() => {
-            
             setTimeout(() => {
-               
+                // All uploads completed successfully
+                setImages([]);
                 setIsUploading(0);
                 setShowThankYou(true);
             }, 800);

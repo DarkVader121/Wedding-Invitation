@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { useLocation  } from "react-router";
 
 // take all images from prenup folder
 const TakePrenupImages = () => {
@@ -22,7 +23,7 @@ const TakePrenupImages = () => {
 
 const ImageGalleryWithFilter = () => {
     const [filter, setFilter] = useState("all");
-
+    const location = useLocation();
     const prenupImages = TakePrenupImages();
 
     const filteredImages =
@@ -85,7 +86,7 @@ const ImageGalleryWithFilter = () => {
               
 
 
-                <div className="wi-gallery-images limit-9  gap-3 mt-5 grid grid-cols-3 justify-center items-start">
+                <div className={`${ location.pathname === "/sweet-gallery" ? "" : "limit-9" } wi-gallery-images   gap-1 mt-5 grid grid-cols-3 justify-center items-start`}>
                     <PhotoProvider>
                         {filteredImages.length > 0 ? (
                             filteredImages.map((item, index) => (

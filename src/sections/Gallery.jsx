@@ -1,5 +1,5 @@
 import {ImageGalleryWithFilter} from "../components"
-import { Link, useLocation  } from "react-router";
+import { useLocation  } from "react-router";
 
 
 const Gallery = () => {
