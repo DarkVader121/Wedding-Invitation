@@ -196,10 +196,8 @@ const Hero = () => {
                 fixed top-0 left-0 z-50
                 h-screen  w-[90%]
                 bg-white shadow-xl
-
                 transform
                 transition-transform duration-300 ease-in-out
-
                 ${isOpen ? "translate-x-0" : "-translate-x-full"}
             `}
         >
@@ -289,8 +287,7 @@ const Hero = () => {
                                     <p className='text-xs !text-secondary'>PNG, JPG, PDF, GIF, SVG</p>
                                 </a>
 
-                                <div className="wi-gallery-images no-effects  gap-3 mt-5 grid grid-cols-3 justify-center items-start">
-
+                                <div className="wi-gallery-images no-effects  gap-1 mt-5 grid grid-cols-3 justify-center items-start">
                                 {images
                                     .map((item) => (
                                         <a
@@ -319,7 +316,7 @@ const Hero = () => {
                                                 </svg>
                                             </button>
 
-                                            <img src={item.src} alt={item.category} />
+                                            <img className="!h-[100px]" src={item.src} alt={item.category} />
                                         </a>
                                     ))}
                                 </div>
