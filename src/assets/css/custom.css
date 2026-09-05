@@ -61,8 +61,8 @@
   }
 }
 
-.wi-gallery-images.limit-9 {
-  a:nth-child(n+10) {
+.wi-gallery-images.limit-12 {
+  a:nth-child(n+13) {
       display: none;
   }
 } 
