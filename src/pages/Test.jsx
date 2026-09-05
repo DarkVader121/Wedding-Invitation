@@ -44,7 +44,7 @@ const Test = () => {
     const fetchGuestImages = async (page = 0) => {
         setLoadingGuestImages(true);
 
-        const limit = 10;
+        const limit = 2;
         const from = page * limit;
         const to = from + limit - 1;
 
@@ -60,7 +60,7 @@ const Test = () => {
         }
 
         setLoadingGuestImages(false);
-        setFilter("taken-by-guest");
+      
     };
 
     const handleShowMore = async () => {
@@ -101,7 +101,9 @@ const Test = () => {
                         <a
                             className="btn btn-secondary btn-sm !w-max shrink-0 extra"
                             style={{ backgroundColor: "rgb(110, 132, 156)" }}
-                            onClick={handleGuestImages}
+                            onClick={() => {
+                                setFilter("taken-by-guest");
+                            }}
                         >
                             Taken by Guest
                         </a>
