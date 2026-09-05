@@ -5,6 +5,7 @@ import './index.css'
 import './assets/css/custom.css'
 import './assets/css/overides.css'
 import './assets/css/buttons.css'
+import './assets/css/input-field.css'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
