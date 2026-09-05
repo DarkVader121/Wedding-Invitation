@@ -52,13 +52,13 @@ const ImageGalleryWithFilter = () => {
 
                         <a
                             className="btn btn-secondary btn-sm !w-max shrink-0"
-                            onClick={() => setFilter("wedding")}
+                            onClick={() => setFilter("official photography")}
                         >
-                            Wedding
+                            Official Photography
                         </a>
 
                         <a
-                            className="btn btn-secondary btn-sm !w-max shrink-0"
+                            className="btn btn-secondary btn-sm !w-max shrink-0 extra"
                             style={{ backgroundColor: "rgb(110, 132, 156)" }}
                             onClick={() => setFilter("reception")}
                         >
