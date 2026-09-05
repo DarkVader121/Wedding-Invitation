@@ -46,7 +46,7 @@ const Test = () => {
     const fetchGuestImages = async (page = 0) => {
         setLoadingGuestImages(true);
 
-        const limit = 10;
+        const limit = 12;
         const from = page * limit;
         const to = from + limit - 1;
 

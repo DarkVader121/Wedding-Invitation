@@ -39,35 +39,8 @@ const Login = () => {
         <>
         <section className="h-[100vh] bg-light overflow-y-scroll">
             <div className="container">
-
-                <a
-                    className="btn btn-primary"
-                    href="/"
-                    style={{ backgroundColor: "#6c849c" }}
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="#fff"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="size-7"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
-                        />
-                    </svg>
-                </a>
-
-                <p className="mt-7 text-2xl text-dark">
-                    Login
-                </p>
-
-                <p className="text-dark">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                </p>
+                <p className="text-2xl text-dark"> Login </p>
+                <p className="text-dark"> Enter your credentials to access the image management dashboard. </p>
 
                 <form onSubmit={loginFunctionality}>
 
@@ -79,7 +52,7 @@ const Login = () => {
                         id="loginEmail"
                         type="email"
                         placeholder="Enter your email address"
-                        className="form-control !bg-gray-100"
+                        className="form-control"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -92,7 +65,7 @@ const Login = () => {
                         id="loginPassword"
                         type="password"
                         placeholder="Enter your password"
-                        className="form-control !bg-gray-100"
+                        className="form-control"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />

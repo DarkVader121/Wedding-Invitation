@@ -60,7 +60,7 @@ const ManageImages = () => {
     const fetchGuestImagesWithDisplay = async (page = 0) => {
         setLoadingGuestImages(true);
 
-        const limit = 10;
+        const limit = 12;
         const from = page * limit;
         const to = from + limit - 1;
 
@@ -87,7 +87,7 @@ const ManageImages = () => {
 
     const fetchGuestImagesWithoutDisplay = async (page = 0) => {
          setLoadingGuestImages(true);
-        const limit = 10;
+        const limit = 12;
         const from = page * limit;
         const to = from + limit - 1;
 
@@ -114,22 +114,26 @@ const ManageImages = () => {
     return (
         <section>
             <div className="container">
+               
                 <a
                     type="button"
-                    className="btn btn-primary"
+                    className=""
                     onClick={handleLogout}
                 >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                    </svg>
+
                     Logout
                 </a>
 
-               
-
                 <div className="mt-7">
-                    <p className="text-2xl">Lorem IPSUM test</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur laudantium unde</p>
+                    <p className="text-2xl">Manage Displayed Images</p>
+                    <p>Turn images on or off to control which ones are displayed.</p>
+
                     <div className=" mt-5 flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden">
                         <a
-                            className="btn btn-secondary btn-sm !w-max shrink-0"
+                            className="btn btn-primary btn-sm !w-max shrink-0"
                             onClick={() => {
                                 setFilter("no-display")}}
                         >
@@ -151,12 +155,12 @@ const ManageImages = () => {
                             id="loginEmail"
                             type="text"
                             placeholder="Search by Name"
-                            className="form-control !bg-gray-100 mt-5"
+                            className="form-control mt-5"
                             value={searchName}
                             onChange={(e) => setSearchName(e.target.value)}
                         />
                     </form>
-
+                       
                     <div className="wi-gallery-images gap-1 mt-5 grid grid-cols-3 justify-center items-start">
                         <PhotoProvider
                           overlayRender={({ index, onClose }) => (
@@ -193,7 +197,14 @@ const ManageImages = () => {
                         >
                             {filteredImages.map((item, index) => (
                                 <PhotoView key={item.id} src={item.src}>
+                                 <div>
+                                    <label className="switch">
+                                        <input type="checkbox" />
+                                        <span className="switch-slider"></span>
+                                    </label>
+                                 
                                     <a className="fade-in show">
+                                        
                                         <img
                                             src={item.src}
                                             alt={`Image ${index + 1}`}
@@ -201,6 +212,7 @@ const ManageImages = () => {
                                             decoding="async"
                                         />
                                     </a>
+                                   </div>
                                 </PhotoView>
                             ))}
                         </PhotoProvider>
