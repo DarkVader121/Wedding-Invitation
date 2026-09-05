@@ -68,12 +68,6 @@ const Test = () => {
         setGuestPage(nextPage);
     };
 
-    useEffect(() => {
-    console.log("Filter:", filter);
-    console.log("hasMoreGuestImages:", hasMoreGuestImages);
-    console.log("guestImages:", guestImages);
-}, [filter, hasMoreGuestImages, guestImages]);
-
     return (
         <>
         <div className="container">
