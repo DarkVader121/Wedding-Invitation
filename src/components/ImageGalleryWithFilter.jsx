@@ -2,35 +2,23 @@ import { useState } from "react";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { useLocation  } from "react-router";
-
-// take all images from prenup folder
-const TakePrenupImages = () => {
-    const images = import.meta.glob(
-        "../assets/images/prenup/*",
-        {
-            eager: true,
-            query: "?url",
-            import: "default",
-        }
-    );
-
-    return Object.entries(images).map(([path, src]) => ({
-        src,
-        category: "prenup", // You can modify this based on your folder structure or naming convention
-        path,
-    }));
-}
+import { TakePrenupImages, TakeOfficialPhotographyImages} from "../services/weddingImages";
 
 const ImageGalleryWithFilter = () => {
-    const [filter, setFilter] = useState("all");
     const location = useLocation();
-    const prenupImages = TakePrenupImages();
+    const [filter, setFilter] = useState("all");
 
+    const prenupImages = TakePrenupImages();
+    const officialPhotographyImages = TakeOfficialPhotographyImages();
+
+    const allImages = [...prenupImages, ...officialPhotographyImages];
+  
     const filteredImages =
         filter === "all"
-            ? prenupImages
-            : prenupImages.filter((image) => image.category === filter);
-
+            ? allImages
+            : allImages.filter((image) => image.category === filter);
+            
+    console.log("filteredImages", filteredImages);
     return (
         <>
             <div className="mt-7">
@@ -52,7 +40,7 @@ const ImageGalleryWithFilter = () => {
 
                         <a
                             className="btn btn-secondary btn-sm !w-max shrink-0"
-                            onClick={() => setFilter("official photography")}
+                            onClick={() => setFilter("official-photography")}
                         >
                             Official Photography
                         </a>
@@ -60,7 +48,7 @@ const ImageGalleryWithFilter = () => {
                         <a
                             className="btn btn-secondary btn-sm !w-max shrink-0 extra"
                             style={{ backgroundColor: "rgb(110, 132, 156)" }}
-                            onClick={() => setFilter("reception")}
+                            onClick={() => setFilter("taken-by-guest")}
                         >
                             Taken by Guest
                         </a>

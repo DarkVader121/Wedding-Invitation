@@ -23,9 +23,9 @@ const Hero = () => {
         // }
     ]); 
 
-    useEffect(() => {
-        console.log("images updated:", images);
-    }, [images]);
+    // useEffect(() => {
+    //     console.log("images updated:", images);
+    // }, [images]);
 
     // State to manage hidden and removed items
     const [hiddenItems, setHiddenItems] = useState([]);
@@ -114,7 +114,7 @@ const Hero = () => {
                     cacheControl: "3600",
                     upsert: false
                 });
-                            // Only increment after the upload finishes
+                // Only increment after the upload finishes
                 completedImages++;
 
                 const progress = Math.round(
