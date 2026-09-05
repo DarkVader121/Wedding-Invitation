@@ -94,6 +94,12 @@
     background: #000000b5 !important;
 }
 
+.PhotoView-Slider__BannerWrap{
+  background-color: rgb(0 0 0 / 36%) !important;
+}
+
+
+
 .wi-googleMaps {
   iframe {
     width: 100%;

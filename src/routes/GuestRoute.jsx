@@ -4,9 +4,9 @@ import { useAuth } from "../context/AuthContext";
 const GuestRoute = ({ children }) => {
     const { session, loading } = useAuth();
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    // if (loading) {
+    //     return <div className="hidden">Loading...</div>;
+    // }
 
     if (session) {
         return <Navigate to="/manage" replace />;

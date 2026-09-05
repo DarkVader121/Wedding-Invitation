@@ -15,6 +15,7 @@ export const TakePrenupImages = () => {
 
     return Object.entries(images).map(([path, src]) => ({
         id: Date.now() + Math.random(),
+        name: Date.now() + Math.random(),
         src,
         category: "prenup",
         path,
@@ -36,6 +37,7 @@ export const TakeOfficialPhotographyImages = () => {
 
     return Object.entries(images).map(([path, src]) => ({
         id: Date.now() + Math.random(),
+        name: Date.now() + Math.random(),
         src,
         category: "official-photography",
         path,
@@ -68,3 +70,28 @@ export const FetchTakenByGuestWithDisplayImages = async (from, to) => {
     }));
 };
 
+/**
+ * Fetch Not Display Guest Images
+ */
+export const FetchTakenByGuestWithoutDisplayImages = async (from, to) => {
+    const { data, error } = await supabase
+        .from("images")
+        .select("*")
+        .eq("isDisplay", false)
+        .range(from, to)
+        .order("uploaded_at", { ascending: false });
+
+    if (error) {
+        console.error("Supabase error:", error);
+        return [];
+    }
+
+    return data.map((image) => ({
+        id: image.id,
+        name: image.name,
+        src: image.imageUrl,
+        category: "no-display",
+        path: image.imageUrl,
+        uploaded_at: image.uploaded_at,
+    }));
+};
