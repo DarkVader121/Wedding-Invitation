@@ -2,8 +2,8 @@ import { useState } from "react";
 import { loginUser } from "../services/auth";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("erronlapac@gmail.com");
+    const [password, setPassword] = useState("qwerty123");
     const [loading, setLoading] = useState(false);
 
 
@@ -24,7 +24,7 @@ const Login = () => {
                     return;
                 }
 
-                window.location.href = "/uploaded-images";
+                window.location.href = "/manage";
             })
             .catch((error) => {
                 alert(error.message || "Something went wrong.");
@@ -36,6 +36,7 @@ const Login = () => {
 
 
     return (
+        <>
         <section className="h-[100vh] bg-light overflow-y-scroll">
             <div className="container">
 
@@ -108,6 +109,11 @@ const Login = () => {
                 </form>
             </div>
         </section>
+        <div className="hidden">
+            email: erronlapac@gmail.com
+            password: qwerty123
+        </div>
+        </>
     );
 };
 

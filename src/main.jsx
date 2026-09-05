@@ -7,11 +7,14 @@ import './assets/css/overides.css'
 import './assets/css/buttons.css'
 import './assets/css/input-field.css'
 import App from './App.jsx'
+import { AuthProvider } from "./context/AuthContext";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
-  </StrictMode>,
+      <BrowserRouter>
+          <AuthProvider>
+              <App />
+          </AuthProvider>
+      </BrowserRouter>
+  </StrictMode>
 )

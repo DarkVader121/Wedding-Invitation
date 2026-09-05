@@ -13,6 +13,6 @@ export async function loginUser(email, password) {
 /**
  * Logout function
  */
-export async function logout() {
+export async function logoutUser() {
     return await supabase.auth.signOut();
 }

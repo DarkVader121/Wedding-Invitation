@@ -1,0 +1,18 @@
+import { Navigate } from "react-router";
+import { useAuth } from "../context/AuthContext";
+
+const GuestRoute = ({ children }) => {
+    const { session, loading } = useAuth();
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (session) {
+        return <Navigate to="/manage" replace />;
+    }
+
+    return children;
+};
+
+export default GuestRoute;
