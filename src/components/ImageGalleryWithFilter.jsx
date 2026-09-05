@@ -4,10 +4,11 @@ import 'react-photo-view/dist/react-photo-view.css';
 import { useLocation  } from "react-router";
 import { TakePrenupImages, TakeOfficialPhotographyImages} from "../services/weddingImages";
 
+
 const ImageGalleryWithFilter = () => {
     const location = useLocation();
-    const [filter, setFilter] = useState("all");
 
+    const [filter, setFilter] = useState("all");
     const prenupImages = TakePrenupImages();
     const officialPhotographyImages = TakeOfficialPhotographyImages();
 
@@ -17,8 +18,8 @@ const ImageGalleryWithFilter = () => {
         filter === "all"
             ? allImages
             : allImages.filter((image) => image.category === filter);
-            
-    console.log("filteredImages", filteredImages);
+    
+
     return (
         <>
             <div className="mt-7">
@@ -72,8 +73,6 @@ const ImageGalleryWithFilter = () => {
                     <p className="text-xs mt-1">Scroll Right</p>
                 </div>
               
-
-
                 <div className={`${ location.pathname === "/sweet-gallery" ? "" : "limit-9" } wi-gallery-images   gap-1 mt-5 grid grid-cols-3 justify-center items-start`}>
                     <PhotoProvider>
                         {filteredImages.length > 0 ? (

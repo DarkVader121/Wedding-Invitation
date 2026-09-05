@@ -3,11 +3,10 @@ import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 
 const Hero = () => {
+    // Uploading State
     const [isUploading, setIsUploading] = useState(0);
     // Thank you State
     const [showThankYou, setShowThankYou] = useState(false);
-  
-
     // Modal open close
     const [isOpen, setIsOpen] = useState(false);
 
@@ -22,10 +21,6 @@ const Hero = () => {
         //     path: "prenup/image-1.jpg",
         // }
     ]); 
-
-    // useEffect(() => {
-    //     console.log("images updated:", images);
-    // }, [images]);
 
     // State to manage hidden and removed items
     const [hiddenItems, setHiddenItems] = useState([]);
@@ -83,8 +78,7 @@ const Hero = () => {
         e.target.value = "";
     };
 
-    const uploadImagesInSupabaseStorage = async () => {
-       
+    const uploadImagesInSupabaseStorageAndCreateData = async () => {
         setIsUploading(0);
         // sanitize images array to only include those with a file 
         if (images.length === 0) {
@@ -97,52 +91,67 @@ const Hero = () => {
 
         Promise.all(
             images.map(async (image) => {
-                setIsUploading(7); // Start with 10% to indicate the process has begun
+                // Start with 10% to indicate the process has begun
+                setIsUploading(7); 
+
+                // Check if the image has a file property
                 if (!image.file) {
                     return Promise.reject(
                         new Error("No image found, please select an image to upload.")
                     );
                 }
 
+                // Upload the image to Supabase Storage
                 const file = image.file;
-                const filePath = `wedding/${Date.now()}_${file.name}`;
-
-                const result = await supabase
+                const filePath = `${Date.now()}_${file.name}`;
+                const { data } = await supabase
                 .storage
                 .from("Uploaded by Guests")
                 .upload(filePath, file, {
                     cacheControl: "3600",
                     upsert: false
                 });
+
+                // load the new uploaded image
+                const { data: publicUrlData } = supabase
+                    .storage
+                    .from('Uploaded by Guests')
+                    .getPublicUrl(data.path);
+                const imageUrl = publicUrlData.publicUrl;
+
+                // Create a record in the Supabase database
+                const uploadedAt = new Date().toISOString();
+                await supabase
+                .from("images")
+                .insert([
+                {
+                    imageUrl: imageUrl,
+                    name: uploadedAt,
+                },
+                ])
+                .select();
+                
                 // Only increment after the upload finishes
                 completedImages++;
-
                 const progress = Math.round(
                     (completedImages / totalImages) * 100
                 );
-
                 setIsUploading(progress);
-
-                return result;
             })
         )
-        .then((results) => {
-
-        })
-        .catch((error) => {
-
-            console.error("Upload error:", error);
-            alert("Something went wrong while uploading.");
-
-        })
-        .finally(() => {
+        .then(() => {
             setTimeout(() => {
                 // All uploads completed successfully
                 setImages([]);
                 setIsUploading(0);
                 setShowThankYou(true);
             }, 800);
-            
+        })
+        .catch((error) => {
+
+            console.error("Upload error:", error);
+            alert("Something went wrong while uploading.");
+
         });
 
     };
@@ -340,7 +349,7 @@ const Hero = () => {
                         <>
                     <a
                         className="mt-7 mb-[5rem] btn btn-primary relative overflow-hidden"
-                        onClick={isUploading > 0 ? undefined : uploadImagesInSupabaseStorage}
+                        onClick={isUploading > 0 ? undefined : uploadImagesInSupabaseStorageAndCreateData }
                     >
                         {isUploading > 0 && (
                             <span
