@@ -27,19 +27,8 @@ const Test = () => {
             : allImages.filter((image) => image.category === filter);
     
     useEffect(() => {
-        console.log("Guest Images:", guestImages);
-    }, [guestImages]);
-
-    useEffect(() => {
         fetchGuestImages();
     }, []);
-    
-    const handleGuestImages = async () => {
-        setGuestImages([]);
-        setGuestPage(0);
-
-        await fetchGuestImages(0);
-    };
 
     const fetchGuestImages = async (page = 0) => {
         setLoadingGuestImages(true);
@@ -79,21 +68,30 @@ const Test = () => {
                     <div className="flex w-full min-w-0 flex-nowrap gap-2 overflow-x-auto overflow-y-hidden">
                         <a
                             className="btn btn-secondary btn-sm !w-max shrink-0"
-                            onClick={() => setFilter("all")}
+                            onClick={() => {
+                                setFilter("all");
+                                setHasMoreGuestImages(true);
+                            }}
                         >
                             All
                         </a>
 
                         <a
                             className="btn btn-secondary btn-sm !w-max shrink-0"
-                            onClick={() => setFilter("prenup")}
+                            onClick={() => {
+                                setFilter("prenup");
+                                setHasMoreGuestImages(false);
+                            }}
                         >
                             Prenup
                         </a>
 
                         <a
                             className="btn btn-secondary btn-sm !w-max shrink-0"
-                            onClick={() => setFilter("official-photography")}
+                            onClick={() => {
+                                setFilter("official-photography");
+                                setHasMoreGuestImages(false);
+                            }}
                         >
                             Official Photography
                         </a>
