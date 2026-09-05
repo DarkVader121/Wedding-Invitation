@@ -7,9 +7,15 @@ import { TakePrenupImages, TakeOfficialPhotographyImages, FetchTakenByGuestWithD
 
 
 const Test = () => {
+    // location checker
     const location = useLocation();
+
+    // Show more display
     const [hasMoreGuestImages, setHasMoreGuestImages] = useState(false);
+
+    // loading guest images state
     const [loadingGuestImages , setLoadingGuestImages] = useState(false);
+
     // Guest Pages
     const [guestPage, setGuestPage] = useState(0);
 
@@ -36,18 +42,17 @@ const Test = () => {
         fetchGuestImages(0);
     }, []);
 
+    // Fetch the guest image from component
     const fetchGuestImages = async (page = 0) => {
         setLoadingGuestImages(true);
 
-        const limit = 2;
+        const limit = 10;
         const from = page * limit;
         const to = from + limit - 1;
 
         const data = await FetchTakenByGuestWithDisplayImages(from, to);
 
         setGuestImages((prev) => [...prev, ...data]);
-
-        
 
         // If less than 10 were returned, there are no more images
         if (data.length < limit) {
@@ -57,14 +62,12 @@ const Test = () => {
         }
 
         setLoadingGuestImages(false);
-      
     };
 
+    // Show more function
     const handleShowMore = async () => {
         const nextPage = guestPage + 1;
-
         await fetchGuestImages(nextPage);
-
         setGuestPage(nextPage);
     };
 
@@ -146,19 +149,19 @@ const Test = () => {
                         ))}
                     </PhotoProvider>
                 </div>
-                
-              {hasMoreGuestImages &&
-                (filter === "all" || filter === "taken-by-guest") && (
-                    <div className="flex justify-end my-5">
-                        <button
-                            className="btn btn-primary mb-10"
-                            onClick={handleShowMore}
-                            disabled={loadingGuestImages}
-                        >
-                            {loadingGuestImages ? "Loading..." : "Show More"}
-                        </button>
-                    </div>
-                )}
+                {/* Only display if there more guest images and filter is either all or taken-by-guest */}
+                {hasMoreGuestImages &&
+                    (filter === "all" || filter === "taken-by-guest") && (
+                        <div className="flex justify-end my-5">
+                            <button
+                                className="btn btn-primary mb-10"
+                                onClick={handleShowMore}
+                                disabled={loadingGuestImages}
+                            >
+                                {loadingGuestImages ? "Loading..." : "Show More"}
+                            </button>
+                        </div>
+                    )}
                                     
             </div>
         </div>
