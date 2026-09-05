@@ -71,10 +71,9 @@ const ImageGalleryWithFilter = () => {
 
     return (
         <>
-      
-        <div className="mt-7">
-            <div className="flex w-full max-w-[356px] min-w-0">
-                <div className="flex w-full min-w-0 flex-nowrap gap-2 overflow-x-auto overflow-y-hidden">
+        <div className="mt-7 flex justify-start flex-col text-start w-[100%]">
+            <div className="flex justify-start w-[100%]">
+                <div className="flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden">
                     <a
                         className="btn btn-secondary btn-sm !w-max shrink-0"
                         onClick={() => {
@@ -129,8 +128,8 @@ const ImageGalleryWithFilter = () => {
                 </svg>
                 <p className="text-xs mt-1">Scroll Right</p>
             </div>
-            
-            <div className={`${ location.pathname === "/sweet-gallery" ? "" : "limit-12" } wi-gallery-images   gap-1 mt-5 grid grid-cols-3 justify-center items-start`}>
+
+              <div className={`${ location.pathname === "/sweet-gallery" ? "" : "limit-12" } wi-gallery-images   gap-1 mt-5 grid grid-cols-3 justify-center items-start`}>
                 <PhotoProvider>
                     {filteredImages.map((item, index) => (
                         <PhotoView key={item.id} src={item.src}>
@@ -147,6 +146,10 @@ const ImageGalleryWithFilter = () => {
                     ))}
                 </PhotoProvider>
             </div>
+        </div>
+        
+
+          
             {/* Only display if there more guest images and filter is either all or taken-by-guest */}
             {hasMoreGuestImages &&
                 (filter === "all" || filter === "taken-by-guest") &&
@@ -163,7 +166,7 @@ const ImageGalleryWithFilter = () => {
                     </div>
                 )}
                                 
-        </div>
+  
        
            
         </>
