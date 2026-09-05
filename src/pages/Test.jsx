@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { useLocation  } from "react-router";
@@ -20,14 +20,20 @@ const Test = () => {
      
     // filter functionality
     const [filter, setFilter] = useState("all");
-    const allImages = [...prenupImages, ...officialPhotographyImages, ...guestImages];
+    const allImages = [ ...prenupImages, ...officialPhotographyImages, ...guestImages];
     const filteredImages =
         filter === "all"
             ? allImages
             : allImages.filter((image) => image.category === filter);
     
+    // When the page loads, run fetchGuestImages();
+    const hasFetchedGuestImages = useRef(false);
     useEffect(() => {
-        fetchGuestImages();
+        if (hasFetchedGuestImages.current) {
+            return;
+        }
+        hasFetchedGuestImages.current = true;
+        fetchGuestImages(0);
     }, []);
 
     const fetchGuestImages = async (page = 0) => {
@@ -40,6 +46,8 @@ const Test = () => {
         const data = await FetchTakenByGuestWithDisplayImages(from, to);
 
         setGuestImages((prev) => [...prev, ...data]);
+
+        
 
         // If less than 10 were returned, there are no more images
         if (data.length < limit) {
@@ -60,6 +68,12 @@ const Test = () => {
         setGuestPage(nextPage);
     };
 
+    useEffect(() => {
+    console.log("Filter:", filter);
+    console.log("hasMoreGuestImages:", hasMoreGuestImages);
+    console.log("guestImages:", guestImages);
+}, [filter, hasMoreGuestImages, guestImages]);
+
     return (
         <>
         <div className="container">
@@ -70,7 +84,6 @@ const Test = () => {
                             className="btn btn-secondary btn-sm !w-max shrink-0"
                             onClick={() => {
                                 setFilter("all");
-                                setHasMoreGuestImages(true);
                             }}
                         >
                             All
@@ -79,9 +92,7 @@ const Test = () => {
                         <a
                             className="btn btn-secondary btn-sm !w-max shrink-0"
                             onClick={() => {
-                                setFilter("prenup");
-                                setHasMoreGuestImages(false);
-                            }}
+                                setFilter("prenup")}}
                         >
                             Prenup
                         </a>
@@ -89,8 +100,7 @@ const Test = () => {
                         <a
                             className="btn btn-secondary btn-sm !w-max shrink-0"
                             onClick={() => {
-                                setFilter("official-photography");
-                                setHasMoreGuestImages(false);
+                                setFilter("official-photography")
                             }}
                         >
                             Official Photography
@@ -134,6 +144,8 @@ const Test = () => {
                                     <img
                                         src={item.src}
                                         alt={`Image ${index + 1}`}
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </a>
                             </PhotoView>
@@ -141,17 +153,19 @@ const Test = () => {
                     </PhotoProvider>
                 </div>
                 
-                {hasMoreGuestImages && (
+              {hasMoreGuestImages &&
+                (filter === "all" || filter === "taken-by-guest") && (
                     <div className="flex justify-end my-5">
                         <button
                             className="btn btn-primary mb-10"
                             onClick={handleShowMore}
+                            disabled={loadingGuestImages}
                         >
                             {loadingGuestImages ? "Loading..." : "Show More"}
                         </button>
                     </div>
                 )}
-                        
+                                    
             </div>
         </div>
            

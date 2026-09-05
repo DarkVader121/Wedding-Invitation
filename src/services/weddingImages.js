@@ -64,7 +64,6 @@ export const FetchTakenByGuestWithDisplayImages = async (from, to) => {
         src: image.imageUrl,
         category: "taken-by-guest",
         path: image.imageUrl,
-       
         uploaded_at: image.uploaded_at,
     }));
 };
