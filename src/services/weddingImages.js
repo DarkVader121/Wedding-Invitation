@@ -102,7 +102,7 @@ export const FetchTakenByGuestWithoutDisplayImages = async (from, to) => {
 export async function isDisplayToTrueOrFalse(imageId, isDisplayImage) {
     const { data, error } = await supabase
         .from("images")
-        .update({ isDisplay: isDisplayImage })
+        .update({ category: isDisplayImage })
         .eq("id", imageId)
         .select("*");
 

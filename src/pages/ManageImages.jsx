@@ -43,7 +43,6 @@ const ManageImages = () => {
             alert(error.message);
             return;
         }
-        
     };
 
      // When the page loads, run fetchGuestImages();
@@ -54,7 +53,7 @@ const ManageImages = () => {
          }
          hasFetchedGuestImages.current = true;
 
-     
+         
          fetchGuestImagesWithDisplay(0);
          fetchGuestImagesWithoutDisplay(0);
      }, []);
@@ -68,7 +67,7 @@ const ManageImages = () => {
 
         const data = await FetchTakenByGuestWithDisplayImages(from, to);
 
-        setGuestImages((prev) => [...prev, ...data]);
+        setGuestImages(data);
 
         // If less than 10 were returned, there are no more images
         if (data.length < limit) {
@@ -96,11 +95,7 @@ const ManageImages = () => {
 
         const data = await FetchTakenByGuestWithoutDisplayImages(from, to);
 
-        setGuestNoDisplayImages((prev) => {
-            const existingIds = new Set(prev.map((item) => item.id));
-            const newData = data.filter((item) => !existingIds.has(item.id));
-            return [...prev, ...newData];
-        });
+        setGuestNoDisplayImages(data);
 
          // If less than 10 were returned, there are no more images
         if (data.length < limit) {
@@ -119,10 +114,52 @@ const ManageImages = () => {
     };
 
     const handleSwitch = async (id, isDisplay) => {
-        const result = await isDisplayToTrueOrFalse(id, isDisplay);
+        const { error } = await isDisplayToTrueOrFalse(id, isDisplay);
 
-        console.log(result);
+
+        if (error) {
+            console.error(error);
+            return;
+        }
+
+        // Update displayed images
+        setGuestImages((prev) =>
+            prev.map((item) =>
+                item.id === id
+                    ? { ...item, isDisplay }
+                    : item
+            )
+        );
+
+        // Update not-displayed images
+        setGuestNoDisplayImages((prev) =>
+            prev.map((item) =>
+                item.id === id
+                    ? { ...item, isDisplay }
+                    : item
+            )
+        );
+
+
     };
+
+
+    const handleNoDisplayBtn =  () => {
+        console.log("Not Displayed btn");
+
+        fetchGuestImagesWithoutDisplay(0);
+        
+        setFilter("no-display");
+    }
+
+    const handleDisplayBtn =  () => {
+        console.log("Displayed btn");
+
+        fetchGuestImagesWithDisplay(0);
+        
+        setFilter("taken-by-guest");
+    }
+
 
     return (
         <section>
@@ -147,18 +184,14 @@ const ManageImages = () => {
                     <div className=" mt-5 flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden">
                         <a
                             className="btn btn-primary btn-sm !w-max shrink-0"
-                             onClick={() => {
-                                setFilter("no-display");
-                            }}
+                             onClick={handleNoDisplayBtn}
                         >
                             Not Displayed
                         </a>
 
                         <a
                             className="btn btn-secondary btn-sm !w-max shrink-0"
-                            onClick={() => {
-                                setFilter("taken-by-guest");
-                            }}
+                            onClick={handleDisplayBtn}
                         >
                             Displayed
                         </a>
@@ -214,6 +247,7 @@ const ManageImages = () => {
                                     <label className="switch active-state">
                                         <input
                                             type="checkbox"
+                                            checked={item.isDisplay}
                                             onChange={(e) => handleSwitch(item.id, e.target.checked)}
                                         />
                                         <span className="switch-slider"></span>
