@@ -37,6 +37,8 @@ const ImageGalleryWithFilter = () => {
             return;
         }
         hasFetchedGuestImages.current = true;
+
+        console.log("test");
         fetchGuestImages(0);
     }, []);
 

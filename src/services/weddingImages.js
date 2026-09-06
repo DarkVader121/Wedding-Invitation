@@ -95,3 +95,20 @@ export const FetchTakenByGuestWithoutDisplayImages = async (from, to) => {
         uploaded_at: image.uploaded_at,
     }));
 };
+
+/**
+ * Update isDisplay to TRUE or FALSE
+ */
+export async function isDisplayToTrueOrFalse(imageId, isDisplayImage) {
+    const { data, error } = await supabase
+        .from("images")
+        .update({ isDisplay: isDisplayImage })
+        .eq("id", imageId)
+        .select("*");
+
+    if (error) {
+        return error;
+    }
+
+    return data;
+}

@@ -1,7 +1,7 @@
 import { logoutUser } from "../services/auth";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useState, useEffect, useRef } from "react";
-import { FetchTakenByGuestWithDisplayImages, FetchTakenByGuestWithoutDisplayImages } from "../services/weddingImages";
+import { FetchTakenByGuestWithDisplayImages, FetchTakenByGuestWithoutDisplayImages, isDisplayToTrueOrFalse } from "../services/weddingImages";
 
 const ManageImages = () => {
     //loadingGuestImages
@@ -53,6 +53,8 @@ const ManageImages = () => {
              return;
          }
          hasFetchedGuestImages.current = true;
+
+     
          fetchGuestImagesWithDisplay(0);
          fetchGuestImagesWithoutDisplay(0);
      }, []);
@@ -78,7 +80,7 @@ const ManageImages = () => {
         setLoadingGuestImages(false);
     };
 
-       // Show more function
+    // Show more function
     const handleShowMore = async () => {
         const nextPage = guestPageWithDisplay + 1;
         await fetchGuestImagesWithDisplay(nextPage);
@@ -86,14 +88,19 @@ const ManageImages = () => {
     };
 
     const fetchGuestImagesWithoutDisplay = async (page = 0) => {
-         setLoadingGuestImages(true);
+        setLoadingGuestImages(true);
+
         const limit = 12;
         const from = page * limit;
         const to = from + limit - 1;
 
         const data = await FetchTakenByGuestWithoutDisplayImages(from, to);
 
-        setGuestNoDisplayImages((prev) => [...prev, ...data]);
+        setGuestNoDisplayImages((prev) => {
+            const existingIds = new Set(prev.map((item) => item.id));
+            const newData = data.filter((item) => !existingIds.has(item.id));
+            return [...prev, ...newData];
+        });
 
          // If less than 10 were returned, there are no more images
         if (data.length < limit) {
@@ -111,6 +118,12 @@ const ManageImages = () => {
         setGuestPageNoDisplay(nextPage);
     };
 
+    const handleSwitch = async (id, isDisplay) => {
+        const result = await isDisplayToTrueOrFalse(id, isDisplay);
+
+        console.log(result);
+    };
+
     return (
         <section>
             <div className="container">
@@ -120,8 +133,8 @@ const ManageImages = () => {
                     className=""
                     onClick={handleLogout}
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
                     </svg>
 
                     Logout
@@ -134,8 +147,9 @@ const ManageImages = () => {
                     <div className=" mt-5 flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden">
                         <a
                             className="btn btn-primary btn-sm !w-max shrink-0"
-                            onClick={() => {
-                                setFilter("no-display")}}
+                             onClick={() => {
+                                setFilter("no-display");
+                            }}
                         >
                             Not Displayed
                         </a>
@@ -198,7 +212,10 @@ const ManageImages = () => {
                             {filteredImages.map((item, index) => (
                                 <div key={item.id}  className="pt-5">
                                     <label className="switch active-state">
-                                        <input type="checkbox" />
+                                        <input
+                                            type="checkbox"
+                                            onChange={(e) => handleSwitch(item.id, e.target.checked)}
+                                        />
                                         <span className="switch-slider"></span>
                                     </label>
                              
