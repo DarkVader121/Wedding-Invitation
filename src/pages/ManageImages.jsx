@@ -26,14 +26,11 @@ const ManageImages = () => {
     const [filter, setFilter] = useState("taken-by-guest-noDisplay");
     const allImages = [ ...guestImagesNoDisplay, ...guestImagesWithDisplay ];
     const filteredImages = allImages.filter((image) => {
-        const matchesFilter =
-            filter === "all" || image.category === filter;
-
+        const matchesFilter = filter === "all" || image.category === filter;
         const matchesName =
             image.name
                 ?.toLowerCase()
                 .includes(searchName.toLowerCase());
-
         return matchesFilter && matchesName;
     });
 
@@ -136,14 +133,10 @@ const ManageImages = () => {
     };
 
     const handleSwitch = async (id, isDisplay) => {
-        const { error } = await isDisplayToTrueOrFalse(id, isDisplay);
+        const data = await isDisplayToTrueOrFalse(id, isDisplay);
 
-        if (error) {
-            console.error(error);
-            return;
-        }
+        console.log("data", data);
 
-        // Update displayed images
         setGuestImages((prev) =>
             prev.map((item) =>
                 item.id === id
@@ -152,7 +145,6 @@ const ManageImages = () => {
             )
         );
 
-        // Update not-displayed images
         setGuestNoDisplayImages((prev) =>
             prev.map((item) =>
                 item.id === id
@@ -161,23 +153,6 @@ const ManageImages = () => {
             )
         );
     };
-
-
-    const handleNoDisplayBtn =  () => {
-        console.log("Not Displayed btn");
-
-        // fetchGuestImagesWithoutDisplay(0);
-        
-        setFilter("taken-by-guest-noDisplay");
-    }
-
-    const handleDisplayBtn =  () => {
-        console.log("Displayed btn");
-
-        // fetchGuestImagesWithDisplay(0);
-        
-        setFilter("taken-by-guest");
-    }
 
 
     return (
@@ -269,6 +244,14 @@ const ManageImages = () => {
                         >
                             {filteredImages.map((item, index) => (
                                 <div key={item.id}  className="pt-5">
+                                    <label className="switch active-state">
+                                        <input
+                                            type="checkbox"
+                                            checked={item.isDisplay ?? false}
+                                            onChange={(e) => handleSwitch(item.id, e.target.checked)}
+                                        />
+                                        <span className="switch-slider"></span>
+                                    </label>
                                     <PhotoView src={item.src}>
                                         <a className="fade-in show ">
                                             <img

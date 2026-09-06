@@ -100,9 +100,11 @@ export const FetchTakenByGuestWithoutDisplayImages = async (from, to) => {
  * Update isDisplay to TRUE or FALSE
  */
 export async function isDisplayToTrueOrFalse(imageId, isDisplayImage) {
+   const category = isDisplayImage ? "taken-by-guest" : "taken-by-guest-noDisplay";
+
     const { data, error } = await supabase
         .from("images")
-        .update({ category: isDisplayImage })
+        .update({ category })
         .eq("id", imageId)
         .select("*");
 
