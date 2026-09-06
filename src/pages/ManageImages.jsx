@@ -23,7 +23,7 @@ const ManageImages = () => {
     const [guestImagesNoDisplay, setGuestNoDisplayImages] = useState([]);
 
     // filter functionality
-    const [filter, setFilter] = useState("no-display");
+    const [filter, setFilter] = useState("taken-by-guest-noDisplay");
     const allImages = [ ...guestImagesNoDisplay, ...guestImagesWithDisplay ];
     const filteredImages = allImages.filter((image) => {
         const matchesFilter =
@@ -52,10 +52,9 @@ const ManageImages = () => {
              return;
          }
          hasFetchedGuestImages.current = true;
-
          
-         fetchGuestImagesWithDisplay(0);
-         fetchGuestImagesWithoutDisplay(0);
+        fetchGuestImagesWithDisplay(0);
+        fetchGuestImagesWithoutDisplay(0);
      }, []);
 
     const fetchGuestImagesWithDisplay = async (page = 0) => {
@@ -67,7 +66,18 @@ const ManageImages = () => {
 
         const data = await FetchTakenByGuestWithDisplayImages(from, to);
 
-        setGuestImages(data);
+        // setGuestImages(data);
+
+        setGuestImages((prev) => {
+            const existingIds = new Set(prev.map((item) => item.id));
+
+            const newData = data.filter(
+                (item) => !existingIds.has(item.id)
+            );
+
+            return [...prev, ...newData];
+        });
+
 
         // If less than 10 were returned, there are no more images
         if (data.length < limit) {
@@ -82,6 +92,8 @@ const ManageImages = () => {
     // Show more function
     const handleShowMore = async () => {
         const nextPage = guestPageWithDisplay + 1;
+
+        console.log("nextPage" ,nextPage);
         await fetchGuestImagesWithDisplay(nextPage);
         setGuestPageWithDisplay(nextPage);
     };
@@ -95,7 +107,17 @@ const ManageImages = () => {
 
         const data = await FetchTakenByGuestWithoutDisplayImages(from, to);
 
-        setGuestNoDisplayImages(data);
+        // setGuestNoDisplayImages(data);
+
+        setGuestNoDisplayImages((prev) => {
+            const existingIds = new Set(prev.map((item) => item.id));
+
+            const newData = data.filter(
+                (item) => !existingIds.has(item.id)
+            );
+
+            return [...prev, ...newData];
+        });
 
          // If less than 10 were returned, there are no more images
         if (data.length < limit) {
@@ -115,8 +137,7 @@ const ManageImages = () => {
 
     const handleSwitch = async (id, isDisplay) => {
         const { error } = await isDisplayToTrueOrFalse(id, isDisplay);
-
-
+        
         if (error) {
             console.error(error);
             return;
@@ -139,23 +160,21 @@ const ManageImages = () => {
                     : item
             )
         );
-
-
     };
 
 
     const handleNoDisplayBtn =  () => {
         console.log("Not Displayed btn");
 
-        fetchGuestImagesWithoutDisplay(0);
+        // fetchGuestImagesWithoutDisplay(0);
         
-        setFilter("no-display");
+        setFilter("taken-by-guest-noDisplay");
     }
 
     const handleDisplayBtn =  () => {
         console.log("Displayed btn");
 
-        fetchGuestImagesWithDisplay(0);
+        // fetchGuestImagesWithDisplay(0);
         
         setFilter("taken-by-guest");
     }
@@ -244,15 +263,6 @@ const ManageImages = () => {
                         >
                             {filteredImages.map((item, index) => (
                                 <div key={item.id}  className="pt-5">
-                                    <label className="switch active-state">
-                                        <input
-                                            type="checkbox"
-                                            checked={item.isDisplay}
-                                            onChange={(e) => handleSwitch(item.id, e.target.checked)}
-                                        />
-                                        <span className="switch-slider"></span>
-                                    </label>
-                             
                                     <PhotoView src={item.src}>
                                         <a className="fade-in show ">
                                             <img
@@ -283,7 +293,7 @@ const ManageImages = () => {
                     )}
 
                     {hasMoreGuestNoImages &&
-                        (filter === "no-display") 
+                        (filter === "taken-by-guest-noDisplay") 
                         && (
                             <div className="flex justify-end my-5">
                                 <button

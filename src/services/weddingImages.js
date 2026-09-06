@@ -51,7 +51,7 @@ export const FetchTakenByGuestWithDisplayImages = async (from, to) => {
     const { data, error } = await supabase
         .from("images")
         .select("*")
-        .eq("isDisplay", true)
+        .eq("category", "taken-by-guest")
         .range(from, to)
         .order("uploaded_at", { ascending: false });
 
@@ -64,7 +64,7 @@ export const FetchTakenByGuestWithDisplayImages = async (from, to) => {
         id: image.id,
         name: image.name,
         src: image.imageUrl,
-        category: "taken-by-guest",
+        category: image.category,
         path: image.imageUrl,
         uploaded_at: image.uploaded_at,
     }));
@@ -77,7 +77,7 @@ export const FetchTakenByGuestWithoutDisplayImages = async (from, to) => {
     const { data, error } = await supabase
         .from("images")
         .select("*")
-        .eq("isDisplay", false)
+        .eq("category", "taken-by-guest-noDisplay")
         .range(from, to)
         .order("uploaded_at", { ascending: false });
 
@@ -90,7 +90,7 @@ export const FetchTakenByGuestWithoutDisplayImages = async (from, to) => {
         id: image.id,
         name: image.name,
         src: image.imageUrl,
-        category: "no-display",
+        category: "taken-by-guest-noDisplay",
         path: image.imageUrl,
         uploaded_at: image.uploaded_at,
     }));

@@ -125,6 +125,7 @@ const Hero = () => {
                 .from("images")
                 .insert([
                 {
+                    category: "taken-by-guest-noDisplay",
                     imageUrl: imageUrl,
                     name: uploadedAt,
                 },
