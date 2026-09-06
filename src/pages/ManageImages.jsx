@@ -137,7 +137,7 @@ const ManageImages = () => {
 
     const handleSwitch = async (id, isDisplay) => {
         const { error } = await isDisplayToTrueOrFalse(id, isDisplay);
-        
+
         if (error) {
             console.error(error);
             return;
@@ -203,14 +203,20 @@ const ManageImages = () => {
                     <div className=" mt-5 flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden">
                         <a
                             className="btn btn-primary btn-sm !w-max shrink-0"
-                             onClick={handleNoDisplayBtn}
+                            onClick={() => {
+                                console.log("Not Displayed Btn")
+                                setFilter("taken-by-guest-noDisplay");
+                            }}
                         >
                             Not Displayed
                         </a>
 
                         <a
                             className="btn btn-secondary btn-sm !w-max shrink-0"
-                            onClick={handleDisplayBtn}
+                            onClick={() => {
+                                console.log("Displayed Btn")
+                                setFilter("taken-by-guest");
+                            }}
                         >
                             Displayed
                         </a>
