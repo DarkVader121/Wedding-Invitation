@@ -197,7 +197,7 @@ const ManageImages = () => {
                         >
                             {filteredImages.map((item, index) => (
                                 <div key={item.id}  className="pt-5">
-                                    <label className="switch">
+                                    <label className="switch active-state">
                                         <input type="checkbox" />
                                         <span className="switch-slider"></span>
                                     </label>
