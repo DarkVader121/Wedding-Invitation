@@ -161,7 +161,7 @@ const ManageImages = () => {
                         />
                     </form>
                        
-                    <div className="wi-gallery-images gap-1 mt-5 grid grid-cols-3 justify-center items-start">
+                    <div className="wi-gallery-images gap-1 mt-1 grid grid-cols-3 justify-center items-start">
                         <PhotoProvider
                           overlayRender={({ index, onClose }) => (
                             <div className="PhotoView-Slider__BannerWrap">
@@ -196,24 +196,23 @@ const ManageImages = () => {
                         )}
                         >
                             {filteredImages.map((item, index) => (
-                                <PhotoView key={item.id} src={item.src}>
-                                 <div>
+                                <div key={item.id}  className="pt-5">
                                     <label className="switch">
                                         <input type="checkbox" />
                                         <span className="switch-slider"></span>
                                     </label>
-                                 
-                                    <a className="fade-in show">
-                                        
-                                        <img
-                                            src={item.src}
-                                            alt={`Image ${index + 1}`}
-                                            loading="lazy"
-                                            decoding="async"
-                                        />
-                                    </a>
-                                   </div>
-                                </PhotoView>
+                             
+                                    <PhotoView src={item.src}>
+                                        <a className="fade-in show ">
+                                            <img
+                                                src={item.src}
+                                                alt={`Image ${index + 1}`}
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
+                                        </a>
+                                    </PhotoView>
+                                </div>
                             ))}
                         </PhotoProvider>
                     </div>

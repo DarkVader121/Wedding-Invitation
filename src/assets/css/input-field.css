@@ -8,6 +8,7 @@
     font-size: 14px;
     outline: none;
     box-sizing: border-box;
+
 }
 
 .form-control::placeholder {
@@ -28,6 +29,7 @@
     cursor: pointer;
     position: absolute;
     z-index: 10;
+    margin-top: -7px;
 }
 
 .switch input {
