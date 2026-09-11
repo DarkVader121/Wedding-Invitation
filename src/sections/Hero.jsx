@@ -159,24 +159,41 @@ const Hero = () => {
 
     return (
         <>
-        <section className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
+        <section className="hero overlay flex flex-col justify-between" style={{ backgroundImage: `url(${heroImage})` }}>
             {/* Offcanvas Open button */}
-            <a className='btn btn-primary ms-5' onClick={() => setIsOpen(true)} style={{ backgroundColor: '#6c849c' }}>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="#fff"
-                    className="size-8"
-                >
-                    <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" />
+            <div className='flex  justify-between px-5'>
+                <a className='btn btn-primary ' onClick={() => setIsOpen(true)} style={{ backgroundColor: '#6c849c' }}>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="#fff"
+                        className="size-8"
+                    >
+                        <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" />
 
-                    <path
-                        fillRule="evenodd"
-                        d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                        clipRule="evenodd"
-                    />
-                </svg>
-            </a>
+                        <path
+                            fillRule="evenodd"
+                            d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                            clipRule="evenodd"
+                        />
+                    </svg>
+                </a>
+                <a href="#RSVPsection" className='btn btn-secondary btn-sm btn-rsvp'>RSVP &nbsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                        <path fill-rule="evenodd" d="M10 3a.75.75 0 0 1 .75.75v10.638l3.96-4.158a.75.75 0 1 1 1.08 1.04l-5.25 5.5a.75.75 0 0 1-1.08 0l-5.25-5.5a.75.75 0 1 1 1.08-1.04l3.96 4.158V3.75A.75.75 0 0 1 10 3Z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+       
+            <div className='z-1 text-center !text-white'>
+                <p className='!text-secondary'>TOGETHER WITH THEIR FAMILIES</p>
+                <div className='mt-3 gap-2 flex items-center justify-center'>
+                    <h2 className='text-5xl !text-white'>Erron</h2>
+                    <p className='!text-secondary'>&</p>
+                    <h2 className='text-5xl !text-white'>Deakin</h2>
+                </div>
+                <p className='text-light mt-2'>#ErronDeakin2027</p>
+            </div>
         </section>
 
         {/* Overlay */}

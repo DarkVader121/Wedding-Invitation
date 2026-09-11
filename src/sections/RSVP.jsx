@@ -5,7 +5,7 @@ const RSVP = () => {
 
     return (
         <>
-            <section>
+            <section >
                 <div>
                     <div className="flex flex-col justify-center items-center">
                         {/* <div className="wi-title-container mt-1">
@@ -18,7 +18,7 @@ const RSVP = () => {
                         </p> */}
 
                         <img src={cutoffs}  alt="" className="w-[50%] object-cover h-[35px] mb-5" />
-                        <iframe className='h-[600px] w-[100%]' src="https://docs.google.com/forms/d/e/1FAIpQLSfzOlHthcf19gSM0YMuDVqAzuNlpleQxBOnfczvgdM8zmtsvQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                        <iframe id='RSVPsection' className='h-[600px] w-[100%]' src="https://docs.google.com/forms/d/e/1FAIpQLSfzOlHthcf19gSM0YMuDVqAzuNlpleQxBOnfczvgdM8zmtsvQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                     </div>
                 </div>
             </section>

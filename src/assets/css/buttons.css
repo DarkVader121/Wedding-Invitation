@@ -68,3 +68,10 @@
     position: absolute;
     margin-top: -12px;
 }
+
+.btn-rsvp{
+    position: fixed;
+    top: 33px;
+    right: 20px;
+    z-index: 2;
+}
