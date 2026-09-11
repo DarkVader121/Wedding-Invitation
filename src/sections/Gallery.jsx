@@ -25,7 +25,7 @@ const Gallery = () => {
                                 href={location.pathname === "/sweet-gallery" ? "/" : "/sweet-gallery"}
                                 className={`btn btn-primary ${
                                     location.pathname === "/sweet-gallery"
-                                        ? "fixed bottom-0 left-0 ms-3 mb-10 px-3 py-5"
+                                        ? "fixed top-0 left-0 mt-3 ms-3 mb-10 px-3 py-5"
                                         : ""
                                 }`}
                             >
