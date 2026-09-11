@@ -206,15 +206,18 @@ const ManageImages = () => {
                         </a>
                     </div>
 
-                    <form onSubmit={(e) => e.preventDefault()}>
-                        <input
-                            id="loginEmail"
-                            type="text"
-                            placeholder="Search by Name:"
-                            className="form-control mt-5"
-                            value={searchName}
-                            onChange={(e) => setSearchName(e.target.value)}
-                        />
+                   <form onSubmit={(e) => e.preventDefault()}>
+                        <div className="flex mt-5">
+                       
+                            <input
+                                id="loginEmail"
+                                type="text"
+                                placeholder="Search by Name..."
+                                className="form-control ps-5"
+                                value={searchName}
+                                onChange={(e) => setSearchName(e.target.value)}
+                            />
+                        </div>
                     </form>
                        
                     <div className="wi-gallery-images gap-1 mt-1 grid grid-cols-3 justify-center items-start">
@@ -262,7 +265,7 @@ const ManageImages = () => {
                                         <span className="switch-slider"></span>
                                     </label>
                                     <PhotoView src={item.src}>
-                                        <a className="fade-in show ">
+                                        <a className="fade-in show">
                                             <img
                                                 src={item.src}
                                                 alt={`Image ${index + 1}`}
