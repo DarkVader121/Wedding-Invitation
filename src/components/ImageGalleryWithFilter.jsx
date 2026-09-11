@@ -5,6 +5,13 @@ import { useLocation  } from "react-router";
 import { TakePrenupImages, TakeOfficialPhotographyImages, FetchTakenByGuestWithDisplayImages } from "../services/weddingImages";
 
 const ImageGalleryWithFilter = () => {
+    const BtnFilters = [
+        { key: "all", label: "All" },
+        { key: "taken-by-guest", label: "Taken by Guest" },
+        { key: "prenup", label: "Prenup" },
+        { key: "official-photography", label: "Official Photography" },
+    ];
+
     // location checker
     const location = useLocation();
 
@@ -76,41 +83,17 @@ const ImageGalleryWithFilter = () => {
         <div className="mt-7 flex justify-start flex-col text-start w-[100%]">
             <div className="flex justify-start w-[100%]">
                 <div className="flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden">
+                    {BtnFilters.map(({ key, label }) => (
                     <a
-                        className="btn btn-secondary btn-sm !w-max shrink-0"
-                        onClick={() => {
-                            setFilter("all");
-                        }}
+                        key={key}
+                        className={`btn btn-sm !w-max shrink-0 ${filter === key ? "btn-primary" : ""}`}
+                        onClick={() => setFilter(key)}
                     >
-                        All
+                        {label}
                     </a>
+                ))}
 
-                    <a
-                        className="btn btn-secondary btn-sm !w-max shrink-0"
-                        onClick={() => {
-                            setFilter("prenup")}}
-                    >
-                        Prenup
-                    </a>
-
-                    <a
-                        className="btn btn-secondary btn-sm !w-max shrink-0"
-                        onClick={() => {
-                            setFilter("official-photography")
-                        }}
-                    >
-                        Official Photography
-                    </a>
-
-                    <a
-                        className="btn btn-secondary btn-sm !w-max shrink-0 extra"
-                        style={{ backgroundColor: "rgb(110, 132, 156)" }}
-                        onClick={() => {
-                            setFilter("taken-by-guest");
-                        }}
-                    >
-                        Taken by Guest
-                    </a>
+                  
                 </div>
             </div>
             <div className="flex items-center">

@@ -47,6 +47,16 @@
     color: white;
 }
 
+.btn-light {
+    background-color: var(--color-gray);
+    color: var(--color-darkgray);
+}
+
+.btn-darklight {
+    background-color: var(--color-darkgray);
+    color: white;
+}
+
 .btn-secondary {
     background-color: var(--color-secondary);
     color: white;
