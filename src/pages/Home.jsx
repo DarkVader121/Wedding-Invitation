@@ -11,9 +11,10 @@ const Home = () => {
         <Gallery />
         <Details />
         <FullImageSection2 />
+        <GroomBrideParents />
         <DressCode />
         <Cutoffs />
-        <GroomBrideParents />
+       
         <FullImageSection3 />
         <MalePrincipal />
         <Cutoffs />

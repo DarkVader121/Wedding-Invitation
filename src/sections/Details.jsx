@@ -9,10 +9,10 @@ const Details = () => {
                         <h3>The</h3>
                         <p>Details</p>
                     </div>
-                    <p className="mt-7 text-lg">Ceremony</p>
+                    <h3 className="mt-7 text-2xl !mb-0">Ceremony</h3>
                     <p className="text-center text-lg">Assumption of Our Lady <br /> Shrine Parish, Dauis.</p>
 
-                     <p className="mt-7 text-lg">Reception</p>
+                     <h3 className="mt-7 text-2xl !mb-0">Reception</h3>
                     <p className="text-center text-lg">The Bellevue Resort <br /> Panglao.</p>
 
                 </div>
