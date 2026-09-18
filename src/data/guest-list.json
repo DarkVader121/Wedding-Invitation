@@ -14,13 +14,13 @@
     {
         "id": 3,
         "name": "Reuel L. Lapac",
-        "type": "Groom’s parents",
+        "type": "Parents of the Groom",
         "short-description": "Loving"
     },
     {
         "id": 4,
         "name": "Princesa Nicanora C. Lapac",
-        "type": "Groom’s parents",
+        "type": "Parents of the Bride",
         "short-description": "Loving"
     },
     {
@@ -33,6 +33,18 @@
         "id": 6,
         "name": "Florencio L. Cagas",
         "type": "Bride’s parents",
+        "short-description": "Loving"
+    },
+    {
+        "id": 6,
+        "name": "Fr. Agero Palma",
+        "type": "Main Celebrant",
+        "short-description": "Loving"
+    },
+    {
+        "id": 6,
+        "name": "Fr. Jay Romualdo",
+        "type": "Co Celebrant",
         "short-description": "Loving"
     },
     {
@@ -593,4 +605,5 @@
         "type": "bible bearer",
         "short-description": "Gentle"
     }
+
 ]
