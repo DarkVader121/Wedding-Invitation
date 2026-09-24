@@ -7,9 +7,9 @@ import { TakePrenupImages, TakeOfficialPhotographyImages, FetchTakenByGuestWithD
 const ImageGalleryWithFilter = () => {
     const BtnFilters = [
         { key: "all", label: "All" },
-        { key: "taken-by-guest", label: "Taken by Guest" },
-        { key: "prenup", label: "Prenup" },
-        { key: "official-photography", label: "Official Photography" },
+        // { key: "taken-by-guest", label: "Guest Photos" },
+        { key: "prenup", label: "Pre-Wedding" },
+        { key: "official-photography", label: "Wedding Day" },
     ];
 
     // location checker
@@ -31,7 +31,8 @@ const ImageGalleryWithFilter = () => {
      
     // filter functionality
     const [filter, setFilter] = useState("all");
-    const allImages = [ ...prenupImages, ...officialPhotographyImages, ...guestImages];
+    // const allImages = [ ...prenupImages, ...officialPhotographyImages, ...guestImages];
+    const allImages = [ ...prenupImages, ...officialPhotographyImages];
     const filteredImages =
         filter === "all"
             ? allImages

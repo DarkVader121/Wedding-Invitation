@@ -1,5 +1,5 @@
 import heroImage from '../assets/images/background/hero-background.png'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { supabase } from "../lib/supabase";
 
 const Hero = () => {
@@ -159,7 +159,7 @@ const Hero = () => {
 
     return (
         <>
-        <section className="hero overlay flex flex-col justify-between" style={{ backgroundImage: `url(${heroImage})` }}>
+        <section className="hero flex flex-col justify-between" style={{ backgroundImage: `url(${heroImage})` }}>
             {/* Offcanvas Open button */}
             <div className='flex  justify-between px-5'>
                 <a className='btn btn-primary ' onClick={() => setIsOpen(true)} style={{ backgroundColor: '#6c849c' }}>
@@ -178,21 +178,7 @@ const Hero = () => {
                         />
                     </svg>
                 </a>
-                <a href="#RSVPsection" className='btn btn-primary btn-sm btn-rsvp'>RSVP &nbsp;
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                        <path fill-rule="evenodd" d="M10 3a.75.75 0 0 1 .75.75v10.638l3.96-4.158a.75.75 0 1 1 1.08 1.04l-5.25 5.5a.75.75 0 0 1-1.08 0l-5.25-5.5a.75.75 0 1 1 1.08-1.04l3.96 4.158V3.75A.75.75 0 0 1 10 3Z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-       
-            <div className='z-1 text-center !text-white'>
-                <p className='!text-secondary'>TOGETHER WITH THEIR FAMILIES</p>
-                <div className='mt-3 gap-2 flex items-center justify-center'>
-                    <h2 className='text-5xl !text-white'>Erron</h2>
-                    <p className='!text-secondary'>&</p>
-                    <h2 className='text-5xl !text-white'>Deakin</h2>
-                </div>
-                <p className='text-light mt-2'>#ErronDeakin2027</p>
+               
             </div>
         </section>
 

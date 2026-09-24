@@ -7,7 +7,6 @@ function App() {
   return (
     <>
       <Routes>
-        can you guard this only sign in supabase users can proceed
         <Route
             path="/login"
             element={

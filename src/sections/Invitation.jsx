@@ -8,9 +8,10 @@ const Invitation = () => {
                 <div className="container">
                     <div className="flex flex-col justify-center items-center">
                         <p className="text-primary text-center">You are cordially invited to the <br /> wedding of</p>
-                        <h1 className="mt-5 text-4xl text-primary">Erron John C. Lapac</h1> 
-                        <p className="text-lg py-2 text-primary">&</p> 
-                        <h2 className="text-4xl text-primary">Deakin Jesha L. Cagas</h2>
+                        <h1 className="mt-5 text-7xl text-primary">Erron</h1> 
+                        <p className="text-3xl text-primary">and</p> 
+                        <h2 className="text-7xl text-primary">Deakin</h2>
+                    
                     
                         <div className="mt-10 grid grid-cols-3 justify-center items-center">
                             <div className="flex flex-col justify-center items-center">
@@ -35,7 +36,7 @@ const Invitation = () => {
                                 <h3>The</h3>
                                 <p>COUNTDOWN</p>
                             </div>
-                            <p className="text-small -mt-[7px]">to 'I DO' begins</p>
+                            <p className="text-small -mt-[7px]">to 'Forever' begins</p>
                         </div>
                     
                         <div className="mt-10">
