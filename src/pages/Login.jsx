@@ -69,15 +69,27 @@ const Login = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    
+                    <div className="flex gap-3">
+                        <button
+                            id="signInButton"
+                            type="submit"
+                            className="btn btn-primary mt-7"
+                            disabled={loading}
+                        >
+                            {loading ? "Logging in..." : "Login"}
+                        </button>
+                        <a
+                            href="/"
+                            className="btn btn-secondary mt-7"
+                        
+                        >
+                            Home
+                        </a>
 
-                    <button
-                        id="signInButton"
-                        type="submit"
-                        className="btn btn-primary mt-7"
-                        disabled={loading}
-                    >
-                        {loading ? "Logging in..." : "Login"}
-                    </button>
+                    </div>
+
+                   
 
                 </form>
             </div>

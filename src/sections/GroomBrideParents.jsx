@@ -30,7 +30,7 @@ const GroomBrideParents = () => {
     const choir = getGuestsByType("CHOIR");
     return (
         <>
-            <section className="entourage-section">
+            <div className="entourage-section py-7">
                 <div className="container">
                     <div className="flex flex-col justify-center items-center ">
                         <div className="wi-title-container-info">
@@ -305,7 +305,7 @@ const GroomBrideParents = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </div>
       </>
     );
 }

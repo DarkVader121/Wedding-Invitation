@@ -3,7 +3,7 @@ import {GroomBrideParents} from '../sections'
 const Entourage = () => {
     return (
         <>
-            <div className=''>
+            <section className=''>
                 <div class="image-container">
                     <div class="image-wrapper">
                        <img
@@ -17,7 +17,7 @@ const Entourage = () => {
                         <GroomBrideParents />
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     );
 }
