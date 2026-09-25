@@ -1,4 +1,4 @@
-import { Hero, Invitation, FullImageSection1, Gallery, Details, FullImageSection2, DressCode, Entourage, FullImageSection3, MalePrincipal, FemalePrincipal, FullImageSection4, EntourageList, EntourageList1, GoogleMaps, Footer} from '../sections'
+import { Hero, Invitation, FullImageSection1, Gallery, Details, MessageToGuest,  DressCode, Entourage, FullImageSection3, MalePrincipal, FemalePrincipal, FullImageSection4, EntourageList, EntourageList1, GoogleMaps, Footer} from '../sections'
 import { Cutoffs } from '../components'
 
 const Home = () => {
@@ -14,15 +14,16 @@ const Home = () => {
         {/* <FullImageSection2 /> */}
         <Entourage/>
        
-        <FullImageSection3 />
+        {/* <FullImageSection3 />
         <MalePrincipal />
         <Cutoffs />
         <FemalePrincipal />
         <FullImageSection4 />
         <EntourageList />
         <FullImageSection2 />
-        <EntourageList1 />
+        <EntourageList1 /> */}
         {/* <RSVP /> */}
+         <MessageToGuest />
         <GoogleMaps />
         <Footer />
       </>
