@@ -3,7 +3,7 @@ import { getGuestsByType } from "../services/guestService";
 
 const EntourageList1 = () => {
     const ringBearerInfo = getGuestsByType("ring bearer");
-    const arrhaeBearerInfo = getGuestsByType("arrhae bearer");
+    // const arrhaeBearerInfo = getGuestsByType("arrhae bearer");
     const bibleBearerInfo = getGuestsByType("bible bearer");
     return (
         <>
@@ -17,11 +17,11 @@ const EntourageList1 = () => {
                         </div>
                         <p className="text-lg mt-[-7px]">{ringBearerInfo[0].name}</p>
 
-                        <div className="wi-title-container-info mt-7">
+                        {/* <div className="wi-title-container-info mt-7">
                             <h3>{arrhaeBearerInfo[0]["short-description"]}</h3>
                             <p>{arrhaeBearerInfo[0].type}</p>
                         </div>
-                        <p className="text-lg mt-[-7px]">{arrhaeBearerInfo[0].name}</p>
+                        <p className="text-lg mt-[-7px]">{arrhaeBearerInfo[0].name}</p> */}
 
                         <div className="wi-title-container-info mt-7">
                             <h3>{bibleBearerInfo[0]["short-description"]}</h3>

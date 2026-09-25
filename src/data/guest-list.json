@@ -14,13 +14,13 @@
     {
         "id": 3,
         "name": "Reuel L. Lapac",
-        "type": "Parents of the Groom",
+        "type": "Groom's Parents",
         "short-description": "Loving"
     },
     {
         "id": 4,
         "name": "Princesa Nicanora C. Lapac",
-        "type": "Parents of the Bride",
+        "type": "Groom's Parents",
         "short-description": "Loving"
     },
     {
@@ -31,7 +31,7 @@
     },
     {
         "id": 6,
-        "name": "Florencio L. Cagas",
+        "name": "+ Florencio L. Cagas",
         "type": "Bride’s parents",
         "short-description": "Loving"
     },
@@ -596,13 +596,81 @@
     {
         "id": 98,
         "name": "Brylle Paulo Castillo",
-        "type": "arrhae bearer",
+        "type": "coin bearer",
         "short-description": "Charming"
     },
     {
         "id": 99,
         "name": "Evan Rafael Lucas Gonzales",
         "type": "bible bearer",
+        "short-description": "Gentle"
+    }, 
+    {
+        "id": 1011,
+        "name": "Junia Alianee L. Cagas",
+        "type": "flower girls"
+    },
+    {
+        "id": 1012,
+        "name": "Felicity Mariae P. Cagas",
+        "type": "flower girls"
+    },
+    {
+        "id": 1013,
+        "name": "Catalina Jae P. Cagas",
+        "type": "flower girls"
+    },
+    {
+        "id": 1014,
+        "name": "Kirsten Bae L. Araneta",
+        "type": "herald bearer"
+    },
+    {
+        "id": 100,
+        "name": "Adriana K. Flores",
+        "type": "Female Peer Principal Sponsors",
+        "short-description": "Gentle"
+    },
+    {
+        "id": 101,
+        "name": "Adrian K. Tores",
+        "type": "Male Peer Principal Sponsors",
+        "short-description": "Gentle"
+    },
+    {
+        "id": 102,
+        "name": "Ms. Desiree Faith R. Lingo",
+        "type": "First Reading",
+        "short-description": "Gentle"
+    },
+    {
+        "id": 102,
+        "name": "Mr. Francis Niño R. Opog",
+        "type": "Second Reading",
+        "short-description": "Gentle"
+    },
+    {
+        "id": 103,
+        "name": "Mrs. Rosil Antonette C. Atup",
+        "type": "Responsorial Pslam",
+        "short-description": "Gentle"
+    },
+    {
+        "id": 103,
+        "name": "Mrs. Alyssa Fe H. Ayop",
+        "type": "Prayers of the Faithful",
+        "short-description": "Gentle"
+    },
+    {
+        "id": 104,
+        "name": "Mrs. Maxine May H. Zimmerman",
+        "type": "Commentator",
+        "short-description": "Gentle"
+    },
+    {
+        "id": 105,
+        "name": "Lila Grand Choir",
+        "type": "CHOIR",
         "short-description": "Gentle"
     }
 

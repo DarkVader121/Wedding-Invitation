@@ -154,10 +154,10 @@
       -o-object-fit: cover;
       object-fit: cover;
       position: absolute;
-      bottom: -170px;
+      /* bottom: -170px; */
       left: 0;
 
-      transform: scale(1.5);
+      transform: scale(2.5);
     }
   }
 

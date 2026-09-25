@@ -9,12 +9,12 @@ const EntourageList = () => {
     const candleInfo = getGuestsByType("candle");
     const groomsmen = getGuestsByType("groomsmen");
     const bridesmaids = getGuestsByType("bridesmaids");
+    
     return (
         <>
             <section>
                 <div className="container">
                     <div className="flex flex-col justify-center items-center">
-              
                         <div className="wi-title-container-info">
                             <h3>{bestmanInfo[0]["short-description"]}</h3>
                             <p>{bestmanInfo[0].type}</p>

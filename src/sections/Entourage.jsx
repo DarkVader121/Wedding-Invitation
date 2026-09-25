@@ -15,10 +15,6 @@ const Entourage = () => {
 
                     <div class="text-wrapper">
                         <GroomBrideParents />
-                         <GroomBrideParents />
-                          <GroomBrideParents />
-                           <GroomBrideParents />
-                            <GroomBrideParents />
                     </div>
                 </div>
             </div>
