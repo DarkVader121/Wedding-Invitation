@@ -1,0 +1,29 @@
+import ring from '../assets/images/random/ring.png';
+import {GroomBrideParents} from '../sections'
+const Entourage = () => {
+    return (
+        <>
+            <div className=''>
+                <div class="image-container">
+                    <div class="image-wrapper">
+                       <img
+                        src={ring}
+                        alt=""
+                        className="blur-none active:blur-lg transition-all duration-300"
+                        />
+                    </div>
+
+                    <div class="text-wrapper">
+                        <GroomBrideParents />
+                         <GroomBrideParents />
+                          <GroomBrideParents />
+                           <GroomBrideParents />
+                            <GroomBrideParents />
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export default Entourage;

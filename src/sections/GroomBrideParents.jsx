@@ -10,25 +10,42 @@ const GroomBrideParents = () => {
     const coCelebrant = getGuestsByType("Co Celebrant");
     return (
         <>
-            <section>
+            <section className="entourage-section">
                 <div className="container">
-                    <div className="flex flex-col justify-center items-center">
-                        {/* Groom */}
-                      
+                    <div className="flex flex-col justify-center items-center ">
                         <div className="wi-title-container-info">
-                            <p className="font-semibold">{groomInfo[0].type}</p>
+                            <p className="font-semibold">The entourage</p>
                         </div>
-                        <p className="text-lg mt-[-7px] ">{groomInfo[0].name}</p>
+
+                        <h2 className="text-6xl mt-7">Lapac & Cagas</h2>
+                        
+                        <div className="wi-title-container-info mt-7">
+                            <p>{mainCelebrant[0].type}</p>
+                        </div>
+                      
+                        <p className="text-lg mt-[-7px]">
+                            {mainCelebrant[0].name}
+                        </p>
+
+                        {/* Co Celebrant */}
+                        <div className="wi-title-container-info mt-7">
+                            <p>{coCelebrant[0].type}</p>
+                        </div>
+                        
+                        {/* Groom */}
+                        <div className="wi-title-container-info">
+                            <p className="font-semibold !text-white">{groomInfo[0].type}</p>
+                        </div>
+                        <p className="text-lg mt-[-7px]  !text-white">{groomInfo[0].name}</p>
                         {/* Bride */}
                         <div className="wi-title-container-info mt-7">
                           
-                            <p className="font-semibold">{brideInfo[0].type}</p>
+                            <p className="font-semibold !text-white">{brideInfo[0].type}</p>
                         </div>
-                        <p className="text-lg mt-[-7px]">{brideInfo[0].name}</p>
+                        <p className="text-lg mt-[-7px] !text-white">{brideInfo[0].name}</p>
 
                         <br />
-                        <Cutoffs/>
-                        <p className="text-lg text-center mt-7">with the blessings of our <br /> loving parents</p>
+                        <p className="text-lg text-center mt-7 !text-white">with the blessings of our <br /> loving parents</p>
 
                         {/* Grooms Parents */}
                         <div className="wi-title-container-info mt-7">
