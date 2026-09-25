@@ -18,7 +18,7 @@ const Gallery = () => {
                    
                         <ImageGalleryWithFilter/>
                         <div className="mt-5 text-center flex justify-center">
-                            <a
+                            {/* <a
                                 href={location.pathname === "/sweet-gallery" ? "/" : "/sweet-gallery"}
                                 className={`btn btn-primary ${
                                     location.pathname === "/sweet-gallery"
@@ -46,7 +46,7 @@ const Gallery = () => {
                                 ) : (
                                     "See Our Gallery"
                                 )}
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                 </div>

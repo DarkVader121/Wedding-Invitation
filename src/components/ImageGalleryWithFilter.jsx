@@ -9,7 +9,7 @@ const ImageGalleryWithFilter = () => {
         { key: "all", label: "All" },
         // { key: "taken-by-guest", label: "Guest Photos" },
         { key: "prenup", label: "Pre-Wedding" },
-        { key: "official-photography", label: "Wedding Day" },
+        // { key: "official-photography", label: "Wedding Day" },
     ];
 
     // location checker
@@ -27,12 +27,12 @@ const ImageGalleryWithFilter = () => {
     // Static and Dynamic Images
     const [guestImages, setGuestImages] = useState([]);
     const prenupImages = TakePrenupImages();
-    const officialPhotographyImages = TakeOfficialPhotographyImages();
+    // const officialPhotographyImages = TakeOfficialPhotographyImages();
      
     // filter functionality
     const [filter, setFilter] = useState("all");
     // const allImages = [ ...prenupImages, ...officialPhotographyImages, ...guestImages];
-    const allImages = [ ...prenupImages, ...officialPhotographyImages];
+    const allImages = [ ...prenupImages];
     const filteredImages =
         filter === "all"
             ? allImages
@@ -151,7 +151,6 @@ const ImageGalleryWithFilter = () => {
                 >
                     {filteredImages.map((item, index) => (
                         <PhotoView key={item.id} src={item.src}>
-                            
                             <a className="fade-in show">
                                 <img
                                     src={item.src}
