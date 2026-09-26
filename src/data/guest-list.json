@@ -13,25 +13,25 @@
     },
     {
         "id": 3,
-        "name": "Reuel L. Lapac",
+        "name": "Mr. Reuel L. Lapac",
         "type": "Groom's Parents",
         "short-description": "Loving"
     },
     {
         "id": 4,
-        "name": "Princesa Nicanora C. Lapac",
+        "name": "Mrs. Princesa Nicanora C. Lapac",
         "type": "Groom's Parents",
         "short-description": "Loving"
     },
     {
-        "id": 5,
-        "name": "Esther L. Cagas",
+        "id": 6,
+        "name": "Mr. Florencio L. Cagas  +",
         "type": "Bride’s parents",
         "short-description": "Loving"
     },
     {
-        "id": 6,
-        "name": "Florencio L. Cagas +",
+        "id": 5,
+        "name": "Mrs. Esther L. Cagas",
         "type": "Bride’s parents",
         "short-description": "Loving"
     },
@@ -96,7 +96,7 @@
     { "id": 52, "name": "Mr. Christopher Alde", "type": "Male Peer Principal Sponsors", "short-description": "" },
     { "id": 53, "name": "Mr. Prince Leo B. Hampac", "type": "Male Peer Principal Sponsors", "short-description": "" },
     { "id": 54, "name": "Mr. Frian Paul A. Ayop", "type": "Male Peer Principal Sponsors", "short-description": "" },
-    { "id": 55, "name": "Mr. Manuel Viktor Salaum", "type": "Male Peer Principal Sponsors", "short-description": "" },
+    { "id": 55, "name": "Mr. Manuel Viktor F. Salaum", "type": "Male Peer Principal Sponsors", "short-description": "" },
     { "id": 56, "name": "Mr. Angel Joshua L. Cagas", "type": "Male Peer Principal Sponsors", "short-description": "" },
     { "id": 57, "name": "Mr. Christian Jay L. Cagas", "type": "Male Peer Principal Sponsors", "short-description": "" },
     { "id": 58, "name": "Engr. Ma. Janadel L. Cagas", "type": "Male Peer Principal Sponsors", "short-description": "" },
@@ -106,7 +106,7 @@
     { "id": 61, "name": "Ms. Dianna Marie C. Padenal", "type": "Female Peer Principal Sponsors", "short-description": "" },
     { "id": 62, "name": "Mrs. Rhodora Romualdo", "type": "Female Peer Principal Sponsors", "short-description": "" },
     { "id": 63, "name": "Mrs. Charity R. Alde", "type": "Female Peer Principal Sponsors", "short-description": "" },
-    { "id": 64, "name": "Mrs. Gelai L. Hampac", "type": "Female Peer Principal Sponsors", "short-description": "" },
+    { "id": 64, "name": "Mrs. Angelica L. Hampac", "type": "Female Peer Principal Sponsors", "short-description": "" },
     { "id": 65, "name": "Mrs. Alyssa Fe H. Ayop", "type": "Female Peer Principal Sponsors", "short-description": "" },
     { "id": 66, "name": "Mrs. Aimee Joy R. Salaum", "type": "Female Peer Principal Sponsors", "short-description": "" },
     { "id": 67, "name": "Mrs. Stella Marie R. Cagas", "type": "Female Peer Principal Sponsors", "short-description": "" },
@@ -121,7 +121,7 @@
     },
     {
         "id": 80,
-        "name": "Mrs. Dreams Jesther Cagas",
+        "name": "Ms. Dreams Jesther Cagas",
         "type": "maid of honor",
         "short-description": "Precious"
     },
@@ -176,19 +176,19 @@
     
     {
         "id": 97,
-        "name": "Brian Mathew S. Felomino",
+        "name": "Christof Jeshua P. Cagas",
         "type": "ring bearer",
         "short-description": "Adorable"
     },
     {
         "id": 98,
-        "name": "Brylle Paulo Castillo",
+        "name": "Koa Antonio Lingo",
         "type": "coin bearer",
         "short-description": "Charming"
     },
     {
         "id": 99,
-        "name": "Evan Rafael Lucas Gonzales",
+        "name": "Yeshua Raphael R. Cagas",
         "type": "bible bearer",
         "short-description": "Gentle"
     }, 
@@ -213,18 +213,6 @@
         "type": "herald bearer"
     },
     {
-        "id": 100,
-        "name": "Adriana K. Flores",
-        "type": "Female Peer Principal Sponsors",
-        "short-description": "Gentle"
-    },
-    {
-        "id": 101,
-        "name": "Adrian K. Tores",
-        "type": "Male Peer Principal Sponsors",
-        "short-description": "Gentle"
-    },
-    {
         "id": 102,
         "name": "Ms. Desiree Faith R. Lingo",
         "type": "First Reading",
@@ -244,7 +232,7 @@
     },
     {
         "id": 103,
-        "name": "Mrs. Alyssa Fe H. Ayop",
+        "name": "TBD",
         "type": "Prayers of the Faithful",
         "short-description": "Gentle"
     },
@@ -259,6 +247,55 @@
         "name": "Lila Grand Choir",
         "type": "CHOIR",
         "short-description": "Gentle"
-    }
+    },
+{
+    "id": 106,
+    "name": "Mr. George Paul Cabalit",
+    "type": "Offertory Candle",
+    "short-description": "Gentle"
+},
+{
+    "id": 107,
+    "name": "Mrs. Phoebe L. Cabalit",
+    "type": "Offertory Candle",
+    "short-description": "Gentle"
+},
+{
+    "id": 108,
+    "name": "Mr. Ted Nuez",
+    "type": "Offertory Flowers",
+    "short-description": "Gentle"
+},
+{
+    "id": 109,
+    "name": "Mrs. Flordelyn C. Nuez",
+    "type": "Offertory Flowers",
+    "short-description": "Gentle"
+},
+{
+    "id": 110,
+    "name": "Mr. Andre Paul C. Visarra",
+    "type": "Offertory Fruits",
+    "short-description": "Gentle"
+},
+{
+    "id": 111,
+    "name": "Mr. Harley Jamil Tiananga",
+    "type": "Offertory Fruits",
+    "short-description": "Gentle"
+},
+{
+    "id": 112,
+    "name": "Mr. Godfrey Liray",
+    "type": "Host & Wine",
+    "short-description": "Gentle"
+},
+{
+    "id": 113,
+    "name": "Ms. Joy L. Liray",
+    "type": "Host & Wine",
+    "short-description": "Gentle"
+}
+
 
 ]

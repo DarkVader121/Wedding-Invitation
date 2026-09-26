@@ -49,7 +49,7 @@ const EntourageList = () => {
 
                         <div className="wi-title-container-info mt-7">
                             <h3>{candleInfo[0]["short-description"]}</h3>
-                            <p>{candleInfo[0].type}</p>
+                            <h2 className="text-5xl">{candleInfo[0].type}</h2>
                         </div>
                         {candleInfo.map((data) => (
                             <p key={data.id} className="text-lg mt-[-7px]">

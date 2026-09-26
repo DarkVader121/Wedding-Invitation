@@ -28,6 +28,10 @@ const GroomBrideParents = () => {
     const prayers = getGuestsByType("Prayers of the Faithful");
     const commentator = getGuestsByType("Commentator");
     const choir = getGuestsByType("CHOIR");
+    const offertoryCandle = getGuestsByType("Offertory Candle");
+    const offertoryFlowers = getGuestsByType("Offertory Flowers");
+    const offertoryFruits = getGuestsByType("Offertory Fruits");
+    const hostAndWine = getGuestsByType("Host & Wine");
     return (
         <>
             <div className="entourage-section py-7">
@@ -116,12 +120,12 @@ const GroomBrideParents = () => {
 
                         {/* OFFERTORY SPONSORS */}
                         <div className="wi-title-container-info mt-7">
-                            <p>Offertory Sponsors</p>
+                            <p>Secondary Sponsors</p>
                         </div>
                         
                         {/* candleInfo */}
                         <div className="wi-title-container-info">
-                            <p>{candleInfo[0].type}</p>
+                             <h2 className="text-3xl mt-3 !mb-1">Candle</h2>
                         </div>
                         {candleInfo.map((data) => (
                             <p key={data.id} className="text-lg mt-[-7px]">
@@ -130,8 +134,8 @@ const GroomBrideParents = () => {
                         ))}
 
                         {/* chordInfo */}
-                        <div className="wi-title-container-info mt-7">
-                            <p>{chordInfo[0].type}</p>
+                        <div className="wi-title-container-info">
+                             <h2 className="text-3xl mt-3 !mb-1">Cord</h2>
                         </div>
                         {chordInfo.map((data) => (
                             <p key={data.id} className="text-lg mt-[-7px]">
@@ -140,10 +144,55 @@ const GroomBrideParents = () => {
                         ))}
 
                         {/* veilInfo */}
-                        <div className="wi-title-container-info mt-7">
-                            <p>{veilInfo[0].type}</p>
+                        <div className="wi-title-container-info ">
+                              <h2 className="text-3xl mt-3 !mb-1">Veil</h2>
                         </div>
                         {veilInfo.map((data) => (
+                            <p key={data.id} className="text-lg mt-[-7px]">
+                                {data.name}
+                            </p>
+                        ))}
+
+                        {/*  LITURGICAL SPONSORS */}
+                        <div className="wi-title-container-info mt-7">
+                            <p className="!ms-0">Offertory Sponsors</p>
+                        </div>
+
+                        {/* Candle Info */}
+                        <div className="wi-title-container-info">
+                            <h2 className="text-3xl mt-3 !mb-1">Candle</h2>
+                        </div>
+                        {offertoryCandle.map((data) => (
+                            <p key={data.id} className="text-lg mt-[-7px]">
+                                {data.name}
+                            </p>
+                        ))}
+
+                        {/* Flowers Info */}
+                        <div className="wi-title-container-info">
+                            <h2 className="text-3xl mt-3 !mb-1">Flowers</h2>
+                        </div>
+                        {offertoryFlowers.map((data) => (
+                            <p key={data.id} className="text-lg mt-[-7px]">
+                                {data.name}
+                            </p>
+                        ))}
+
+                        {/* Fruits Info */}
+                        <div className="wi-title-container-info">
+                            <h2 className="text-3xl mt-3 !mb-1">Fruits</h2>
+                        </div>
+                        {offertoryFruits.map((data) => (
+                            <p key={data.id} className="text-lg mt-[-7px]">
+                                {data.name}
+                            </p>
+                        ))}
+
+                        {/* Host & Wine Info */}
+                        <div className="wi-title-container-info">
+                            <h2 className="text-3xl mt-3 !mb-1">Host & Wine</h2>
+                        </div>
+                        {hostAndWine.map((data) => (
                             <p key={data.id} className="text-lg mt-[-7px]">
                                 {data.name}
                             </p>
@@ -200,7 +249,7 @@ const GroomBrideParents = () => {
                         {/* ringBearerInfo */}
                         <div>
                             <div className="wi-title-container-info !items-center mt-7">
-                                <p className="" >{ringBearerInfo[0].type}</p>
+                                <p className="!ms-0" >{ringBearerInfo[0].type}</p>
                             </div>
                             <p className="mt-[-7px]">{ringBearerInfo[0].name}</p>
                         </div>
@@ -239,6 +288,8 @@ const GroomBrideParents = () => {
                             </p>
                         ))}
 
+
+
                         {/*  LITURGICAL SPONSORS */}
                         <div className="wi-title-container-info mt-7">
                             <p>LITURGICAL SPONSORS</p>
@@ -246,7 +297,7 @@ const GroomBrideParents = () => {
                         
                         {/* firstReading */}
                         <div className="wi-title-container-info">
-                              <p>{firstReading[0].type}</p>
+                            <h2 className="text-3xl mt-3 !mb-1">{firstReading[0].type}</h2>
                         </div>
                         {firstReading.map((item) => (
                             <p key={item.id} className="text-lg mt-[-7px]">
@@ -256,7 +307,7 @@ const GroomBrideParents = () => {
 
                         {/* secondReading */}
                         <div className="wi-title-container-info mt-7">
-                              <p>{secondReading[0].type}</p>
+                            <h2 className="text-3xl mt-3 !mb-1">{secondReading[0].type}</h2>
                         </div>
                         {secondReading.map((item) => (
                             <p key={item.id} className="text-lg mt-[-7px]">
@@ -266,6 +317,8 @@ const GroomBrideParents = () => {
 
                         {/* responsorialPslam */}
                         <div className="wi-title-container-info mt-7">
+                            <h2 className="text-3xl mt-3 !mb-1">{responsorialPslam[0].type}</h2>
+
                               <p>{responsorialPslam[0].type}</p>
                         </div>
                         {responsorialPslam.map((item) => (
@@ -276,7 +329,7 @@ const GroomBrideParents = () => {
 
                         {/* Commentator */}
                         <div className="wi-title-container-info mt-7">
-                              <p>{prayers[0].type}</p>
+                            <h2 className="text-3xl mt-3 !mb-1">{prayers[0].type}</h2>
                         </div>
                         {prayers.map((item) => (
                             <p key={item.id} className="text-lg mt-[-7px]">
@@ -287,7 +340,7 @@ const GroomBrideParents = () => {
 
                         {/* Commentator */}
                         <div className="wi-title-container-info mt-7">
-                              <p>Commentator</p>
+                            <h2 className="text-3xl mt-3 !mb-1">Commentator</h2>
                         </div>
                         {commentator.map((item) => (
                             <p key={item.id} className="text-lg mt-[-7px]">
@@ -297,7 +350,7 @@ const GroomBrideParents = () => {
 
                         {/* Choir */}
                         <div className="wi-title-container-info mt-7">
-                              <p>Choir</p>
+                            <h2 className="text-3xl mt-3 !mb-1">Choir</h2>
                         </div>
                         {choir.map((item) => (
                             <p key={item.id} className="text-lg mt-[-7px]">

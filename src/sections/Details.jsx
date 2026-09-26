@@ -10,10 +10,10 @@ const Details = () => {
                         <p>Details</p>
                     </div>
                     <p className="mt-7 text-2xl !mb-0">Ceremony</p>
-                    <p className="text-center text-lg">Assumption of Our Lady <br /> Shrine Parish, Dauis.</p>
+                    <p className="text-center text-lg">Assumption of Our Lady <br /> Shrine Parish, Dauis</p>
 
                      <p className="mt-7 text-2xl !mb-0">Reception</p>
-                    <p className="text-center text-lg">The Bellevue Resort <br /> Panglao.</p>
+                    <p className="text-center text-lg">The Bellevue Resort. <br /> Panglao</p>
 
                 </div>
             </div>

@@ -22,11 +22,11 @@ const Invitation = () => {
                             <div className="flex flex-col justify-center items-center">
                                 <p className="lead">JANUARY</p>
                                 <p className="text-5xl text-primary">27</p>
-                                <p className="lead">2026</p>
+                                <p className="lead">2027</p>
                             </div>
                             <div className="flex flex-col justify-center items-center">
                                 <hr className="w-3/4 text-primary"/>
-                                <p className="text-center text-lg">9:30 AM</p>
+                                <p className="text-center text-lg">2:00 PM</p>
                                 <hr className="w-3/4 text-primary"/>
                             </div>
                         </div>
