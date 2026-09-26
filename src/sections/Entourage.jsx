@@ -3,7 +3,7 @@ import {GroomBrideParents} from '../sections'
 const Entourage = () => {
     return (
         <>
-            <section className=''>
+            <section className='!pb-0'>
                 <div class="image-container">
                     <div class="image-wrapper">
                        <img

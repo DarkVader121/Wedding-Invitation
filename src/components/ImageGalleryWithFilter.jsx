@@ -115,7 +115,7 @@ const ImageGalleryWithFilter = () => {
                 <p className="text-xs mt-1">Scroll Right</p>
             </div>
 
-              <div className={`${ location.pathname === "/sweet-gallery" ? "" : "limit-12" } wi-gallery-images   gap-1 mt-5 grid grid-cols-3 justify-center items-start`}>
+              <div className={`${ location.pathname === "/sweet-gallery" ? "" : "" } wi-gallery-images   gap-1 mt-5 grid grid-cols-3 justify-center items-start`}>
                  <PhotoProvider
                     overlayRender={({ index, onClose }) => (
                     <div className="PhotoView-Slider__BannerWrap">
