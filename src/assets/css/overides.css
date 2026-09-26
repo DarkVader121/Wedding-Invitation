@@ -5,7 +5,9 @@ body{
 section{
   padding-top: 2rem;
   padding-bottom: 2rem;
-  /* background: ; */
+  background-image: url(../images/background/section-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 p, a {

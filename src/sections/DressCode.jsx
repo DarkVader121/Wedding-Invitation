@@ -1,8 +1,8 @@
 import dressCode from '../assets/images/random/Principal-sponsor.png';
-import champagneGold from '../assets/images/random/Champagne-Gold.jpeg';
-import frenchBlue from '../assets/images/random/French-blue.jpeg';
-import navyBlue from '../assets/images/random/Navy-blue.jpeg';
-import powderBlue from '../assets/images/random/Powder-blue.jpeg';
+import champagneGold from '../assets/images/random/Champagne-Gold.png';
+import frenchBlue from '../assets/images/random/French-blue.png';
+import navyBlue from '../assets/images/random/Navy-blue.png';
+import powderBlue from '../assets/images/random/Powder-blue.png';
 
 const DressCode = () => {
     const GuestColorAttire = [
