@@ -1,5 +1,5 @@
-import image1 from '../assets/images/background/FullImageSection1.png'
-import image2 from '../assets/images/background/hero-background.png'
+import image1 from '../assets/images/background/wedding/47. D & E pre wedding.jpg'
+import image2 from '../assets/images/background/wedding/116. D & E pre wedding.jpg'
 
 const FullImageSection3 = () => {
 

@@ -7,7 +7,7 @@ import { TakePrenupImages, TakeOfficialPhotographyImages, FetchTakenByGuestWithD
 const ImageGalleryWithFilter = () => {
     const BtnFilters = [
         { key: "all", label: "All" },
-        // { key: "taken-by-guest", label: "Guest Photos" },
+        { key: "taken-by-guest", label: "Guest Photos" },
         { key: "prenup", label: "Pre-Wedding" },
         // { key: "official-photography", label: "Wedding Day" },
     ];
@@ -46,7 +46,6 @@ const ImageGalleryWithFilter = () => {
         }
         hasFetchedGuestImages.current = true;
 
-        console.log("test");
         fetchGuestImages(0);
     }, []);
 
@@ -115,7 +114,7 @@ const ImageGalleryWithFilter = () => {
                 <p className="text-xs mt-1">Scroll Right</p>
             </div>
 
-              <div className={`${ location.pathname === "/sweet-gallery" ? "" : "" } wi-gallery-images   gap-1 mt-5 grid grid-cols-3 justify-center items-start`}>
+              <div className={`${ location.pathname === "/sweet-gallery" ? "" : "limit-12" } wi-gallery-images   gap-1 mt-5 grid grid-cols-3 justify-center items-start`}>
                  <PhotoProvider
                     overlayRender={({ index, onClose }) => (
                     <div className="PhotoView-Slider__BannerWrap">

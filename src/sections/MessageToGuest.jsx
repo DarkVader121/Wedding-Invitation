@@ -1,4 +1,4 @@
-import WeddingBG from '../assets/images/background/wedding-bg.png'
+import WeddingBG from '../assets/images/background/wedding/81. D & E pre wedding.jpg'
 import BrownTextBg from '../assets/images/random/brown-text-bg.png'
 import Flower from '../assets/images/random/flower.png'
 import Gift from '../assets/images/random/gift.png'

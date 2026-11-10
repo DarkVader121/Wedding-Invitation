@@ -1,4 +1,4 @@
-import heroImage from '../assets/images/background/hero-background.png'
+import heroImage from '../assets/images/background/wedding/Sunset Dance Above the Sea.png'
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
 
@@ -159,26 +159,46 @@ const Hero = () => {
 
     return (
         <>
-        <section className="hero flex flex-col justify-between" style={{ backgroundImage: `url(${heroImage})` }}>
-            {/* Offcanvas Open button */}
-            <div className='flex  justify-between px-5'>
-                <a className='btn btn-primary ' onClick={() => setIsOpen(true)} style={{ backgroundColor: '#6c849c' }}>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="#fff"
-                        className="size-8"
-                    >
-                        <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" />
+        <section className='!py-0 '>
+            <div className="image-container !h-[100vh]">
+                <div className="image-wrapper">
+                    <img
+                    src={heroImage}
+                    alt=""
+                    className="blur-none active:blur-lg transition-all duration-300"
+                    />
+                </div>
 
-                        <path
-                            fillRule="evenodd"
-                            d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                            clipRule="evenodd"
-                        />
-                    </svg>
-                </a>
-               
+                <div className="text-wrapper !pt-[1.7rem]">
+                    <a className='btn btn-primary ms-5' onClick={() => setIsOpen(true)} style={{ backgroundColor: 'rgb(35 35 35);' }}>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="#fff"
+                            className="size-8"
+                        >
+                            <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" />
+
+                            <path
+                                fillRule="evenodd"
+                                d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                    </a>
+                    <div className="pt-7 flex flex-col justify-center items-center">
+                        <h2 className="text-5xl !text-white">Our Forever Awaits</h2>
+                        <br /><br />
+                        <div className="container">
+                            <div className="flex justify-center items-center gap-2">
+                                <p className="text-4xl !text-white">Erron</p>
+                                <p className="text-2xl !text-white mt-2">&amp;</p>
+                                <p className="text-4xl !text-white">Deakin</p>
+                            </div>
+                            <p className="text-powderBlue text-center text-sm mt-1 !text-[#32373d]">#DEAKINfoundhERRONlyone </p>
+                        </div>
+                </div>
+            </div>
             </div>
         </section>
 

@@ -16,5 +16,6 @@ import GoogleMaps from "./GoogleMaps";
 import Footer from "./Footer";
 import Entourage from "./Entourage";
 import MessageToGuest from "./MessageToGuest";
+import Guest from "./Guest";
 
-export { Hero, Invitation, FullImageSection1, Gallery, Details, FullImageSection2, DressCode, GroomBrideParents, FullImageSection3, MalePrincipal, FemalePrincipal, FullImageSection4, EntourageList, EntourageList1, GoogleMaps, Footer, Entourage, MessageToGuest };
+export { Hero, Invitation, FullImageSection1, Gallery, Details, FullImageSection2, DressCode, GroomBrideParents, FullImageSection3, MalePrincipal, FemalePrincipal, FullImageSection4, EntourageList, EntourageList1, GoogleMaps, Footer, Entourage, MessageToGuest, Guest };

@@ -1,11 +1,12 @@
-import ring from '../assets/images/random/ring.png';
+import ring from '../assets/images/background/wedding/Sunset Dance Above the Sea.png';
 import {GroomBrideParents} from '../sections'
+
 const Entourage = () => {
     return (
         <>
             <section className='!pb-0'>
-                <div class="image-container">
-                    <div class="image-wrapper">
+                <div className="image-container">
+                    <div className="image-wrapper">
                        <img
                         src={ring}
                         alt=""
@@ -13,7 +14,7 @@ const Entourage = () => {
                         />
                     </div>
 
-                    <div class="text-wrapper">
+                    <div className="text-wrapper">
                         <GroomBrideParents />
                     </div>
                 </div>
