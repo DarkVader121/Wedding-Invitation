@@ -17,16 +17,6 @@ const Home = () => {
         <Guest />
         {/* <FullImageSection2 /> */}
         <Entourage/>
-       
-        
-        {/*<MalePrincipal />
-        <Cutoffs />
-        <FemalePrincipal />
-        <FullImageSection4 />
-        <EntourageList />
-        <FullImageSection2 />
-        <EntourageList1 /> */}
-        {/* <RSVP /> */}
          <MessageToGuest />
         <GoogleMaps />
         <Footer />

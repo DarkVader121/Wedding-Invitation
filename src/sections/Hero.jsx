@@ -170,11 +170,15 @@ const Hero = () => {
                 </div>
 
                 <div className="text-wrapper !pt-[1.7rem]">
-                    <a className='btn btn-primary ms-5' onClick={() => setIsOpen(true)} style={{ backgroundColor: 'rgb(35 35 35);' }}>
+                    <a
+                        className="btn btn-primary ms-5"
+                        onClick={() => setIsOpen(true)}
+                        style={{ backgroundColor: "#ffffff" }}
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
-                            fill="#fff"
+                            fill="#32373d"
                             className="size-8"
                         >
                             <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" />

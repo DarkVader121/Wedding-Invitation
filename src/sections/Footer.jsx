@@ -4,8 +4,8 @@ const Footer = () => {
     return (
         <>
           <section className='!py-0'>
-                <div class="image-container">
-                    <div class="image-wrapper">
+                <div className="image-container">
+                    <div className="image-wrapper">
                        <img
                         src={Couple}
                         alt=""
@@ -13,7 +13,7 @@ const Footer = () => {
                         />
                     </div>
 
-                    <div class="text-wrapper !h-[90vh]">
+                    <div className="text-wrapper !h-[90vh]">
                         
                     </div>
                 </div>

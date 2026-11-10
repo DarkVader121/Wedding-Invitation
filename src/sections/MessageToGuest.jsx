@@ -29,7 +29,7 @@ const MessageToGuest = () => {
             <div className='flex'>
                 <img  src={Flower} className='ml-[-50%] mt-[-30%] relative object-contain' alt="" />
                 <div className='flex flex-col pe-5'>
-                    <div class="wi-title-container pt-7">
+                    <div className="wi-title-container pt-7">
                         <h3>Gentle</h3>
                         <p>Reminder</p>
                     </div>
@@ -42,7 +42,7 @@ const MessageToGuest = () => {
             <div className='flex py-7'>
                 <img  src={Gift} className='ml-[-40%] mt-[-20%] me-4 relative object-contain' alt="" />
                 <div className='flex flex-col pe-5'>
-                    <div class="wi-title-container pt-7">
+                    <div className="wi-title-container pt-7">
                         <h3>Special</h3>
                         <p>Note on Gifts</p>
                     </div>

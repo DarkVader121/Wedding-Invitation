@@ -7,8 +7,8 @@ import { TakePrenupImages, TakeOfficialPhotographyImages, FetchTakenByGuestWithD
 const ImageGalleryWithFilter = () => {
     const BtnFilters = [
         { key: "all", label: "All" },
-        { key: "taken-by-guest", label: "Guest Photos" },
-        { key: "prenup", label: "Pre-Wedding" },
+        // { key: "taken-by-guest", label: "Guest Photos" },
+        // { key: "prenup", label: "Pre-Wedding" },
         // { key: "official-photography", label: "Wedding Day" },
     ];
 
@@ -27,7 +27,7 @@ const ImageGalleryWithFilter = () => {
     // Static and Dynamic Images
     const [guestImages, setGuestImages] = useState([]);
     const prenupImages = TakePrenupImages();
-    // const officialPhotographyImages = TakeOfficialPhotographyImages();
+    const officialPhotographyImages = TakeOfficialPhotographyImages();
      
     // filter functionality
     const [filter, setFilter] = useState("all");
