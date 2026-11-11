@@ -1,4 +1,3 @@
-
 import { useState, useMemo } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
@@ -6,17 +5,22 @@ import "react-photo-view/dist/react-photo-view.css";
 import { TakePrenupImages } from "../services/weddingImages";
 
 const PrenupGallery = ({ filter = "prenup" }) => {
-    const BtnFilters = [
+     const BtnFilters = [
         {
             key: "prenup",
             label: "Pre-Wedding",
             page: "/sweet-gallery/prenup"
         },
-        // {
-        //     key: "taken-by-guest",
-        //     label: "Guest Photos",
-        //     page: "/sweet-gallery/guest-photos"
-        // }
+        {
+            key: "wedding",
+            label: "Wedding Day",
+            page: "/sweet-gallery/wedding-day"
+        },
+        {
+            key: "taken-by-guest",
+            label: "Guest Photos",
+            page: "/sweet-gallery/guest-photos"
+        }
     ];
 
     // Pagination settings
@@ -55,9 +59,10 @@ const PrenupGallery = ({ filter = "prenup" }) => {
             {/* Gallery Filters */}
             <div className="flex w-full justify-start">
                 <div className="flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden">
-                    {BtnFilters.map(({ key, label }) => (
+                    {BtnFilters.map(({ key, label, page }) => (
                         <a
                             key={key}
+                            href={page}
                             className={`btn btn-sm !w-max shrink-0 ${
                                 filter === key ? "btn-primary" : ""
                             }`}
@@ -164,7 +169,7 @@ const PrenupGallery = ({ filter = "prenup" }) => {
 
             {/* Pagination */}
             {totalPages > 1 && (
-                <div className="mt-8 flex items-center justify-between gap-3">
+                <div className="mt-7 flex items-center justify-between gap-3">
 
                     <p className="text-sm text-gray-500">
                         Showing {startItem} - {endItem} of {prenupImages.length} images

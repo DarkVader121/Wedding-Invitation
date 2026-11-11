@@ -68,7 +68,7 @@
   min-height: 20px;
   a{
     img {
-      height: 157px;
+      height: 167px;
       width: 100%;
       object-fit: cover;
       transition: transform 0.15s ease, opacity 0.15s ease;

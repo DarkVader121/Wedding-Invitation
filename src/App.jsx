@@ -1,6 +1,6 @@
 import './App.css'
 import { Routes, Route } from "react-router";
-import { Test, SweetGallery, Home, Login, ManageImages } from './pages'
+import { Test, SweetGallery, Home, Login, ManageImages, SweetGalleryGuest, SweetGalleryGuestOfficial } from './pages'
 import {ProtectedRoute, GuestRoute} from './routes';
 
 function App() {
@@ -25,7 +25,9 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/test" element={<Test />} />
-        <Route path="/sweet-gallery" element={<SweetGallery />} />
+        <Route path="/sweet-gallery/prenup" element={<SweetGallery />} />
+        <Route path="/sweet-gallery/wedding-day" element={<SweetGalleryGuestOfficial />} />
+        <Route path="/sweet-gallery/guest-photos" element={<SweetGalleryGuest />} />
         <Route path="/" element={<Home />} />
       </Routes>
 

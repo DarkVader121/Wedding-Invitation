@@ -47,12 +47,11 @@ export const TakeOfficialPhotographyImages = () => {
 /**
  * Fetch Display Guest Images
  */
-export const FetchTakenByGuestWithDisplayImages = async (from, to) => {
+export const FetchTakenByGuestWithDisplayImages = async () => {
     const { data, error } = await supabase
         .from("images")
         .select("*")
         .eq("category", "taken-by-guest")
-        .range(from, to)
         .order("uploaded_at", { ascending: false });
 
     if (error) {
