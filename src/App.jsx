@@ -1,5 +1,5 @@
 import './App.css'
-import { Routes, Route } from "react-router";
+import { Routes, Route, Navigate } from "react-router";
 import { Test, SweetGallery, Home, Login, ManageImages, SweetGalleryGuest, SweetGalleryGuestOfficial } from './pages'
 import {ProtectedRoute, GuestRoute} from './routes';
 
@@ -29,6 +29,7 @@ function App() {
         <Route path="/sweet-gallery/wedding-day" element={<SweetGalleryGuestOfficial />} />
         <Route path="/sweet-gallery/guest-photos" element={<SweetGalleryGuest />} />
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
     </>
