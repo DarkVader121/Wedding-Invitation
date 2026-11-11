@@ -9,7 +9,7 @@ const PrenupGallery = ({ filter = "prenup" }) => {
         {
             key: "prenup",
             label: "Pre-Wedding",
-            page: "/sweet-gallery/prenup"
+            page: "#gallery-filters"
         },
         {
             key: "wedding",
@@ -55,14 +55,13 @@ const PrenupGallery = ({ filter = "prenup" }) => {
 
     return (
         <div className="mt-7 flex w-full flex-col text-start">
-
             {/* Gallery Filters */}
             <div className="flex w-full justify-start">
-                <div className="flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden">
+                <div className="flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden" id="gallery-filters">
                     {BtnFilters.map(({ key, label, page }) => (
                         <a
                             key={key}
-                            href={page}
+                              href={`${page}`}
                             className={`btn btn-sm !w-max shrink-0 ${
                                 filter === key ? "btn-primary" : ""
                             }`}

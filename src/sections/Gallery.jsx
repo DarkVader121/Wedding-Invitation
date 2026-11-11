@@ -15,6 +15,7 @@ const Gallery = () => {
                         <PrenupGallery/>
                     </div>
                 </div>
+
             </section>
       </>
     );

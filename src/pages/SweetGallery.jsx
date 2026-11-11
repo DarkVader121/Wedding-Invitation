@@ -5,6 +5,7 @@ const SweetGallery = () => {
     return (
         <>
         <Gallery />
+        
       </>
     );
 }

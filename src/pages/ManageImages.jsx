@@ -50,8 +50,6 @@ const ManageImages = () => {
          }
          hasFetchedGuestImages.current = true;
          
-        fetchGuestImagesWithDisplay(0);
-        fetchGuestImagesWithoutDisplay(0);
      }, []);
 
     const fetchGuestImagesWithDisplay = async (page = 0) => {
@@ -184,7 +182,7 @@ const ManageImages = () => {
                     <p className="text-2xl">Manage Displayed Images</p>
                     <p>Turn images on or off to control which ones are displayed.</p>
 
-                    <div className=" mt-5 flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden">
+                    <div className=" mt-5 flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden" id="gallery-filters">
                         <a
                             className="btn btn-primary btn-sm !w-max shrink-0"
                             onClick={() => {
