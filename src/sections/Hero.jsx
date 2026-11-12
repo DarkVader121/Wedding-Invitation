@@ -80,7 +80,7 @@ const Hero = () => {
 
     const uploadImagesInSupabaseStorageAndCreateData = async () => {
         setIsUploading(0);
-        // sanitize images array to only include those with a file 
+        // sanitize images array to only include those with a file W
         if (images.length === 0) {
             alert("No images to upload. Please select an image first.");
             return;
@@ -88,7 +88,6 @@ const Hero = () => {
 
         const totalImages = images.length;
         let completedImages = 0;
-
         Promise.all(
             images.map(async (image) => {
                 // Start with 10% to indicate the process has begun
@@ -103,7 +102,9 @@ const Hero = () => {
 
                 // Upload the image to Supabase Storage
                 const file = image.file;
-                const filePath = `${Date.now()}_${file.name}`;
+                  const filePath = `${Date.now()}`;
+
+                    console.error("filfilePathe", filePath);
                 const { data } = await supabase
                 .storage
                 .from("Uploaded by Guests")
@@ -149,7 +150,6 @@ const Hero = () => {
             }, 800);
         })
         .catch((error) => {
-
             console.error("Upload error:", error);
             alert("Something went wrong while uploading.");
 

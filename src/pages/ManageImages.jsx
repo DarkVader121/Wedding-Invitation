@@ -1,7 +1,7 @@
 import { logoutUser } from "../services/auth";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useState, useEffect, useRef } from "react";
-import { FetchTakenByGuestWithDisplayImages, FetchTakenByGuestWithoutDisplayImages, isDisplayToTrueOrFalse } from "../services/weddingImages";
+import { FetchTakenByGuestWithDisplayImagesForManage, FetchTakenByGuestWithoutDisplayImages, isDisplayToTrueOrFalse } from "../services/weddingImages";
 
 const ManageImages = () => {
     //loadingGuestImages
@@ -49,17 +49,18 @@ const ManageImages = () => {
              return;
          }
          hasFetchedGuestImages.current = true;
-         
+         fetchGuestImagesWithDisplay();
+         fetchGuestImagesWithoutDisplay();
      }, []);
 
     const fetchGuestImagesWithDisplay = async (page = 0) => {
         setLoadingGuestImages(true);
 
-        const limit = 12;
+        const limit = 30;
         const from = page * limit;
         const to = from + limit - 1;
 
-        const data = await FetchTakenByGuestWithDisplayImages(from, to);
+        const data = await FetchTakenByGuestWithDisplayImagesForManage(from, to);
 
         // setGuestImages(data);
         setGuestImages((prev) => {
@@ -95,7 +96,7 @@ const ManageImages = () => {
     const fetchGuestImagesWithoutDisplay = async (page = 0) => {
         setLoadingGuestImages(true);
 
-        const limit = 12;
+        const limit = 30;
         const from = page * limit;
         const to = from + limit - 1;
 

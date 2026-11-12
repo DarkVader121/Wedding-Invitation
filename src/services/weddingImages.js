@@ -45,7 +45,33 @@ export const TakeOfficialPhotographyImages = () => {
 };
 
 /**
- * Fetch Display Guest Images
+ * Fetch Display Guest Images (For Manage )
+ */
+export const FetchTakenByGuestWithDisplayImagesForManage = async (from, to) => {
+    const { data, error } = await supabase
+        .from("images")
+        .select("*")
+        .eq("category", "taken-by-guest")
+        .range(from, to)
+        .order("uploaded_at", { ascending: false });
+
+    if (error) {
+        console.error("Supabase error:", error);
+        return [];
+    }
+
+    return data.map((image) => ({
+        id: image.id,
+        name: image.name,
+        src: image.imageUrl,
+        category: image.category,
+        path: image.imageUrl,
+        uploaded_at: image.uploaded_at,
+    }));
+};
+
+/**
+ * Fetch Display Guest Images (For display )
  */
 export const FetchTakenByGuestWithDisplayImages = async () => {
     const { data, error } = await supabase
