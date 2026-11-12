@@ -1,6 +1,7 @@
 import heroImage from '../assets/images/background/wedding/Sunset Dance Above the Sea.png'
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
+import imageCompression from "browser-image-compression";
 
 const Hero = () => {
     // Uploading State
@@ -78,9 +79,10 @@ const Hero = () => {
         e.target.value = "";
     };
 
+   
     const uploadImagesInSupabaseStorageAndCreateData = async () => {
         setIsUploading(0);
-        // sanitize images array to only include those with a file W
+
         if (images.length === 0) {
             alert("No images to upload. Please select an image first.");
             return;
@@ -88,74 +90,94 @@ const Hero = () => {
 
         const totalImages = images.length;
         let completedImages = 0;
-        Promise.all(
-            images.map(async (image) => {
-                // Start with 10% to indicate the process has begun
-                setIsUploading(7); 
 
-                // Check if the image has a file property
-                if (!image.file) {
-                    return Promise.reject(
-                        new Error("No image found, please select an image to upload.")
+        try {
+            await Promise.all(
+                images.map(async (image) => {
+                    if (!image.file) {
+                        throw new Error("No image found.");
+                    }
+
+                    setIsUploading(7);
+
+                    // Compress image before uploading
+                    const options = {
+                        maxSizeMB: 1, 
+                        maxWidthOrHeight: 1920,
+                        useWebWorker: true,
+                        fileType: "image/jpeg",
+                    };
+
+                    const compressedFile = await imageCompression(
+                        image.file,
+                        options
                     );
-                }
 
-                // Upload the image to Supabase Storage
-                const file = image.file;
-                  const filePath = `${Date.now()}`;
+                    console.log("Original size:", 
+                        (image.file.size / 1024 / 1024).toFixed(2), "MB");
 
-                    console.error("filfilePathe", filePath);
-                const { data } = await supabase
-                .storage
-                .from("Uploaded by Guests")
-                .upload(filePath, file, {
-                    cacheControl: "3600",
-                    upsert: false
-                });
+                    console.log("Compressed size:", 
+                        (compressedFile.size / 1024 / 1024).toFixed(2), "MB");
 
-                // load the new uploaded image
-                const { data: publicUrlData } = supabase
-                    .storage
-                    .from('Uploaded by Guests')
-                    .getPublicUrl(data.path);
-                const imageUrl = publicUrlData.publicUrl;
+                    // Upload compressed image
+                    const filePath = `${Date.now()}_${completedImages}.jpg`;
 
-                // Create a record in the Supabase database
-                const uploadedAt = new Date().toISOString();
-                await supabase
-                .from("images")
-                .insert([
-                {
-                    category: "taken-by-guest-noDisplay",
-                    imageUrl: imageUrl,
-                    name: uploadedAt,
-                },
-                ])
-                .select();
-                
-                // Only increment after the upload finishes
-                completedImages++;
-                const progress = Math.round(
-                    (completedImages / totalImages) * 100
-                );
-                setIsUploading(progress);
-            })
-        )
-        .then(() => {
+                    const { data, error } = await supabase
+                        .storage
+                        .from("Uploaded by Guests")
+                        .upload(filePath, compressedFile, {
+                            cacheControl: "3600",
+                            upsert: false,
+                            contentType: "image/jpeg"
+                        });
+
+                    if (error) throw error;
+
+                    // Get public URL
+                    const { data: publicUrlData } = supabase
+                        .storage
+                        .from("Uploaded by Guests")
+                        .getPublicUrl(data.path);
+
+                    const imageUrl = publicUrlData.publicUrl;
+
+                    // Insert database record
+                    const uploadedAt = new Date().toISOString();
+
+                    const { error: insertError } = await supabase
+                        .from("images")
+                        .insert([
+                            {
+                                category: "taken-by-guest-noDisplay",
+                                imageUrl,
+                                name: uploadedAt,
+                            },
+                        ]);
+
+                    if (insertError) throw insertError;
+
+                    completedImages++;
+
+                    const progress = Math.round(
+                        (completedImages / totalImages) * 100
+                    );
+
+                    setIsUploading(progress);
+                })
+            );
+
             setTimeout(() => {
-                // All uploads completed successfully
                 setImages([]);
                 setIsUploading(0);
                 setShowThankYou(true);
             }, 800);
-        })
-        .catch((error) => {
+
+        } catch (error) {
             console.error("Upload error:", error);
             alert("Something went wrong while uploading.");
-
-        });
-
+        }
     };
+
 
     return (
         <>
@@ -171,7 +193,7 @@ const Hero = () => {
 
                 <div className="text-wrapper !pt-[1.7rem]">
                     <a
-                        className="btn btn-primary ms-5"
+                        className="btn btn-primary ms-5 pulse-effect"
                         onClick={() => setIsOpen(true)}
                         style={{ backgroundColor: "#ffffff" }}
                     >
@@ -289,7 +311,7 @@ const Hero = () => {
                                         document.getElementById("image-upload").click();
                                     }}
                                     className='active-state mt-5 relative flex flex-col justify-center items-center w-[100%] h-[170px] bg-gray-100 rounded-xl'
-                                    style={{ backgroundColor: 'antiquewhite' }}>
+                                    style={{ backgroundColor: 'transparent' }}>
                                     <span className='absolute top-2 left-2 w-5 h-5 border-t-[3px] border-l-[3px] border-slate-700 rounded-tl-md'></span>
                                     <span className='absolute top-2 right-2 w-5 h-5 border-t-[3px] border-r-[3px] border-slate-700 rounded-tr-md'></span>
                                     <span className='absolute bottom-2 left-2 w-5 h-5 border-b-[3px] border-l-[3px] border-slate-700 rounded-bl-md'></span>
@@ -310,8 +332,8 @@ const Hero = () => {
                                             d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15"
                                         />
                                     </svg>
-                                    <p className='mt-3'>Slip your photo into this place</p>
-                                    <p className='text-xs !text-secondary'>PNG, JPG, PDF, GIF, SVG</p>
+                                    <p className='mt-3'>Tap Here and Upload Your Image</p>
+                                    <p className='text-xs !text-secondary'>PNG, JPG, GIF</p>
                                 </a>
 
                                 <div className="wi-gallery-images no-effects  gap-1 mt-5 grid grid-cols-3 justify-center items-start">

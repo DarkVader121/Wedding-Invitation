@@ -7,3 +7,17 @@
         transform: translateX(300%);
     }
 }
+
+.pulse-effect {
+    color: #ffffff;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+}

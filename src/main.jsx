@@ -6,6 +6,7 @@ import './assets/css/custom.css'
 import './assets/css/overides.css'
 import './assets/css/buttons.css'
 import './assets/css/input-field.css'
+import './assets/css/effects.css'
 import App from './App.jsx'
 import { AuthProvider } from "./context/AuthContext";
 
