@@ -1,4 +1,4 @@
-import WeddingBG from '../assets/images/background/wedding/81. D & E pre wedding.jpg'
+import WeddingBG from '../assets/images/background/wedding/119. D & E pre wedding.jpg'
 import BrownTextBg from '../assets/images/random/brown-text-bg.png'
 import Flower from '../assets/images/random/flower.png'
 import Gift from '../assets/images/random/gift.png'
@@ -19,9 +19,9 @@ const MessageToGuest = () => {
 
                 <div className="text-wrapper ">
                     <div className='flex justify-end items-end h-[300px]'>
-                        <div className='flex justify-center items-center w-[200px] h-[200px] bg-contain bg-no-repeat  bg-center' style={{ backgroundImage: `url(${BrownTextBg})` }}>
+                        {/* <div className='flex justify-center items-center w-[200px] h-[200px] bg-contain bg-no-repeat  bg-center' style={{ backgroundImage: `url(${BrownTextBg})` }}>
                         <p className='ps-6 mb-1 !text-white text-xs rotate-[-3deg]'>TO ALL GUEST:</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

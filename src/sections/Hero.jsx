@@ -1,4 +1,4 @@
-import heroImage from '../assets/images/background/wedding/Sunset Dance Above the Sea.png'
+import heroImage from '../assets/images/background/wedding/heroImage1.jpg'
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
 import imageCompression from "browser-image-compression";
@@ -212,7 +212,7 @@ const Hero = () => {
                             />
                         </svg>
                     </a>
-                    <div className="pt-7 flex flex-col justify-center items-center">
+                    {/*<div className="pt-7 flex flex-col justify-center items-center">
                         <h2 className="text-5xl !text-white">Our Forever Awaits</h2>
                         <br /><br />
                         <div className="container">
@@ -223,7 +223,7 @@ const Hero = () => {
                             </div>
                             <p className="text-powderBlue text-center text-sm mt-1 !text-[#32373d]">#DEAKINfoundhERRONlyone </p>
                         </div>
-                </div>
+                </div>*/}
             </div>
             </div>
         </section>

@@ -2,7 +2,50 @@ import Countdown from 'react-countdown';
 
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) { 
-        return <p className="text-lg ">The Day Arrived, Let's Celebrate🎉</p>; 
+        return (
+            <>
+            <div className='flex flex-col items-center'>
+                <div className="flex justify-center gap-3 text-center"> 
+                    <div className="min-w-[47px]">
+                        <p className="text-4xl"> 
+                        00
+                        </p>
+                        <p className=""> 
+                            Days 
+                        </p> 
+                    </div> 
+                    <span className="text-4xl text-primary -mt-[6px]">:</span>
+                    <div className="min-w-[47px]"> 
+                        <p className="text-4xl"> 
+                        00
+                        </p>
+                        <p className=""> 
+                            Hours 
+                        </p> 
+                    </div> 
+                    <span className="text-4xl text-primary -mt-[6px]">:</span>
+                    <div className="min-w-[47px]"> 
+                        <p className="text-4xl">
+                        00
+                        </p>
+                        <p className=""> 
+                            Minutes 
+                        </p> 
+                    </div> 
+                    <span className="text-4xl text-primary -mt-[6px]">:</span>
+                    <div className="min-w-[47px]"> 
+                        <p className="text-4xl"> 
+                            00
+                        </p> 
+                        <p className=""> 
+                            Seconds 
+                        </p>
+                    </div> 
+                </div> 
+                <p className="text-lg mt-7">The day has arrived. Let's celebrate!</p>
+            </div>
+            </>
+        ); 
     } 
     
     return ( 
