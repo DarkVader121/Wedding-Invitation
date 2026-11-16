@@ -1,4 +1,4 @@
-import ring from '../assets/images/background/wedding/Sunset Dance Above the Sea.png';
+import ring from '../assets/images/background/wedding/2bg.png';
 import {GroomBrideParents} from '../sections'
 
 const Entourage = () => {
