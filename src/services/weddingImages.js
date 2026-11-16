@@ -3,9 +3,10 @@ import { supabase } from "../lib/supabase";
 /**
  * Take Prenup Images
 */
+
 export const TakePrenupImages = () => {
     const images = import.meta.glob(
-        "../assets/images/wedding/prenup/*",
+        "../assets/images/wedding/prenup/*/*",
         {
             eager: true,
             query: "?url",
@@ -13,14 +14,20 @@ export const TakePrenupImages = () => {
         }
     );
 
-    return Object.entries(images).map(([path, src]) => ({
-        id: Date.now() + Math.random(),
-        name: Date.now() + Math.random(),
-        src,
-        category: "prenup",
-        path,
-    }));
+    return Object.entries(images).map(([path, src], index) => {
+        const folder = path.split("/").slice(-2, -1)[0];
+
+        return {
+            id: index + 1,
+            name: path.split("/").pop(),
+            src,
+            category: "prenup",
+            folder,
+            path,
+        };
+    });
 };
+
 
 /**
  * Take Official Photography Images

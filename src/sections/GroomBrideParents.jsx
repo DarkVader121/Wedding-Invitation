@@ -319,7 +319,7 @@ const GroomBrideParents = () => {
                         <div className="wi-title-container-info mt-7">
                             <h2 className="text-3xl mt-3 !mb-1">{responsorialPslam[0].type}</h2>
 
-                              <p>{responsorialPslam[0].type}</p>
+                            
                         </div>
                         {responsorialPslam.map((item) => (
                             <p key={item.id} className="text-lg mt-[-7px]">

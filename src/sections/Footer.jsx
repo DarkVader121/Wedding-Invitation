@@ -13,8 +13,19 @@ const Footer = () => {
                         />
                     </div>
 
-                    <div className="text-wrapper !h-[90vh]">
-                        
+                    <div className="text-wrapper !h-[110vh]">
+                        <div className="pt-7 flex flex-col justify-center items-center">
+                                <h2 className="text-5xl">Our Forever Awaits</h2>
+                                <br /><br />
+                                <div className="container">
+                                    <div className="flex justify-center items-center gap-2">
+                                        <p className="text-4xl !text-white">Erron</p>
+                                        <p className="text-2xl !text-white mt-2">&amp;</p>
+                                        <p className="text-4xl !text-white">Deakin</p>
+                                    </div>
+                                    <p className="text-powderBlue text-center text-sm mt-1 !text-[#32373d]">#DEAKINfoundhERRONlyone </p>
+                                </div>
+                        </div>
                     </div>
                 </div>
             </section>
