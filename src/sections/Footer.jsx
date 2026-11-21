@@ -1,4 +1,5 @@
-import Couple from '../assets/images/background/wedding/136. D and E pre wedding.jpg'
+// import Couple from '../assets/images/background/wedding/136. D and E pre wedding.jpg'
+import Couple from '../assets/images/background/wedding/footer-image.jpeg'
 const Footer = () => {
 
     return (
@@ -14,8 +15,8 @@ const Footer = () => {
                     </div>
 
                     <div className="text-wrapper !h-[110vh]">
-                        <div className="pt-7 flex flex-col justify-center items-center">
-                                <h2 className="text-5xl">Our Forever Awaits</h2>
+                        <div className="pt-10 flex flex-col justify-center items-center">
+                                <h2 className="text-5xl !text-white">Our Forever Awaits</h2>
                                 <br /><br />
                                 <div className="container">
                                     <div className="flex justify-center items-center gap-2">

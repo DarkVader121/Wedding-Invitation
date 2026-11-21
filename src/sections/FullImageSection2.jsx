@@ -1,4 +1,4 @@
-import FullImage from '../assets/images/background/wedding/87. D & E pre wedding.jpg'
+import FullImage from '../assets/images/background/wedding/jobee-black-blurred.jpeg'
 
 const FullImageSection2 = () => {
 

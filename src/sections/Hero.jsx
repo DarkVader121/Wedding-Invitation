@@ -1,4 +1,5 @@
 import heroImage from '../assets/images/background/wedding/heroImage1.jpg'
+import logo from '../assets/images/logo/wedding-logo.png'
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
 import imageCompression from "browser-image-compression";
@@ -191,8 +192,9 @@ const Hero = () => {
                     />
                 </div>
 
-                <div className="text-wrapper !pt-[1.7rem]">
-                    <a
+                <div className="text-wrapper !pt-[1.7rem] flex justify-between">
+                    <div className='h-[auto]'>
+                        <a
                         className="btn btn-primary ms-5 pulse-effect"
                         onClick={() => setIsOpen(true)}
                         style={{ backgroundColor: "#ffffff" }}
@@ -212,8 +214,14 @@ const Hero = () => {
                             />
                         </svg>
                     </a>
-                   
-            </div>
+                    </div>
+                    
+                    <img
+                    src={logo}
+                    alt=""
+                    className="w-[177px] h-[177px]"
+                    />
+                </div>
             </div>
         </section>
 

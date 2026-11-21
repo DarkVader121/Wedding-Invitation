@@ -14,18 +14,28 @@ export const TakePrenupImages = () => {
         }
     );
 
-    return Object.entries(images).map(([path, src], index) => {
-        const folder = path.split("/").slice(-2, -1)[0];
+    return Object.entries(images)
+        .sort(([pathA], [pathB]) => {
+            const nameA = pathA.split("/").pop();
+            const nameB = pathB.split("/").pop();
 
-        return {
-            id: index + 1,
-            name: path.split("/").pop(),
-            src,
-            category: "prenup",
-            folder,
-            path,
-        };
-    });
+            return nameA.localeCompare(nameB, undefined, {
+                numeric: true,
+                sensitivity: "base",
+            });
+        })
+        .map(([path, src], index) => {
+            const folder = path.split("/").slice(-2, -1)[0];
+
+            return {
+                id: index + 1,
+                name: path.split("/").pop(),
+                src,
+                category: "prenup",
+                folder,
+                path,
+            };
+        });
 };
 
 

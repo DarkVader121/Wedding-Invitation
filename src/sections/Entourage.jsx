@@ -1,4 +1,4 @@
-import entourageBg from '../assets/images/background/wedding/entourageBg.png';
+import entourageBg from '../assets/images/background/wedding/entourageBg.webp';
 import {GroomBrideParents} from '../sections'
 
 const Entourage = () => {
