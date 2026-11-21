@@ -192,10 +192,10 @@ const Hero = () => {
                     />
                 </div>
 
-                <div className="text-wrapper !pt-[1.7rem] flex justify-between">
-                    <div className='h-[auto]'>
+                <div className="text-wrapper !pt-[1.7rem] flex justify-center gap-10">
+                    <div className='h-[auto] absolute left-0'>
                         <a
-                        className="btn btn-primary ms-5 pulse-effect"
+                        className="btn btn-primary ms-5 pulse-effect "
                         onClick={() => setIsOpen(true)}
                         style={{ backgroundColor: "#ffffff" }}
                     >
@@ -219,8 +219,10 @@ const Hero = () => {
                     <img
                     src={logo}
                     alt=""
-                    className="w-[177px] h-[177px]"
+                    className="w-[130px] h-[130px] object-contain"
                     />
+
+                   
                 </div>
             </div>
         </section>
