@@ -124,7 +124,9 @@ const ImageGalleryWithFilter = () => {
                         </div>
 
                         <div className="PhotoView-Slider__Counter flex gap-2 items-center">
-                            {filteredImages[index]?.name}
+                              <span className="truncate">
+                                    {filteredImages[index]?.name}
+                                </span>
 
                             <button type="button" className="btn bg-white opacity-77 !p-1 rounded-lg !min-w-5" onClick={() => { navigator.clipboard.writeText(filteredImages[index]?.name || ""); }} >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3 text-black">

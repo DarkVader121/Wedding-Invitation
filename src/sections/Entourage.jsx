@@ -1,4 +1,4 @@
-import ring from '../assets/images/background/wedding/2bg.png';
+import entourageBg from '../assets/images/background/wedding/entourageBg.png';
 import {GroomBrideParents} from '../sections'
 
 const Entourage = () => {
@@ -8,7 +8,7 @@ const Entourage = () => {
                 <div className="image-container">
                     <div className="image-wrapper">
                        <img
-                        src={ring}
+                        src={entourageBg}
                         alt=""
                         className="blur-none active:blur-lg transition-all duration-300"
                         />

@@ -218,6 +218,10 @@ const ManageImages = () => {
                                 </div>
 
                                 <div className="PhotoView-Slider__Counter flex gap-2 items-center">
+                                <span className="truncate">
+                                    {image?.name} 
+                                </span>
+
                                     {filteredImages[index]?.name}
 
                                     <button type="button" className="btn bg-white opacity-77 !p-1 rounded-lg !min-w-5" onClick={() => { navigator.clipboard.writeText(filteredImages[index]?.name || ""); }} >

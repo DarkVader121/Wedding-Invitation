@@ -133,7 +133,11 @@ const SweetGalleryGuest = ({ filter = "taken-by-guest" }) => {
                                 </div>
 
                                 <div className="PhotoView-Slider__Counter flex gap-2 items-center">
-                                    {image?.name}
+                                    <span className="truncate">
+                                         {image?.name}
+                                    </span>
+
+                                  
 
                                     <button
                                         type="button"
